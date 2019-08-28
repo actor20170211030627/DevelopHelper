@@ -1,5 +1,5 @@
 .gradle/
-.idea/
+.idea
 .svn/
 app/build/generated/
 app/build/intermediates/
