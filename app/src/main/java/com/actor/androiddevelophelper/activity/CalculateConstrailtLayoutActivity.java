@@ -7,9 +7,6 @@ import android.widget.TextView;
 import com.actor.androiddevelophelper.Global;
 import com.actor.androiddevelophelper.R;
 import com.blankj.utilcode.util.SPUtils;
-import com.blankj.utilcode.util.ToastUtils;
-
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -61,11 +58,10 @@ public class CalculateConstrailtLayoutActivity extends BaseActivity {
             if (leftHeight <= 0) {
                 tvResult.setText("0");
             } else result = String.valueOf(viewMargin / leftHeight);
-            String clip = String.format(Locale.getDefault(), "%s/(%s-%s)=%s", text2, text, text1,
-                    result);
+            String clip = getStringFormat("%s/(%s-%s)=%s", text2, text, text1, result);
             tvResult.setText(clip);
             copy2Clipboard(clip);
-            ToastUtils.showShort("已复制到剪贴板");
+            toast("已复制到剪贴板");
         }
     }
 

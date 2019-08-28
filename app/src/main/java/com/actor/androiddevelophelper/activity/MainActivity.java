@@ -28,7 +28,7 @@ public class MainActivity extends BaseActivity {
         tvIpV6.setText("IP v6: " + NetworkUtils.getIPAddress(false));
     }
 
-    @OnClick({R.id.btn_calculate_constraintlayout, R.id.btn_view_system_icon})
+    @OnClick({R.id.btn_calculate_constraintlayout, R.id.btn_view_system_icon, R.id.btn_app_info})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_calculate_constraintlayout://计算约束布局偏移量
@@ -38,6 +38,7 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(this, ViewSystemIconActivity.class));
                 break;
             case R.id.btn_app_info://查看App信息(包括签名)
+                startActivity(new Intent(this, AppInfoActivity.class));
                 break;
         }
     }

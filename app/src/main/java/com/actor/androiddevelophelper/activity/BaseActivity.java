@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.EditText;
 
 import com.blankj.utilcode.util.ToastUtils;
@@ -35,7 +36,7 @@ public class BaseActivity extends AppCompatActivity {
     protected boolean isNoEmpty(EditText... editTexts) {
         for (EditText editText : editTexts) {
             if (TextUtils.isEmpty(getText(editText))) {
-                ToastUtils.showShort(editText.getHint());
+                toast(editText.getHint());
                 return false;
             }
         }
@@ -48,6 +49,14 @@ public class BaseActivity extends AppCompatActivity {
 
     protected String getStringFormat(String format, Object... args) {
         return String.format(Locale.getDefault(), format, args);
+    }
+
+    protected void logError(String msg) {
+        Log.e(getClass().getSimpleName(), msg);
+    }
+
+    protected void toast(CharSequence msg) {
+        ToastUtils.showShort(msg);
     }
 
     /**
