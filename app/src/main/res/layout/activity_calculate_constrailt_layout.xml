@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activity.CalculateConstrailtLayoutActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="总高宽/度"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="控件宽/高度"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="@+id/tv"
+            app:layout_constraintTop_toBottomOf="@+id/tv"/>
+
+        <TextView
+            android:id="@+id/tv3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="控件边距"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="@+id/tv2"
+            app:layout_constraintTop_toBottomOf="@+id/tv2"
+            app:layout_goneMarginTop="10dp"/>
+
+        <android.support.constraint.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="right"
+            app:constraint_referenced_ids="tv,tv2,tv3"
+            app:layout_constraintLeft_toRightOf="@id/tv"/>
+
+        <EditText
+            android:id="@+id/et_total_height"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:digits="@string/digits_decimal"
+            android:hint="请输入总宽/高度"
+            android:imeOptions="actionNext"
+            android:inputType="numberDecimal"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv"
+            app:layout_constraintLeft_toRightOf="@id/barrier"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <EditText
+            android:id="@+id/et_view_height"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:digits="@string/digits_decimal"
+            android:hint="请输入控件宽/高度"
+            android:imeOptions="actionNext"
+            android:inputType="numberDecimal"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv2"
+            app:layout_constraintLeft_toRightOf="@id/barrier"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <EditText
+            android:id="@+id/et_view_margin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:digits="@string/digits_decimal"
+            android:hint="请输入控件边距"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv3"
+            app:layout_constraintLeft_toRightOf="@id/barrier"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="计算结果: "
+            app:layout_constraintTop_toBottomOf="@id/tv3"/>
+
+        <Button
+            android:id="@+id/btn_calculate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="计算"
+            app:layout_constraintTop_toBottomOf="@id/tv_result"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="下方是手机示例说明:"
+            app:layout_constraintTop_toBottomOf="@id/btn_calculate"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            android:text="偏移量 = marginH / (totalH - viewH)"
+            android:textColor="@color/red"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_calculate"/>
+
+        <com.ruffian.library.widget.RView
+            android:id="@+id/rv1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"
+            app:background_normal="@color/dddddd"
+            app:corner_radius="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="0.6"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_calculate"
+            app:layout_constraintWidth_percent="0.7"/>
+
+        <com.ruffian.library.widget.RView
+            android:id="@+id/rv2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:background_normal="@color/cccccc"
+            app:layout_constraintBottom_toBottomOf="@id/rv1"
+            app:layout_constraintDimensionRatio="0.6"
+            app:layout_constraintLeft_toLeftOf="@id/rv1"
+            app:layout_constraintRight_toRightOf="@id/rv1"
+            app:layout_constraintTop_toTopOf="@id/rv1"
+            app:layout_constraintWidth_percent="0.5"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1px"
+            android:background="@color/red"
+            app:layout_constraintLeft_toRightOf="@id/rv2"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/rv2"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1px"
+            android:background="@color/red"
+            app:layout_constraintBottom_toBottomOf="@id/rv2"
+            app:layout_constraintLeft_toRightOf="@id/rv2"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:background="@color/red"
+            app:layout_constraintBottom_toBottomOf="@id/rv2"
+            app:layout_constraintLeft_toRightOf="@id/rv1"
+            app:layout_constraintTop_toTopOf="@id/rv2"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="5dp"
+            android:text="1.总高度totalH"
+            android:textColor="@color/red"
+            app:layout_constraintBottom_toBottomOf="@id/rv1"
+            app:layout_constraintLeft_toRightOf="@id/rv1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/rv1"/>
+
+        <ImageView
+            android:id="@+id/iv_view"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:src="@mipmap/ic_launcher_round"
+            app:layout_constraintBottom_toBottomOf="@id/rv2"
+            app:layout_constraintLeft_toLeftOf="@id/rv2"
+            app:layout_constraintTop_toTopOf="@id/rv2"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1px"
+            android:layout_marginRight="10dp"
+            android:background="@color/red"
+            app:layout_constraintLeft_toRightOf="@id/iv_view"
+            app:layout_constraintRight_toRightOf="@id/rv2"
+            app:layout_constraintTop_toTopOf="@id/iv_view"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1px"
+            android:layout_marginRight="10dp"
+            android:background="@color/red"
+            app:layout_constraintBottom_toBottomOf="@id/iv_view"
+            app:layout_constraintLeft_toRightOf="@id/iv_view"
+            app:layout_constraintRight_toRightOf="@id/rv2"/>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:background="@color/red"
+            app:layout_constraintBottom_toBottomOf="@id/iv_view"
+            app:layout_constraintLeft_toRightOf="@id/iv_view"
+            app:layout_constraintTop_toTopOf="@id/iv_view"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/cccccc"
+            android:padding="5dp"
+            android:text="2.控件高度=viewH"
+            android:textColor="@color/red"
+            app:layout_constraintBottom_toBottomOf="@id/iv_view"
+            app:layout_constraintLeft_toRightOf="@id/iv_view"
+            app:layout_constraintTop_toTopOf="@id/iv_view"/>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="0dp"
+            android:background="@color/red"
+            app:layout_constraintBottom_toTopOf="@id/iv_view"
+            app:layout_constraintLeft_toLeftOf="@id/rv2"
+            app:layout_constraintRight_toRightOf="@id/rv2"
+            app:layout_constraintTop_toTopOf="@id/rv2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/cccccc"
+            android:padding="5dp"
+            android:text="3.控件边距=marginH"
+            android:textColor="@color/red"
+            app:layout_constraintBottom_toTopOf="@id/iv_view"
+            app:layout_constraintLeft_toLeftOf="@id/rv2"
+            app:layout_constraintRight_toRightOf="@id/rv2"
+            app:layout_constraintTop_toTopOf="@id/rv2"/>
+    </android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.NestedScrollView>
