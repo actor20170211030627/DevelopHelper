@@ -37,5 +37,5 @@
         android:id="@+id/btn_app_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="查看App信息(包括签名)"/>
+        android:text="查看App信息(包括md5&amp;sha1&amp;sha256签名)"/>
 </LinearLayout>
