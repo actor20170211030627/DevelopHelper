@@ -78,11 +78,13 @@ public class AppInfoActivity extends BaseActivity {
                 public void onClick(View v) {
                     int pos = (int) v.getTag();
                     AppInfo info = items.get(pos);
-                    String clip = getStringFormat("应用名:%s\n包名:%s\nMD5签名:%s\n版本名称:%s\n" +
-                            "版本号:%d\n大小:%d\n安装路径:%s\nuid:%d\nisSystemApp:%b\nisSdcard:%b\n",
+                    String clip = getStringFormat("应用名:%s\n包名:%s\n" +
+                                    "MD5签名(去掉':'就是证书签名):%s\n版本名称:%s\n版本号:%d\n" +
+                                    "大小:%d\n安装路径:%s\nuid:%d\nisSystemApp:%b\nisSdcard:%b\n" +
+                                    "Sha1签名:%s\nSha256签名:%s\n",
                             info.appName, info.packageName, info.apkMd5Sign, info.versionName,
                             info.versionCode, info.size, info.apkSourceDir, info.uid,
-                            info.isSystemApp, info.isSdcard);
+                            info.isSystemApp, info.isSdcard, info.apkSha1Sign, info.apkSha256Sign);
                     logError(clip);
                     copy2Clipboard(clip);
                     toast("已复制到剪贴板");

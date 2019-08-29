@@ -5,7 +5,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
-import com.blankj.utilcode.util.EncryptUtils;
+import com.blankj.utilcode.util.AppUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ import java.util.List;
  * preferExternal: 优先安装在sdcard, 但可以移动到手机内存
  *
  * 用法:
- * 1.在第一个activity初始化(不能在application): {@link #init(Context)}
+ * 1.在Application中初始化: {@link #init(Context)}
  * 2.获取App信息: {@link #getAppInfos()}, 如果获取的是空的list, 应该是还没初始化完成, 自己处理
  *
  * @version 1.0
@@ -54,7 +54,7 @@ public class AppInfoProvider {
                     int uid = applicationInfo.uid;//同一个app装在不同的手机上的uid不一样,手机里每个app的uid也不一样
 
                     AppInfo appInfo = new AppInfo();
-                    appInfo.apkMd5Sign = getSignature(packageMamager, packageInfo.packageName);//获取签名
+                    inflateSignature(appInfo, packageMamager, packageInfo.packageName);//填充签名
                     appInfo.apkSourceDir = applicationInfo.sourceDir;//apk安装路径
                     appInfo.appName = applicationInfo.loadLabel(packageMamager).toString();//应用名称
                     appInfo.icon = applicationInfo.loadIcon(packageMamager);//图标
@@ -78,10 +78,10 @@ public class AppInfoProvider {
     /**
      * 获取签名
      */
-    public static String getSignature(PackageManager packageMamager, String packageName) {
+    public static void inflateSignature(AppInfo appInfo, PackageManager packageMamager, String packageName) {
         try {
-            PackageInfo packageInfo = packageMamager.getPackageInfo(packageName, PackageManager.GET_SIGNATURES);
-//            return packageInfo.signatures[0].toCharsString();//获取几百位的签名字符串
+//            PackageInfo packageInfo = packageMamager.getPackageInfo(packageName, PackageManager.GET_SIGNATURES);
+//            return packageInfo.signatures[0].toCharsString();//获取几百~几千位的签名字符串
             /**
             Signature[] sign = packageInfo.signatures;
             if (sign != null) {
@@ -91,10 +91,11 @@ public class AppInfoProvider {
                 }
             }
              */
-            return EncryptUtils.encryptMD5ToString(packageInfo.signatures[0].toCharsString());
+            appInfo.apkMd5Sign = AppUtils.getAppSignatureMD5(packageName);
+            appInfo.apkSha1Sign = AppUtils.getAppSignatureSHA1(packageName);
+            appInfo.apkSha256Sign = AppUtils.getAppSignatureSHA256(packageName);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "";
     }
 }
