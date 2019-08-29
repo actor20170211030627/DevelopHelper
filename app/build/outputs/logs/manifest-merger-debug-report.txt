@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:2:1-30:12
-INJECTED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:2:1-30:12
-INJECTED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:2:1-30:12
-INJECTED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:2:1-30:12
+ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:2:1-29:12
 MERGED from [com.ruffian.library:RWidgetHelper:1.1.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\d039e82c0ad1ef963f9e62fa7ec8dc45\AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\3ec2a14e0a0719fb3612074b3cc67aff\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\1214e5e7dd52c756ee67eea60a5cd437\AndroidManifest.xml:2:1-11:12
@@ -37,29 +37,25 @@ MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Administrator\.gr
 MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\273550c67b6041d96ece6d687da872b8\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\689b2d5fb53246133420c81bbcd9a0ed\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f0c3a0d695183364fa4b6ab7ebbd4ccb\AndroidManifest.xml:17:1-22:12
-INJECTED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:2:1-30:12
-INJECTED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:2:1-30:12
-INJECTED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:2:1-29:12
 	package
-		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:3:11-51
+		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:3:5-45
 		INJECTED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml
 		INJECTED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml
-		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:2:1-30:12
+		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:2:1-29:12
 		INJECTED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml
-		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:2:1-30:12
+		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:2:1-29:12
 		INJECTED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:2:11-69
-uses-permission#android.permission.INTERNET
-ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:5:5-66
-	android:name
-		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:5:22-64
 application
-ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:7:5-28:19
+ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:5:5-25:19
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\1214e5e7dd52c756ee67eea60a5cd437\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\1214e5e7dd52c756ee67eea60a5cd437\AndroidManifest.xml:9:5-20
 MERGED from [com.github.bumptech.glide:glide:4.9.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\8ce23c4f4c0ce4f7789778f5bc320daf\AndroidManifest.xml:10:5-20
@@ -75,45 +71,51 @@ MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] C:\Users\Administrator\
 	android:appComponentFactory
 		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-2\files-2.1\f3a4a45d6ddc19bb7c7a11b62e266dde\AndroidManifest.xml:22:18-91
 	android:supportsRtl
-		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:13:9-35
+		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:11:9-35
 	android:label
-		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:11:9-41
+		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:9:9-41
 	android:roundIcon
-		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:12:9-43
+		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:10:9-43
 	android:icon
-		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:10:9-38
-	android:allowBackup
-		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:9:9-35
-	android:theme
-		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:14:9-40
-	android:name
 		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:8:9-38
+	android:allowBackup
+		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:7:9-35
+	android:theme
+		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:12:9-40
+	android:name
+		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:6:9-38
 activity#com.actor.androiddevelophelper.activity.AppInfoActivity
-ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:15:9-16:20
+ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:13:9-15:59
+	android:theme
+		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:15:13-47
 	android:name
-		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:15:19-59
+		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:14:13-53
 activity#com.actor.androiddevelophelper.activity.ViewSystemIconActivity
-ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:17:9-18:20
+ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:16:9-78
 	android:name
-		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:17:19-66
+		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:16:19-66
 activity#com.actor.androiddevelophelper.activity.CalculateConstrailtLayoutActivity
-ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:19:9-20:20
+ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:17:9-89
 	android:name
-		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:19:19-77
+		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:17:19-77
 activity#com.actor.androiddevelophelper.activity.MainActivity
-ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:21:9-27:20
+ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:18:9-24:20
 	android:name
-		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:21:19-56
+		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:18:19-56
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:22:13-26:29
+ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:19:13-23:29
 action#android.intent.action.MAIN
-ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:23:17-68
+ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:20:17-69
 	android:name
-		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:23:25-66
+		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:20:25-66
 category#android.intent.category.LAUNCHER
-ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:25:17-76
+ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:22:17-77
 	android:name
-		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:25:27-74
+		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:22:27-74
+uses-permission#android.permission.INTERNET
+ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:27:5-67
+	android:name
+		ADDED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml:27:22-64
 uses-sdk
 INJECTED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from F:\Android\DevelopHelper\app\src\main\AndroidManifest.xml

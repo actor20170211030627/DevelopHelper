@@ -9,6 +9,9 @@ import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,12 +19,15 @@ import com.actor.androiddevelophelper.R;
 import com.actor.androiddevelophelper.utils.AppInfo;
 import com.actor.androiddevelophelper.utils.AppInfoProvider;
 import com.blankj.utilcode.util.AppUtils;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnCheckedChanged;
+import butterknife.OnClick;
 
 /**
  * Description: 查看app信息
@@ -31,12 +37,19 @@ import butterknife.ButterKnife;
  */
 public class AppInfoActivity extends BaseActivity {
 
+    @BindView(R.id.et_content)
+    EditText     etContent;
+    @BindView(R.id.check_box)
+    CheckBox checkBox;
     @BindView(R.id.rv_apps)
     RecyclerView rvApps;
-    private              List<AppInfo> items                  = new ArrayList<>();
+    private              List<AppInfo> allApps                = new ArrayList<>();//全部app
+    private              List<AppInfo> searchApps             = new ArrayList<>();//搜索出的app
+    private              List<AppInfo> userApps               = new ArrayList<>();//用户app
+    private              List<AppInfo> systemApps             = new ArrayList<>();//系统app
     private static final String        toBecomeGodPackageName = "com.shijing.tobecomegod";
-    public static String               selfPackageName = "";
-    private MyAppsAdapter              myAdapter;
+    public static        String        selfPackageName        = "";
+    private              MyAppsAdapter myAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +57,18 @@ public class AppInfoActivity extends BaseActivity {
         setContentView(R.layout.activity_app_info);
         ButterKnife.bind(this);
 
-        setTitle("获取应用信息");
         selfPackageName = getPackageName();
         myAdapter = new MyAppsAdapter();
         rvApps.setAdapter(myAdapter);
         List<AppInfo> appInfos = AppInfoProvider.getAppInfos();
         if (appInfos != null && appInfos.size() > 0) {
-            items.addAll(appInfos);
+            for (AppInfo appInfo : appInfos) {
+                if (appInfo.isSystemApp) {
+                    systemApps.add(appInfo);
+                } else userApps.add(appInfo);
+            }
+            allApps.addAll(userApps);
+            searchApps.addAll(userApps);//搜索结果
             if (rvApps != null) myAdapter.notifyDataSetChanged();
         }
     }
@@ -65,8 +83,8 @@ public class AppInfoActivity extends BaseActivity {
 
         @Override
         public void onBindViewHolder(@NonNull MyAppsViewHolder viewHolder, int position) {
-            AppInfo appInfo = items.get(position);
-            viewHolder.ivIcon.setImageDrawable(appInfo.icon);
+            AppInfo appInfo = searchApps.get(position);
+            Glide.with(activity).load(appInfo.icon).into(viewHolder.ivIcon);
             viewHolder.tvAppname.setText(appInfo.appName);
             viewHolder.tvPackagename.setText(appInfo.packageName);
             viewHolder.tvVersionname.setText(appInfo.versionName);
@@ -80,7 +98,7 @@ public class AppInfoActivity extends BaseActivity {
                 @Override
                 public void onClick(View v) {
                     int pos = (int) v.getTag();
-                    AppInfo info = items.get(pos);
+                    AppInfo info = searchApps.get(pos);
                     String clip = getStringFormat("应用名:%s\n包名:%s\n" +
                                     "MD5签名(去掉':'就是证书签名):%s\n版本名称:%s\n版本号:%d\n" +
                                     "大小:%d\n安装路径:%s\nuid:%d\nisSystemApp:%b\nisSdcard:%b\n" +
@@ -97,13 +115,14 @@ public class AppInfoActivity extends BaseActivity {
                 @Override
                 public boolean onLongClick(View v) {
                     int pos = (int) v.getTag();
-                    String packageName = items.get(pos).packageName;
+                    String packageName = searchApps.get(pos).packageName;
                     if (TextUtils.equals(selfPackageName, packageName)) {
                         toast("自己不能打开自己哟(＾Ｕ＾)ノ~ＹＯ");
                         return true;
                     }
-                    if(toBecomeGodPackageName.equals(packageName)) {
-                        startActivity(new Intent(toBecomeGodPackageName + ".startup", Uri.parse("tobecomegod://起来嗨~")));
+                    if (toBecomeGodPackageName.equals(packageName)) {
+                        startActivity(new Intent(toBecomeGodPackageName + ".startup", Uri.parse(
+                                "tobecomegod://起来嗨~")));
                     } else {
                         try {
                             AppUtils.launchApp(packageName);
@@ -119,7 +138,7 @@ public class AppInfoActivity extends BaseActivity {
 
         @Override
         public int getItemCount() {
-            return items.size();
+            return searchApps.size();
         }
     }
 
@@ -147,5 +166,35 @@ public class AppInfoActivity extends BaseActivity {
             super(view);
             ButterKnife.bind(this, view);
         }
+    }
+
+    private void search(String text) {
+        searchApps.clear();
+        if (TextUtils.isEmpty(text)) {
+            searchApps.addAll(allApps);
+        } else {
+            text = text.toLowerCase();
+            for (AppInfo appInfo : allApps) {
+                String appName = appInfo.appName;
+                if (appName != null && appName.toLowerCase().contains(text)) {
+                    searchApps.add(appInfo);
+                }
+            }
+        }
+        myAdapter.notifyDataSetChanged();
+    }
+
+    @OnClick(R.id.btn_search)
+    public void onViewClicked() {
+        String trim = etContent.getText().toString().trim();
+        search(trim);
+    }
+
+    @OnCheckedChanged(R.id.check_box)
+    public void onCheckedChanged(CompoundButton buttonView, boolean checked) {
+        if (checked) {
+            allApps.addAll(systemApps);
+        } else allApps.removeAll(systemApps);
+        onViewClicked();
     }
 }

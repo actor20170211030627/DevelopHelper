@@ -12,4 +12,5 @@
  <img src="captures/qrcode.png" width=35%></img>
  
  ## TODO
-     更多功能增加中...
+     1.增加频pinyin4jar, 对AppInfoActivity中的app进行排序
+     2.增加更多功能...
