@@ -1,6 +1,6 @@
 package com.actor.androiddevelophelper.utils;
 
-import android.content.Context;
+import android.app.Application;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import com.blankj.utilcode.util.AppUtils;
 
 import java.io.File;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +32,7 @@ import java.util.List;
  * preferExternal: 优先安装在sdcard, 但可以移动到手机内存
  *
  * 用法:
- * 1.在Application中初始化: {@link #init(Context)}
+ * 1.在Application中初始化: {@link #init(Application)}
  * 2.获取App信息: {@link #getAppInfos()}, 如果获取的是空的list, 应该是还没初始化完成, 自己处理
  *
  * @version 1.0
@@ -40,7 +41,7 @@ public class AppInfoProvider {
 
     private static final List<AppInfo> appInfos = new ArrayList<>();
 
-    public static void init(Context context) {
+    public static void init(Application context) {
         appInfos.clear();
         final PackageManager packageMamager = context.getPackageManager();
         new Thread(new Runnable() {
@@ -85,6 +86,7 @@ public class AppInfoProvider {
             /**
             Signature[] sign = packageInfo.signatures;
             if (sign != null) {
+             String signature = "";
                 for (Signature tmp : sign) {
                     //signature += getMessageDigest(tmp.toByteArray());//微信demo用法
                     signature += getMessageDigest(tmp.toCharsString().getBytes());//获取签名的MD5值tmp.toByteArray()
@@ -97,5 +99,41 @@ public class AppInfoProvider {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static String getMessageDigest(byte[] paramArrayOfByte) {
+        char[] arrayOfChar1 = {48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102};
+        try {
+            MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+            localMessageDigest.update(paramArrayOfByte);
+            byte[] arrayOfByte = localMessageDigest.digest();
+            int i = arrayOfByte.length;
+            char[] arrayOfChar2 = new char[i * 2];
+            int j = 0;
+            int k = 0;
+            while (true) {
+                if (j >= i)
+                    return new String(arrayOfChar2);
+                int m = arrayOfByte[j];
+                int n = k + 1;
+                arrayOfChar2[k] = arrayOfChar1[(0xF & m >>> 4)];
+                k = n + 1;
+                arrayOfChar2[n] = arrayOfChar1[(m & 0xF)];
+                j++;
+            }
+        } catch (Exception localException) {
+        }
+        return null;
+    }
+
+    public static byte[] getRawDigest(byte[] paramArrayOfByte) {
+        try {
+            MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+            localMessageDigest.update(paramArrayOfByte);
+            byte[] arrayOfByte = localMessageDigest.digest();
+            return arrayOfByte;
+        } catch (Exception localException) {
+        }
+        return null;
     }
 }

@@ -68,10 +68,12 @@ public class AppInfoActivity extends BaseActivity {
             viewHolder.ivIcon.setImageDrawable(appInfo.icon);
             viewHolder.tvAppname.setText(appInfo.appName);
             viewHolder.tvPackagename.setText(appInfo.packageName);
-            viewHolder.tvSign.setText(appInfo.apkMd5Sign);
             viewHolder.tvVersionname.setText(appInfo.versionName);
             viewHolder.tvVersioncode.setText(appInfo.versionCode + "");
             viewHolder.tvSize.setText(Formatter.formatFileSize(activity, appInfo.size));
+            viewHolder.tvSignMd5.setText("Md5: " + appInfo.apkMd5Sign);
+            viewHolder.tvSignSha1.setText("Sha1: " + appInfo.apkSha1Sign);
+            viewHolder.tvSignSha256.setText("Sha256: " + appInfo.apkSha256Sign);
             viewHolder.itemView.setTag(position);
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -127,14 +129,18 @@ public class AppInfoActivity extends BaseActivity {
         TextView  tvAppname;
         @BindView(R.id.tv_packagename)
         TextView  tvPackagename;
-        @BindView(R.id.tv_sign)
-        TextView  tvSign;
         @BindView(R.id.tv_versionname)
         TextView  tvVersionname;
         @BindView(R.id.tv_versioncode)
         TextView  tvVersioncode;
         @BindView(R.id.tv_size)
         TextView  tvSize;
+        @BindView(R.id.tv_sign_md5)
+        TextView  tvSignMd5;
+        @BindView(R.id.tv_sign_sha1)
+        TextView  tvSignSha1;
+        @BindView(R.id.tv_sign_sha256)
+        TextView  tvSignSha256;
 
         MyAppsViewHolder(View view) {
             super(view);
