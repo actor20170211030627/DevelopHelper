@@ -44,6 +44,7 @@ public class AppInfoActivity extends BaseActivity {
         setContentView(R.layout.activity_app_info);
         ButterKnife.bind(this);
 
+        setTitle("获取应用信息");
         selfPackageName = getPackageName();
         myAdapter = new MyAppsAdapter();
         rvApps.setAdapter(myAdapter);
