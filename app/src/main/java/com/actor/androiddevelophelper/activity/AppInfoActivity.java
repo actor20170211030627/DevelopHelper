@@ -43,12 +43,12 @@ public class AppInfoActivity extends BaseActivity {
     CheckBox checkBox;
     @BindView(R.id.rv_apps)
     RecyclerView rvApps;
-    private              List<AppInfo> allApps                = new ArrayList<>();//全部app
-    private              List<AppInfo> searchApps             = new ArrayList<>();//搜索出的app
-    private              List<AppInfo> userApps               = new ArrayList<>();//用户app
-    private              List<AppInfo> systemApps             = new ArrayList<>();//系统app
-    private static final String        toBecomeGodPackageName = "com.shijing.tobecomegod";
-    public static        String        selfPackageName        = "";
+    private              List<AppInfo> allApps          = new ArrayList<>();//全部app
+    private              List<AppInfo> searchApps       = new ArrayList<>();//搜索出的app
+    private              List<AppInfo> userApps         = new ArrayList<>();//用户app
+    private              List<AppInfo> systemApps       = new ArrayList<>();//系统app
+    private static final String        forced2SleepName = "com.actor.forced2sleep";
+    public static        String        selfPackageName  = "";
     private              MyAppsAdapter myAdapter;
 
     @Override
@@ -120,8 +120,8 @@ public class AppInfoActivity extends BaseActivity {
                         toast("自己不能打开自己哟(＾Ｕ＾)ノ~ＹＯ");
                         return true;
                     }
-                    if (toBecomeGodPackageName.equals(packageName)) {
-                        startActivity(new Intent(toBecomeGodPackageName + ".startup", Uri.parse(
+                    if (forced2SleepName.equals(packageName)) {
+                        startActivity(new Intent(forced2SleepName + ".startup", Uri.parse(
                                 "tobecomegod://起来嗨~")));
                     } else {
                         try {
