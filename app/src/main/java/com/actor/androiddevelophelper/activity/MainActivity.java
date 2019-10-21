@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.actor.androiddevelophelper.R;
+import com.actor.androiddevelophelper.service.CheckUpdateService;
+import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.NetworkUtils;
 
 import butterknife.BindView;
@@ -18,14 +20,21 @@ public class MainActivity extends BaseActivity {
     TextView tvIpV4;
     @BindView(R.id.tv_ip_v6)
     TextView tvIpV6;
+    @BindView(R.id.tv_version)
+    TextView tvVersion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
         tvIpV4.setText("IP v4: " + NetworkUtils.getIPAddress(true));
         tvIpV6.setText("IP v6: " + NetworkUtils.getIPAddress(false));
+
+        tvVersion.setText(getStringFormat("VersionName: %s(VersionCode: %d)",
+                AppUtils.getAppVersionName(), AppUtils.getAppVersionCode()));
+        startService(new Intent(this, CheckUpdateService.class));
     }
 
     @OnClick({R.id.btn_calculate_constraintlayout, R.id.btn_view_system_icon, R.id.btn_app_info})
@@ -41,5 +50,11 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(this, AppInfoActivity.class));
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopService(new Intent(this, CheckUpdateService.class));
     }
 }

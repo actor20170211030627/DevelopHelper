@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,6 +13,26 @@
 
         <TextView
             android:id="@+id/tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="注意:\n
+            如果统一在BaseActivity中设置'标题栏', 那么需要填入设计图中标题栏高度, 否则不用填."
+            app:layout_constraintTop_toBottomOf="@id/btn_calculate"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="标题栏高"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv" />
+
+        <TextView
+            android:id="@+id/tv1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -21,18 +40,18 @@
             android:textColor="@color/colorAccent"
             android:textSize="16sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/tv0" />
 
         <TextView
             android:id="@+id/tv2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="控件宽/高度"
+            android:text="控件宽/高"
             android:textColor="@color/colorAccent"
             android:textSize="16sp"
-            app:layout_constraintLeft_toLeftOf="@+id/tv"
-            app:layout_constraintTop_toBottomOf="@+id/tv"/>
+            app:layout_constraintLeft_toLeftOf="@+id/tv1"
+            app:layout_constraintTop_toBottomOf="@+id/tv1" />
 
         <TextView
             android:id="@+id/tv3"
@@ -44,15 +63,27 @@
             android:textSize="16sp"
             app:layout_constraintLeft_toLeftOf="@+id/tv2"
             app:layout_constraintTop_toBottomOf="@+id/tv2"
-            app:layout_goneMarginTop="10dp"/>
+            app:layout_goneMarginTop="10dp" />
 
         <android.support.constraint.Barrier
             android:id="@+id/barrier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="right"
-            app:constraint_referenced_ids="tv,tv2,tv3"
-            app:layout_constraintLeft_toRightOf="@id/tv"/>
+            app:constraint_referenced_ids="tv1,tv2,tv3"
+            app:layout_constraintLeft_toRightOf="@id/tv1" />
+
+        <EditText
+            android:id="@+id/et_title_bar_height"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:digits="@string/digits_decimal"
+            android:hint="请输入标题栏高度"
+            android:imeOptions="actionNext"
+            android:inputType="numberDecimal"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv0"
+            app:layout_constraintLeft_toRightOf="@id/barrier"
+            app:layout_constraintRight_toRightOf="parent" />
 
         <EditText
             android:id="@+id/et_total_height"
@@ -62,9 +93,9 @@
             android:hint="请输入总宽/高度"
             android:imeOptions="actionNext"
             android:inputType="numberDecimal"
-            app:layout_constraintBaseline_toBaselineOf="@id/tv"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv1"
             app:layout_constraintLeft_toRightOf="@id/barrier"
-            app:layout_constraintRight_toRightOf="parent"/>
+            app:layout_constraintRight_toRightOf="parent" />
 
         <EditText
             android:id="@+id/et_view_height"
@@ -76,7 +107,7 @@
             android:inputType="numberDecimal"
             app:layout_constraintBaseline_toBaselineOf="@id/tv2"
             app:layout_constraintLeft_toRightOf="@id/barrier"
-            app:layout_constraintRight_toRightOf="parent"/>
+            app:layout_constraintRight_toRightOf="parent" />
 
         <EditText
             android:id="@+id/et_view_margin"
@@ -88,7 +119,7 @@
             android:inputType="numberDecimal"
             app:layout_constraintBaseline_toBaselineOf="@id/tv3"
             app:layout_constraintLeft_toRightOf="@id/barrier"
-            app:layout_constraintRight_toRightOf="parent"/>
+            app:layout_constraintRight_toRightOf="parent" />
 
         <TextView
             android:id="@+id/tv_result"
@@ -96,31 +127,31 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="计算结果: "
-            app:layout_constraintTop_toBottomOf="@id/tv3"/>
+            app:layout_constraintTop_toBottomOf="@id/tv3" />
 
         <Button
             android:id="@+id/btn_calculate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:text="计算"
-            app:layout_constraintTop_toBottomOf="@id/tv_result"/>
+            app:layout_constraintTop_toBottomOf="@id/tv_result" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="下方是手机示例说明:"
-            app:layout_constraintTop_toBottomOf="@id/btn_calculate"/>
+            android:text="手机界面示例说明:"
+            app:layout_constraintTop_toBottomOf="@id/btn_calculate" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:padding="5dp"
-            android:text="偏移量 = marginH / (totalH - viewH)"
+            android:text="偏移量 = marginH / (totalH - titleH - viewH)"
             android:textColor="@color/red"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_calculate"/>
+            app:layout_constraintTop_toBottomOf="@id/btn_calculate" />
 
         <com.ruffian.library.widget.RView
             android:id="@+id/rv1"
@@ -135,56 +166,106 @@
             app:layout_constraintDimensionRatio="0.6"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_calculate"
-            app:layout_constraintWidth_percent="0.7"/>
+            app:layout_constraintWidth_percent="0.65" />
 
-        <com.ruffian.library.widget.RView
-            android:id="@+id/rv2"
+        <com.ruffian.library.widget.RRelativeLayout
+            android:id="@+id/rrl_title_bar"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:background_normal="@color/cccccc"
-            app:layout_constraintBottom_toBottomOf="@id/rv1"
-            app:layout_constraintDimensionRatio="0.6"
+            android:layout_height="30dp"
+            app:background_normal="@color/colorPrimary"
+            app:corner_radius_top_left="5dp"
+            app:corner_radius_top_right="5dp"
             app:layout_constraintLeft_toLeftOf="@id/rv1"
             app:layout_constraintRight_toRightOf="@id/rv1"
-            app:layout_constraintTop_toTopOf="@id/rv1"
-            app:layout_constraintWidth_percent="0.5"/>
+            app:layout_constraintTop_toTopOf="@id/rv1">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/icon_back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Title(Init In BaseActivity)"
+                android:textColor="@color/white" />
+        </com.ruffian.library.widget.RRelativeLayout>
+
+        <!--        <com.ruffian.library.widget.RView-->
+        <!--            android:id="@+id/rv2"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="0dp"-->
+        <!--            app:background_normal="@color/cccccc"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@id/rv1"-->
+        <!--            app:layout_constraintDimensionRatio="0.6"-->
+        <!--            app:layout_constraintLeft_toLeftOf="@id/rv1"-->
+        <!--            app:layout_constraintRight_toRightOf="@id/rv1"-->
+        <!--            app:layout_constraintTop_toTopOf="@id/rv1"-->
+        <!--            app:layout_constraintWidth_percent="0.5" />-->
 
         <View
             android:layout_width="0dp"
             android:layout_height="1px"
             android:background="@color/red"
-            app:layout_constraintLeft_toRightOf="@id/rv2"
+            app:layout_constraintLeft_toRightOf="@id/rrl_title_bar"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/rv2"/>
+            app:layout_constraintTop_toTopOf="@id/rrl_title_bar" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="1px"
             android:background="@color/red"
-            app:layout_constraintBottom_toBottomOf="@id/rv2"
-            app:layout_constraintLeft_toRightOf="@id/rv2"
-            app:layout_constraintRight_toRightOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="@id/rrl_title_bar"
+            app:layout_constraintLeft_toRightOf="@id/rrl_title_bar"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <!--        <View-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="1px"-->
+        <!--            android:background="@color/red"-->
+        <!--            app:layout_constraintLeft_toRightOf="@id/rv1"-->
+        <!--            app:layout_constraintRight_toRightOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="@id/rv1" />-->
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1px"
+            android:background="@color/red"
+            app:layout_constraintBottom_toBottomOf="@id/rv1"
+            app:layout_constraintLeft_toRightOf="@id/rv1"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1.标题栏高=titleH"
+            android:textColor="@color/red"
+            app:layout_constraintBottom_toBottomOf="@id/rrl_title_bar"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/rrl_title_bar" />
 
         <View
             android:layout_width="1px"
             android:layout_height="0dp"
             android:layout_marginLeft="20dp"
             android:background="@color/red"
-            app:layout_constraintBottom_toBottomOf="@id/rv2"
+            app:layout_constraintBottom_toBottomOf="@id/rv1"
             app:layout_constraintLeft_toRightOf="@id/rv1"
-            app:layout_constraintTop_toTopOf="@id/rv2"/>
+            app:layout_constraintTop_toTopOf="@id/rv1" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="5dp"
-            android:text="1.总高度totalH"
+            android:gravity="center"
+            android:text="2.总高度totalH"
             android:textColor="@color/red"
             app:layout_constraintBottom_toBottomOf="@id/rv1"
             app:layout_constraintLeft_toRightOf="@id/rv1"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/rv1"/>
+            app:layout_constraintTop_toTopOf="@id/rv1" />
 
         <ImageView
             android:id="@+id/iv_view"
@@ -192,9 +273,9 @@
             android:layout_height="45dp"
             android:gravity="center"
             android:src="@mipmap/ic_launcher_round"
-            app:layout_constraintBottom_toBottomOf="@id/rv2"
-            app:layout_constraintLeft_toLeftOf="@id/rv2"
-            app:layout_constraintTop_toTopOf="@id/rv2"/>
+            app:layout_constraintBottom_toBottomOf="@id/rv1"
+            app:layout_constraintLeft_toLeftOf="@id/rv1"
+            app:layout_constraintTop_toTopOf="@id/rv1" />
 
         <View
             android:layout_width="0dp"
@@ -202,8 +283,8 @@
             android:layout_marginRight="10dp"
             android:background="@color/red"
             app:layout_constraintLeft_toRightOf="@id/iv_view"
-            app:layout_constraintRight_toRightOf="@id/rv2"
-            app:layout_constraintTop_toTopOf="@id/iv_view"/>
+            app:layout_constraintRight_toRightOf="@id/rv1"
+            app:layout_constraintTop_toTopOf="@id/iv_view" />
 
         <View
             android:layout_width="0dp"
@@ -212,7 +293,7 @@
             android:background="@color/red"
             app:layout_constraintBottom_toBottomOf="@id/iv_view"
             app:layout_constraintLeft_toRightOf="@id/iv_view"
-            app:layout_constraintRight_toRightOf="@id/rv2"/>
+            app:layout_constraintRight_toRightOf="@id/rv1" />
 
         <View
             android:layout_width="1px"
@@ -221,38 +302,38 @@
             android:background="@color/red"
             app:layout_constraintBottom_toBottomOf="@id/iv_view"
             app:layout_constraintLeft_toRightOf="@id/iv_view"
-            app:layout_constraintTop_toTopOf="@id/iv_view"/>
+            app:layout_constraintTop_toTopOf="@id/iv_view" />
 
+        <!--android:background="@color/cccccc"-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/cccccc"
             android:padding="5dp"
-            android:text="2.控件高度=viewH"
+            android:text="3.控件高度=viewH"
             android:textColor="@color/red"
             app:layout_constraintBottom_toBottomOf="@id/iv_view"
             app:layout_constraintLeft_toRightOf="@id/iv_view"
-            app:layout_constraintTop_toTopOf="@id/iv_view"/>
+            app:layout_constraintTop_toTopOf="@id/iv_view" />
 
         <View
             android:layout_width="1px"
             android:layout_height="0dp"
             android:background="@color/red"
             app:layout_constraintBottom_toTopOf="@id/iv_view"
-            app:layout_constraintLeft_toLeftOf="@id/rv2"
-            app:layout_constraintRight_toRightOf="@id/rv2"
-            app:layout_constraintTop_toTopOf="@id/rv2"/>
+            app:layout_constraintLeft_toLeftOf="@id/rv1"
+            app:layout_constraintRight_toRightOf="@id/rv1"
+            app:layout_constraintTop_toBottomOf="@id/rrl_title_bar" />
 
+        <!--android:background="@color/cccccc"-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/cccccc"
             android:padding="5dp"
-            android:text="3.控件边距=marginH"
+            android:text="4.控件边距=marginH"
             android:textColor="@color/red"
             app:layout_constraintBottom_toTopOf="@id/iv_view"
-            app:layout_constraintLeft_toLeftOf="@id/rv2"
-            app:layout_constraintRight_toRightOf="@id/rv2"
-            app:layout_constraintTop_toTopOf="@id/rv2"/>
+            app:layout_constraintLeft_toLeftOf="@id/rv1"
+            app:layout_constraintRight_toRightOf="@id/rv1"
+            app:layout_constraintTop_toBottomOf="@id/rrl_title_bar" />
     </android.support.constraint.ConstraintLayout>
 </android.support.v4.widget.NestedScrollView>
