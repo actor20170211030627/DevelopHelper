@@ -40,6 +40,6 @@ public class MyApplication extends ActorApplication {
 
     @Override
     protected void onUncaughtException(Thread thread, Throwable e) {
-        System.exit(-1);
+//        System.exit(-1);
     }
 }

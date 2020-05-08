@@ -49,7 +49,7 @@ public class CheckUpdateService extends Service {
     public void onCreate() {
         super.onCreate();
         //check update检查更新
-        MyOkHttpUtils.post(Global.CHECK_UPDATE, null, new BaseCallback<List<CheckUpdateInfo>>(this) {
+        MyOkHttpUtils.get(Global.CHECK_UPDATE, null, new BaseCallback<List<CheckUpdateInfo>>(this) {
             @Override
             public void onOk(@NonNull List<CheckUpdateInfo> info, int id) {
                 if (info.size() == 0) return;
