@@ -77,7 +77,7 @@
             android:id="@+id/et_title_bar_height"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:digits="@string/digits_decimal"
+            android:digits="@string/digits_num_unsigned"
             android:hint="请输入标题栏高度"
             android:imeOptions="actionNext"
             android:inputType="numberDecimal"
@@ -89,7 +89,7 @@
             android:id="@+id/et_total_height"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:digits="@string/digits_decimal"
+            android:digits="@string/digits_num_unsigned"
             android:hint="请输入总宽/高度"
             android:imeOptions="actionNext"
             android:inputType="numberDecimal"
@@ -101,7 +101,7 @@
             android:id="@+id/et_view_height"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:digits="@string/digits_decimal"
+            android:digits="@string/digits_num_unsigned"
             android:hint="请输入控件宽/高度"
             android:imeOptions="actionNext"
             android:inputType="numberDecimal"
@@ -113,7 +113,7 @@
             android:id="@+id/et_view_margin"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:digits="@string/digits_decimal"
+            android:digits="@string/digits_num_unsigned"
             android:hint="请输入控件边距"
             android:imeOptions="actionDone"
             android:inputType="numberDecimal"
@@ -153,28 +153,25 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_calculate" />
 
-        <com.ruffian.library.widget.RView
+        <View
             android:id="@+id/rv1"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="50dp"
             android:layout_marginBottom="20dp"
-            app:background_normal="@color/dddddd"
-            app:corner_radius="5dp"
+            android:background="@drawable/shape_rec_cor5dp_gray_ddd"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="0.6"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_calculate"
             app:layout_constraintWidth_percent="0.65" />
 
-        <com.ruffian.library.widget.RRelativeLayout
+        <RelativeLayout
             android:id="@+id/rrl_title_bar"
             android:layout_width="0dp"
             android:layout_height="30dp"
-            app:background_normal="@color/colorPrimary"
-            app:corner_radius_top_left="5dp"
-            app:corner_radius_top_right="5dp"
+            android:background="@drawable/shape_rec5dp_ltrt_green_colorprimary"
             app:layout_constraintLeft_toLeftOf="@id/rv1"
             app:layout_constraintRight_toRightOf="@id/rv1"
             app:layout_constraintTop_toTopOf="@id/rv1">
@@ -192,19 +189,7 @@
                 android:layout_centerInParent="true"
                 android:text="Title(Init In BaseActivity)"
                 android:textColor="@color/white" />
-        </com.ruffian.library.widget.RRelativeLayout>
-
-        <!--        <com.ruffian.library.widget.RView-->
-        <!--            android:id="@+id/rv2"-->
-        <!--            android:layout_width="0dp"-->
-        <!--            android:layout_height="0dp"-->
-        <!--            app:background_normal="@color/cccccc"-->
-        <!--            app:layout_constraintBottom_toBottomOf="@id/rv1"-->
-        <!--            app:layout_constraintDimensionRatio="0.6"-->
-        <!--            app:layout_constraintLeft_toLeftOf="@id/rv1"-->
-        <!--            app:layout_constraintRight_toRightOf="@id/rv1"-->
-        <!--            app:layout_constraintTop_toTopOf="@id/rv1"-->
-        <!--            app:layout_constraintWidth_percent="0.5" />-->
+        </RelativeLayout>
 
         <View
             android:layout_width="0dp"
@@ -221,14 +206,6 @@
             app:layout_constraintBottom_toBottomOf="@id/rrl_title_bar"
             app:layout_constraintLeft_toRightOf="@id/rrl_title_bar"
             app:layout_constraintRight_toRightOf="parent" />
-
-        <!--        <View-->
-        <!--            android:layout_width="0dp"-->
-        <!--            android:layout_height="1px"-->
-        <!--            android:background="@color/red"-->
-        <!--            app:layout_constraintLeft_toRightOf="@id/rv1"-->
-        <!--            app:layout_constraintRight_toRightOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="@id/rv1" />-->
 
         <View
             android:layout_width="0dp"
@@ -304,7 +281,6 @@
             app:layout_constraintLeft_toRightOf="@id/iv_view"
             app:layout_constraintTop_toTopOf="@id/iv_view" />
 
-        <!--android:background="@color/cccccc"-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -324,7 +300,6 @@
             app:layout_constraintRight_toRightOf="@id/rv1"
             app:layout_constraintTop_toBottomOf="@id/rrl_title_bar" />
 
-        <!--android:background="@color/cccccc"-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

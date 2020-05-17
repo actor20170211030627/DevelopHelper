@@ -1,5 +1,6 @@
 package com.actor.androiddevelophelper.service;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.app.Service;
@@ -11,9 +12,10 @@ import android.view.WindowManager;
 
 import com.actor.androiddevelophelper.Global;
 import com.actor.androiddevelophelper.info.CheckUpdateInfo;
-import com.actor.myandroidframework.utils.MyOkhttpUtils.BaseCallback;
-import com.actor.myandroidframework.utils.MyOkhttpUtils.GetFileCallback;
-import com.actor.myandroidframework.utils.MyOkhttpUtils.MyOkHttpUtils;
+import com.actor.myandroidframework.utils.okhttputils.BaseCallback;
+import com.actor.myandroidframework.utils.okhttputils.GetFileCallback;
+import com.actor.myandroidframework.utils.okhttputils.MyOkHttpUtils;
+import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.AppUtils;
 
 import java.io.File;
@@ -23,9 +25,8 @@ import okhttp3.Call;
 
 /**
  * Description: 检查更新
- * 1.添加权限: <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
- * 2.修改请求地址
- * 3.在清单文件中注册!!!
+ * 1.修改请求地址
+ * 2.在清单文件中注册!!!
  *
  * Company    : 重庆市了赢科技有限公司 http://www.liaoin.com/
  * Author     : 李大发
@@ -52,7 +53,7 @@ public class CheckUpdateService extends Service {
         MyOkHttpUtils.get(Global.CHECK_UPDATE, null, new BaseCallback<List<CheckUpdateInfo>>(this) {
             @Override
             public void onOk(@NonNull List<CheckUpdateInfo> info, int id) {
-                if (info.size() == 0) return;
+                if (info.isEmpty()) return;
                 CheckUpdateInfo info1 = info.get(0);
                 if (info1 == null) return;
                 CheckUpdateInfo.ApkDataBean apkData = info1.apkData;
@@ -66,11 +67,12 @@ public class CheckUpdateService extends Service {
         });
     }
 
-    //<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     private void showDialog(String newVersionName) {
         if (newVersionName == null) newVersionName = "";
+        Activity topActivity = ActivityUtils.getTopActivity();
+        if (topActivity == null) return;
         if (alertDialog == null) {
-            alertDialog = new AlertDialog.Builder(this)
+            alertDialog = new AlertDialog.Builder(topActivity)
                     .setTitle("Update: 有新版本")
                     .setMessage("有新版本: ".concat(newVersionName).concat(", 快更新吧!"))
                     .setPositiveButton("Ok", (dialog, which) -> {
