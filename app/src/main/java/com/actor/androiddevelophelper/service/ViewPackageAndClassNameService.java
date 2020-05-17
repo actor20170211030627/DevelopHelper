@@ -71,7 +71,7 @@ public class ViewPackageAndClassNameService extends AccessibilityService {
         }
         String packageName = String.valueOf(event.getPackageName());//当前页面包名
         String className = String.valueOf(event.getClassName());
-        String info = TextUtil.getStringFormat("包名: %s, className: %s", packageName, className);
+        String info = TextUtil.getStringFormat("包名: %s%n类名: %s", packageName, className);
         LogUtils.error(info, true);
         ToastUtils.showShort(info);
     }

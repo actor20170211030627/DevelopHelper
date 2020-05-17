@@ -45,7 +45,6 @@ public class CheckUpdateService extends Service {
         return null;
     }
 
-    //https://github.com/actor20170211030627/DevelopHelper/raw/master/app/build/outputs/apk/debug/output.json
     @Override
     public void onCreate() {
         super.onCreate();
@@ -84,7 +83,6 @@ public class CheckUpdateService extends Service {
         alertDialog.show();
     }
 
-    //https://github.com/actor20170211030627/DevelopHelper/raw/master/app/build/outputs/apk/debug/app-debug.apk"
     private void downloadApk() {
         if (progressDialog == null) {
             progressDialog = new ProgressDialog(this);
