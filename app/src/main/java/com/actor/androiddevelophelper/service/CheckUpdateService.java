@@ -80,7 +80,6 @@ public class CheckUpdateService extends Service {
                     })
                     .setNegativeButton("Cancel", null)
                     .create();
-            alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
         }
         alertDialog.show();
     }
