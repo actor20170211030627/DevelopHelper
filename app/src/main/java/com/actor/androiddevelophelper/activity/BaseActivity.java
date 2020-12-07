@@ -8,7 +8,6 @@ import com.actor.myandroidframework.activity.ActorBaseActivity;
 
 /**
  * Description: 类的描述
- * Company    : 重庆市了赢科技有限公司 http://www.liaoin.com/
  * Author     : 李大发
  * Date       : 2019-8-28 on 09:48
  *
@@ -19,7 +18,7 @@ public class BaseActivity extends ActorBaseActivity {
     /**
      * 复制内容到剪切板
      */
-    protected void copy2Clipboard(String copyStr) {
+    protected void copy2Clipboard(CharSequence copyStr) {
         //获取剪贴板管理器
         ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         // 创建普通字符型ClipData

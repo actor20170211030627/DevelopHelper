@@ -14,7 +14,6 @@ import butterknife.OnClick;
 
 /**
  * Description: 计算约束布局
- * Company    : 重庆市了赢科技有限公司 http://www.liaoin.com/
  * Author     : 李大发
  * Date       : 2019-8-28 on 9:48
  */

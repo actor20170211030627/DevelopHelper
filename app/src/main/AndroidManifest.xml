@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.actor.androiddevelophelper">
-
-    <!--后台服务-->
+    <!-- 后台服务 -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
@@ -15,6 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activity.GithubIssueDetailActivity"></activity>
+        <activity android:name=".activity.GithubHostActivity" />
         <activity
             android:name=".activity.AppInfoActivity"
             android:theme="@style/NoActionBar" />
@@ -29,7 +30,6 @@
         </activity>
 
         <service android:name=".service.CheckUpdateService" />
-
         <service
             android:name=".service.ViewPackageAndClassNameService"
             android:label="@string/accessibility_service_label"
@@ -45,4 +45,5 @@
                 android:resource="@xml/accessibility_service_config" />
         </service>
     </application>
+
 </manifest>

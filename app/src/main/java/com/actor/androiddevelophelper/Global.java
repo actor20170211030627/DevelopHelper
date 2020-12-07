@@ -1,8 +1,7 @@
 package com.actor.androiddevelophelper;
 
 /**
- * Description: 全局变量
- * Company    : 重庆市了赢科技有限公司 http://www.liaoin.com/
+ * Description: 全局常量
  * Author     : 李大发
  * Date       : 2019-8-5 on 10:49
  *
@@ -27,4 +26,19 @@ public class Global {
             "/build/outputs/apk/debug/" +
             "app-debug" +
             ".apk";
+
+
+    //下方是github的api
+    public static final String GITHUB_API = "https://api.github.com";
+
+    //issues列表, 填入user & 仓库名
+    public static final String GITHUB_ISSUES = GITHUB_API + "/repos/%s/%s/issues";
+    public static final String GITHUB_ISSUE_DETAIL = GITHUB_ISSUES + "/%d";
+
+
+    ////////////////////////
+    // 下方是常量
+    ////////////////////////
+    public static final String NUMBER = "NUMBER";
+    public static final String HOST_ADDRESS = "C:\\Windows\\System32\\drivers\\etc\\hosts";
 }

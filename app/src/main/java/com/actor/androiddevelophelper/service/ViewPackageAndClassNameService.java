@@ -11,7 +11,7 @@ import android.view.accessibility.AccessibilityEvent;
 import com.actor.androiddevelophelper.R;
 import com.actor.androiddevelophelper.utils.AccessibilityUtils;
 import com.actor.myandroidframework.utils.LogUtils;
-import com.actor.myandroidframework.utils.TextUtil;
+import com.actor.myandroidframework.utils.TextUtils2;
 import com.blankj.utilcode.util.ToastUtils;
 
 /**
@@ -71,7 +71,7 @@ public class ViewPackageAndClassNameService extends AccessibilityService {
         }
         String packageName = String.valueOf(event.getPackageName());//当前页面包名
         String className = String.valueOf(event.getClassName());
-        String info = TextUtil.getStringFormat("包名: %s%n类名: %s", packageName, className);
+        String info = TextUtils2.getStringFormat("包名: %s%n类名: %s", packageName, className);
         LogUtils.error(info, true);
         ToastUtils.showShort(info);
     }

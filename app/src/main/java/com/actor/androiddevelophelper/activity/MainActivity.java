@@ -16,6 +16,7 @@ import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.NetworkUtils;
 import com.blankj.utilcode.util.ServiceUtils;
+import com.develophelper.android5.activity.Android5MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,39 +48,33 @@ public class MainActivity extends BaseActivity {
 
     @OnClick({R.id.btn_open_development, R.id.btn_open_develop, R.id.btn_open_develop1,
             R.id.btn_calculate_constraintlayout, R.id.btn_view_system_icon, R.id.btn_app_info,
-            R.id.btn_view_page_info, R.id.btn_stop_service})
+            R.id.btn_view_page_info, R.id.btn_stop_service, R.id.btn_android5, R.id.btn_github_host})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_open_development:
-                //打开开发者选项
+            case R.id.btn_open_development://打开开发者选项
                 startDevelopMent();
                 break;
-            case R.id.btn_open_develop:
-                //打开"开发"
+            case R.id.btn_open_develop://打开"开发"
                 boolean success = ActivityUtils
                         .startActivity(new Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS));
                 if (!success) {
                     toast("打开失败...");
                 }
                 break;
-            case R.id.btn_open_develop1:
-                //部分小米手机采用这种方式跳转
+            case R.id.btn_open_develop1://部分小米手机采用这种方式跳转
                 boolean b = ActivityUtils
                         .startActivity(new Intent("com.android.settings.APPLICATION_DEVELOPMENT_SETTINGS"));
                 if (!b) {
                     toast("打开失败...");
                 }
                 break;
-            case R.id.btn_calculate_constraintlayout:
-                //计算约束布局偏移量
+            case R.id.btn_calculate_constraintlayout://计算约束布局偏移量
                 startActivity(new Intent(this, CalculateConstrailtLayoutActivity.class));
                 break;
-            case R.id.btn_view_system_icon:
-                //查看系统资源图标
+            case R.id.btn_view_system_icon://查看系统资源图标
                 startActivity(new Intent(this, ViewSystemIconActivity.class));
                 break;
-            case R.id.btn_app_info:
-                //查看App信息(包括签名)
+            case R.id.btn_app_info://查看App信息(包括签名)
                 startActivity(new Intent(this, AppInfoActivity.class));
                 break;
             case R.id.btn_view_page_info://查看当前页面包名&类名(需打开辅助功能)
@@ -97,6 +92,12 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_stop_service://停止服务
                 stopService(new Intent(activity, ViewPackageAndClassNameService.class));
                 toast("辅助功能停止失败, 请自己杀后台...");
+                break;
+            case R.id.btn_android5://android 5.0新特性
+                startActivity(new Intent(this, Android5MainActivity.class));
+                break;
+            case R.id.btn_github_host://获取 Github Host(用于配置电脑host,解决Github图片等无法访问等问题.)
+                startActivity(new Intent(this, GithubHostActivity.class));
                 break;
             default:
                 break;

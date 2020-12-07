@@ -7,23 +7,10 @@
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
 
-    <TextView
-        android:id="@+id/tv_ip_v4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:text="IP(v4): " />
-
-    <TextView
-        android:id="@+id/tv_ip_v6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="5dp"
-        android:text="IP(v6): " />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <Button
@@ -65,9 +52,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:layout_height="wrap_content">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_view_page_info"
@@ -77,10 +64,36 @@
 
         <Button
             android:id="@+id/btn_stop_service"
-            android:text="停止查看"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="停止查看" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_ip_v4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="IP(v4): " />
+
+    <TextView
+        android:id="@+id/tv_ip_v6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:text="IP(v6): " />
+
+    <Button
+        android:id="@+id/btn_github_host"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="获取 Github Host(用于配置电脑host,解决Github图片等无法访问等问题.)" />
+
+    <Button
+        android:id="@+id/btn_android5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="android 5.0新特性" />
 
     <Button
         android:layout_width="match_parent"

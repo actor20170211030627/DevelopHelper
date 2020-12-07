@@ -28,7 +28,6 @@ import okhttp3.Call;
  * 1.修改请求地址
  * 2.在清单文件中注册!!!
  *
- * Company    : 重庆市了赢科技有限公司 http://www.liaoin.com/
  * Author     : 李大发
  * Date       : 2019/10/19 on 14:39
  *
@@ -92,7 +91,7 @@ public class CheckUpdateService extends Service {
             progressDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
         }
         progressDialog.show();
-        MyOkHttpUtils.getFile(Global.DOWNLOAD_URL, new GetFileCallback(this, null, null) {
+        MyOkHttpUtils.getFile(Global.DOWNLOAD_URL, null, null, new GetFileCallback(this, null, null) {
 
             @Override
             public void inProgress(float progress, long total, int id) {
@@ -112,6 +111,7 @@ public class CheckUpdateService extends Service {
             public void onError(int id, Call call, Exception e) {
                 super.onError(id, call, e);
                 progressDialog.dismiss();
+                toast("下载出错, 请到Github下载!");
             }
         });
     }

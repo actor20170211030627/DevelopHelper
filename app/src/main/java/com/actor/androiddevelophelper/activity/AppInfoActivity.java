@@ -31,7 +31,6 @@ import butterknife.OnClick;
 
 /**
  * Description: 查看app信息
- * Company    : 重庆市了赢科技有限公司 http://www.liaoin.com/
  * Author     : 李大发
  * Date       : 2019/8/28 on 22:10
  */

@@ -1,15 +1,17 @@
 package com.actor.androiddevelophelper;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.actor.androiddevelophelper.utils.AppInfoProvider;
 import com.actor.myandroidframework.application.ActorApplication;
-import com.zhouyou.http.EasyHttp;
-import com.zhy.http.okhttp.OkHttpUtils;
+
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 
 /**
  * Description: 类的描述
- * Company    : 重庆市了赢科技有限公司 http://www.liaoin.com/
  * Author     : 李大发
  * Date       : 2019/8/29 on 00:17
  *
@@ -23,13 +25,12 @@ public class MyApplication extends ActorApplication {
         AppInfoProvider.init(this);
     }
 
+    @Nullable
     @Override
-    protected void configEasyHttp(EasyHttp easyHttp) {
-        easyHttp.setConnectTimeout(60_000L)
-                .setReadTimeOut(60_000L)
-                .setWriteTimeOut(60_000L);
-        //配置张鸿洋的OkHttpUtils
-        OkHttpUtils.initClient(EasyHttp.getOkHttpClient());
+    protected OkHttpClient.Builder configOkHttpClientBuilder(OkHttpClient.Builder builder) {
+        return builder.connectTimeout(30_000L, TimeUnit.MILLISECONDS)
+                .readTimeout(30_000L, TimeUnit.MILLISECONDS)
+                .writeTimeout(30_000L, TimeUnit.MILLISECONDS);
     }
 
     @NonNull
