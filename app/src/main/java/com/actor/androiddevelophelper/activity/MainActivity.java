@@ -90,7 +90,7 @@ public class MainActivity extends BaseActivity {
                 }
                 break;
             case R.id.btn_stop_service://停止服务
-                stopService(new Intent(activity, ViewPackageAndClassNameService.class));
+                boolean b1 = stopService(new Intent(activity, ViewPackageAndClassNameService.class));
                 toast("辅助功能停止失败, 请自己杀后台...");
                 break;
             case R.id.btn_android5://android 5.0新特性
