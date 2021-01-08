@@ -8,8 +8,8 @@ android {
         minSdkVersion 21
         targetSdkVersion 28
         //noinspection HighAppVersionCode
-        versionCode 2020120701
-        versionName "1.1.3"
+        versionCode 2021010801
+        versionName "1.1.5"
     }
     signingConfigs {
         release {

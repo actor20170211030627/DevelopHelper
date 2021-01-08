@@ -12,48 +12,6 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="注意:\n
-            如果统一在BaseActivity中设置'标题栏', 那么需要填入设计图中标题栏高度, 否则不用填."
-            app:layout_constraintTop_toBottomOf="@id/btn_calculate"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="标题栏高"
-            android:textColor="@color/colorAccent"
-            android:textSize="16sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv" />
-
-        <TextView
-            android:id="@+id/tv1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="总高宽/度"
-            android:textColor="@color/colorAccent"
-            android:textSize="16sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv0" />
-
-        <TextView
-            android:id="@+id/tv2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="控件宽/高"
-            android:textColor="@color/colorAccent"
-            android:textSize="16sp"
-            app:layout_constraintLeft_toLeftOf="@+id/tv1"
-            app:layout_constraintTop_toBottomOf="@+id/tv1" />
-
-        <TextView
             android:id="@+id/tv3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,8 +19,8 @@
             android:text="控件顶部边距"
             android:textColor="@color/colorAccent"
             android:textSize="16sp"
-            app:layout_constraintLeft_toLeftOf="@+id/tv2"
-            app:layout_constraintTop_toBottomOf="@+id/tv2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_goneMarginTop="10dp" />
 
         <TextView
@@ -82,44 +40,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="right"
-            app:constraint_referenced_ids="tv1,tv2,tv3,tv4"
-            app:layout_constraintLeft_toRightOf="@id/tv1" />
-
-        <EditText
-            android:id="@+id/et_title_bar_height"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:digits="@string/digits_num_unsigned"
-            android:hint="请输入标题栏高度(如果全屏,输入0或不输入)"
-            android:imeOptions="actionNext"
-            android:inputType="numberDecimal"
-            app:layout_constraintBaseline_toBaselineOf="@id/tv0"
-            app:layout_constraintLeft_toRightOf="@id/barrier"
-            app:layout_constraintRight_toRightOf="parent" />
-
-        <EditText
-            android:id="@+id/et_total_height"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:digits="@string/digits_num_unsigned"
-            android:hint="请输入总宽/高度"
-            android:imeOptions="actionNext"
-            android:inputType="numberDecimal"
-            app:layout_constraintBaseline_toBaselineOf="@id/tv1"
-            app:layout_constraintLeft_toRightOf="@id/barrier"
-            app:layout_constraintRight_toRightOf="parent" />
-
-        <EditText
-            android:id="@+id/et_view_height"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:digits="@string/digits_num_unsigned"
-            android:hint="请输入控件宽/高度"
-            android:imeOptions="actionNext"
-            android:inputType="numberDecimal"
-            app:layout_constraintBaseline_toBaselineOf="@id/tv2"
-            app:layout_constraintLeft_toRightOf="@id/barrier"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:constraint_referenced_ids="tv3,tv4"
+            app:layout_constraintLeft_toRightOf="@id/tv3" />
 
         <EditText
             android:id="@+id/et_view_margin_top"
@@ -158,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="计算"
+            android:text="开始计算"
             app:layout_constraintTop_toBottomOf="@id/tv_result" />
 
         <LinearLayout
@@ -171,13 +93,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="手机界面示例说明:(下方2种计算方式, 输入1种就行, 推荐第2种)" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="偏移量 = marginTopH / (totalH - titleH - viewH) 或:"
-                android:textColor="@color/red" />
+                android:text="手机界面示例:" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -219,7 +135,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="Title(Init In BaseActivity)"
+                android:text="Title(标题栏)"
                 android:textColor="@color/white" />
         </RelativeLayout>
 

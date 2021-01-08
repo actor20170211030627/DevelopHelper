@@ -25,12 +25,14 @@ public class FadeActivity extends BaseActivity {
         Intent intent = getIntent();
         System.out.println(intent.getDataString());             //callPhone://buzhidao
         Uri data = intent.getData();
-        System.out.println("Scheme:" + data.getScheme());       //callPhone
-        System.out.println("Authority:" + data.getAuthority()); //buzhidao
-        System.out.println("Host:" + data.getHost());           //buzhidao
-        System.out.println("Port:" + data.getPort());           //-1
-        System.out.println("Path:" + data.getPath());           //
-        System.out.println("Query:" + data.getQuery());         //null
+        if (data != null) {
+            System.out.println("Scheme:" + data.getScheme());       //callPhone
+            System.out.println("Authority:" + data.getAuthority()); //buzhidao
+            System.out.println("Host:" + data.getHost());           //buzhidao
+            System.out.println("Port:" + data.getPort());           //-1
+            System.out.println("Path:" + data.getPath());           //
+            System.out.println("Query:" + data.getQuery());         //null
+        }
     }
 
     @Override

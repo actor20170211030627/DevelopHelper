@@ -121,7 +121,7 @@ public class AppInfoActivity extends BaseActivity {
                     }
                     if (forced2SleepName.equals(packageName)) {
                         startActivity(new Intent(forced2SleepName + ".startup", Uri.parse(
-                                "forced2sleep://来自'安卓开发帮助类的消息':起来嗨~")));
+                                "forced2sleep://来自'开发帮助'的消息: 起来嗨~")));
                     } else {
                         try {
                             AppUtils.launchApp(packageName);
