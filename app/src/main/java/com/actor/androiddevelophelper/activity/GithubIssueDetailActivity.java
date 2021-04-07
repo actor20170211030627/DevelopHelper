@@ -1,10 +1,11 @@
 package com.actor.androiddevelophelper.activity;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import com.actor.androiddevelophelper.Global;
 import com.actor.androiddevelophelper.R;

@@ -2,8 +2,6 @@ package com.develophelper.android5.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,6 +13,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Chronometer;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.blankj.utilcode.util.FragmentUtils;
 import com.develophelper.android5.Constants;

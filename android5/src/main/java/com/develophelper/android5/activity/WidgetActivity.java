@@ -10,16 +10,17 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 import android.widget.Toolbar;
+
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.develophelper.android5.R;
 import com.develophelper.android5.adapter.GridAdapter;
@@ -40,8 +41,8 @@ public class WidgetActivity extends BaseActivity implements SwipeRefreshLayout.O
     public static final int STAGGERED_GRID_V = 5;
     public static final int STAGGERED_GRID_H = 6;
 
-    int mOrientation;
-    RecyclerView recyclerView;
+    int                mOrientation;
+    RecyclerView       recyclerView;
     SwipeRefreshLayout refreshLayout;
     Toolbar toolbar;
 

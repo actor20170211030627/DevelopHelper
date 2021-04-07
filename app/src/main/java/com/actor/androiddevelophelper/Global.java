@@ -29,6 +29,8 @@ public class Global {
     //下方是github的api
     public static final String GITHUB_API = "https://api.github.com";
 
+    public static final String BAIDU_LOGO = "https://www.baidu.com/img/baidu_jgylogo3.gif";
+
     //issues列表, 填入user & 仓库名
     public static final String GITHUB_ISSUES = GITHUB_API + "/repos/%s/%s/issues";
     public static final String GITHUB_ISSUE_DETAIL = GITHUB_ISSUES + "/%d";

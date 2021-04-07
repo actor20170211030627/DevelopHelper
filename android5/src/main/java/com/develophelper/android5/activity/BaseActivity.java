@@ -3,8 +3,6 @@ package com.develophelper.android5.activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.util.Pair;
 import android.transition.ChangeBounds;
 import android.transition.ChangeTransform;
 import android.transition.Explode;
@@ -13,6 +11,9 @@ import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.TransitionSet;
 import android.view.View;
+
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.util.Pair;
 
 import com.actor.myandroidframework.activity.ActorBaseActivity;
 

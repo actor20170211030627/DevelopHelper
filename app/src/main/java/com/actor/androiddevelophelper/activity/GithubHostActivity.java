@@ -1,10 +1,11 @@
 package com.actor.androiddevelophelper.activity;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.actor.androiddevelophelper.Global;
 import com.actor.androiddevelophelper.R;
@@ -29,9 +30,9 @@ import butterknife.ButterKnife;
 public class GithubHostActivity extends BaseActivity {
 
     @BindView(R.id.tv_1)
-    TextView    tv1;
+    TextView     tv1;
     @BindView(R.id.btn_1)
-    Button      btn1;
+    Button       btn1;
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
 

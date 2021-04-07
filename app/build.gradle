@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
 
     defaultConfig {
         applicationId "com.actor.androiddevelophelper"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 29
         //noinspection HighAppVersionCode
         versionCode 2021010801
         versionName "1.1.5"
@@ -40,6 +40,9 @@ dependencies {
     implementation project(path: ':android5')
 
     //https://github.com/JakeWharton/butterknife
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+
+    //https://github.com/google/flexbox-layout
+    implementation 'com.google.android:flexbox:1.0.0'
 }

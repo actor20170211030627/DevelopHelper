@@ -1,7 +1,7 @@
 package com.actor.androiddevelophelper;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.actor.androiddevelophelper.utils.AppInfoProvider;
 import com.actor.myandroidframework.application.ActorApplication;
@@ -35,8 +35,8 @@ public class MyApplication extends ActorApplication {
 
     @NonNull
     @Override
-    protected String getBaseUrl() {
-        return "https://gitee.com";
+    protected String getBaseUrl(boolean isDebugMode) {
+        return Global.GITHUB_API;
     }
 
     @Override

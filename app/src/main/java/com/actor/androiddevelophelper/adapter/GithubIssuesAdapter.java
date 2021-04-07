@@ -1,7 +1,8 @@
 package com.actor.androiddevelophelper.adapter;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import com.actor.androiddevelophelper.Global;
 import com.actor.androiddevelophelper.R;

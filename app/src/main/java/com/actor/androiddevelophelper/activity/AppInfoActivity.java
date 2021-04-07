@@ -3,8 +3,6 @@ package com.actor.androiddevelophelper.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.view.View;
@@ -14,6 +12,9 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.actor.androiddevelophelper.R;
 import com.actor.androiddevelophelper.utils.AppInfo;
@@ -39,7 +40,7 @@ public class AppInfoActivity extends BaseActivity {
     @BindView(R.id.et_content)
     EditText     etContent;
     @BindView(R.id.check_box)
-    CheckBox checkBox;
+    CheckBox     checkBox;
     @BindView(R.id.rv_apps)
     RecyclerView rvApps;
     private              List<AppInfo> allApps          = new ArrayList<>();//全部app
