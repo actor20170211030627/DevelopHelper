@@ -1,4 +1,4 @@
-package com.actor.androiddevelophelper.service;
+package com.actor.androiddevelophelper.utils;
 
 import android.Manifest;
 import android.app.Activity;

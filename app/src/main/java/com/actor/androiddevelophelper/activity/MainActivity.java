@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.actor.androiddevelophelper.R;
-import com.actor.androiddevelophelper.service.CheckUpdateUtils;
+import com.actor.androiddevelophelper.utils.CheckUpdateUtils;
 import com.actor.androiddevelophelper.service.ViewPackageAndClassNameService;
 import com.actor.androiddevelophelper.utils.AccessibilityUtils;
 import com.blankj.utilcode.util.ActivityUtils;

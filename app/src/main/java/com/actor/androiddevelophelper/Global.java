@@ -12,7 +12,7 @@ public class Global {
             "DevelopHelper" +
             "/raw/master/" +
             "app" +
-            "/build/outputs/apk/debug/output.json";
+            "/build/outputs/apk/debug/output-metadata.json";
 
     public static final String DOWNLOAD_URL = "https://github.com/actor20170211030627/" +
             "DevelopHelper" +
