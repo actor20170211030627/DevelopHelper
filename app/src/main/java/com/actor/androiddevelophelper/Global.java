@@ -8,9 +8,6 @@ package com.actor.androiddevelophelper;
  * @version 1.0
  */
 public class Global {
-    public static final String MARGIN_VIEW_TOP    = "MARGIN_VIEW_TOP";
-    public static final String MARGIN_VIEW_BOTTOM = "MARGIN_VIEW_BOTTOM";
-
     public static final String CHECK_UPDATE = "https://gitee.com/actor20170211030627/" +
             "DevelopHelper" +
             "/raw/master/" +
@@ -39,6 +36,9 @@ public class Global {
     ////////////////////////
     // 下方是常量
     ////////////////////////
-    public static final String NUMBER = "NUMBER";
-    public static final String HOST_ADDRESS = "C:\\Windows\\System32\\drivers\\etc\\hosts";
+    public static final String FORCED_2_SLEEP_NAME = "com.actor.forced2sleep";
+    public static final String MARGIN_VIEW_TOP     = "MARGIN_VIEW_TOP";
+    public static final String MARGIN_VIEW_BOTTOM  = "MARGIN_VIEW_BOTTOM";
+    public static final String NUMBER              = "NUMBER";
+    public static final String HOST_ADDRESS        = "C:\\Windows\\System32\\drivers\\etc\\hosts";
 }

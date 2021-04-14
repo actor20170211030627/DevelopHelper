@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.actor.androiddevelophelper.Global;
 import com.actor.androiddevelophelper.R;
+import com.actor.androiddevelophelper.utils.ClipboardUtils;
 import com.actor.myandroidframework.utils.SPUtils;
 
 import butterknife.BindView;
@@ -56,7 +57,7 @@ public class CalculateConstrailtLayoutActivity extends BaseActivity {
             double bias = marginTop / (marginTop + marginBottom);//偏移量
             String clip = getStringFormat("%s/(%s+%s)=%f", marginTopS, marginTopS, marginBottomS, bias);
             tvResult.setText("计算结果: ".concat(clip));
-            copy2Clipboard(clip);
+            ClipboardUtils.copy2Clipboard(clip);
             toast("已复制到剪贴板");
         }
     }

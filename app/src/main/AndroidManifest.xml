@@ -4,8 +4,7 @@
     package="com.actor.androiddevelophelper">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- 后台服务 -->
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
         android:name=".MyApplication"
@@ -26,15 +25,12 @@
         </activity>
         <activity android:name=".activity.GithubIssueDetailActivity" />
         <activity android:name=".activity.GithubHostActivity" />
-        <activity
-            android:name=".activity.AppInfoActivity"
-            android:theme="@style/NoActionBar" />
+        <activity android:name=".activity.AppInfoActivity" />
         <activity android:name=".activity.ViewSystemIconActivity" />
         <activity android:name=".activity.CalculateConstrailtLayoutActivity" />
         <activity android:name=".activity.GlideExampleActivity" />
         <activity android:name=".activity.ExpandableItemActivity" />
 
-        <service android:name=".service.CheckUpdateService" />
         <service
             android:name=".service.ViewPackageAndClassNameService"
             android:label="@string/accessibility_service_label"

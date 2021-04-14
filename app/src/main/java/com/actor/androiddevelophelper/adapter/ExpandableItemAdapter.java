@@ -3,9 +3,9 @@ package com.actor.androiddevelophelper.adapter;
 import android.view.View;
 
 import com.actor.androiddevelophelper.R;
-import com.actor.androiddevelophelper.bean.Level0Item;
-import com.actor.androiddevelophelper.bean.Level1Item;
-import com.actor.androiddevelophelper.bean.Person;
+import com.actor.androiddevelophelper.info.Level0Item;
+import com.actor.androiddevelophelper.info.Level1Item;
+import com.actor.androiddevelophelper.info.Person;
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;

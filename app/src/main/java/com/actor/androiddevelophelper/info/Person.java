@@ -1,4 +1,4 @@
-package com.actor.androiddevelophelper.bean;
+package com.actor.androiddevelophelper.info;
 
 import com.actor.androiddevelophelper.adapter.ExpandableItemAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;

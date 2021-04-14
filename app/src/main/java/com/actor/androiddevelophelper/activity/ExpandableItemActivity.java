@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.actor.androiddevelophelper.R;
 import com.actor.androiddevelophelper.adapter.ExpandableItemAdapter;
-import com.actor.androiddevelophelper.bean.Level0Item;
-import com.actor.androiddevelophelper.bean.Level1Item;
-import com.actor.androiddevelophelper.bean.Person;
+import com.actor.androiddevelophelper.info.Level0Item;
+import com.actor.androiddevelophelper.info.Level1Item;
+import com.actor.androiddevelophelper.info.Person;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 
 import java.util.ArrayList;

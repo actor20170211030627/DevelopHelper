@@ -5,6 +5,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
+import com.actor.androiddevelophelper.bean.AppInfo;
 import com.blankj.utilcode.util.AppUtils;
 
 import java.io.File;
