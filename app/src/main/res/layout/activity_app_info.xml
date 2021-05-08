@@ -7,56 +7,53 @@
     android:orientation="vertical"
     tools:context=".activity.AppInfoActivity">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/colorPrimary"
+        android:background="@color/white"
         android:focusable="true"
-        android:focusableInTouchMode="true">
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/et_content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@null"
-            android:hint="请输入应用名搜索"
-            android:paddingLeft="10dp"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/white"
-            android:imeOptions="actionDone"
-            android:maxLength="6"
-            android:singleLine="true" />
+        <com.actor.myandroidframework.widget.ItemTextInputLayout
+            android:id="@+id/itil_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:itilImeOptions="actionDone"
+            app:itilInputType="text"
+            app:itilItemName="应用名搜索:" />
 
         <Button
             android:id="@+id/btn_search"
             android:layout_width="55dp"
             android:layout_height="40dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
             android:text="搜索" />
-    </RelativeLayout>
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
+        android:layout_marginTop="1px"
+        android:background="@color/red_trans_CC99"
         android:gravity="center"
         android:padding="10dp"
-        android:text="提示: 点击复制信息,长按打开应用"
+        android:text="提示: 点击Item复制信息, 长按Item打开应用"
         android:textColor="@color/white"
         android:textSize="16sp" />
 
     <CheckBox
         android:id="@+id/check_box"
-        android:layout_width="wrap_content"
-        android:text="显示System App"
-        android:layout_height="wrap_content"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="显示System App" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_apps"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_app"/>
+        tools:listitem="@layout/item_app" />
 </LinearLayout>

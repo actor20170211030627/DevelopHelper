@@ -15,85 +15,85 @@
             android:id="@+id/tv3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="控件顶部边距"
+            android:layout_marginTop="10dp"
+            android:text="顶部边距(marginTopH):"
             android:textColor="@color/colorAccent"
             android:textSize="16sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_goneMarginTop="10dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="控件底部边距"
+            android:layout_marginTop="10dp"
+            android:text="底部边距(marginBottomH):"
             android:textColor="@color/colorAccent"
             android:textSize="16sp"
-            app:layout_constraintLeft_toLeftOf="@+id/tv3"
-            app:layout_constraintTop_toBottomOf="@+id/tv3"
-            app:layout_goneMarginTop="10dp" />
+            app:layout_constraintStart_toStartOf="@+id/tv3"
+            app:layout_constraintTop_toBottomOf="@+id/tv3" />
 
+        <!--app:layout_constraintLeft_toRightOf="@id/tv3"-->
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/barrier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:barrierDirection="right"
-            app:constraint_referenced_ids="tv3,tv4"
-            app:layout_constraintLeft_toRightOf="@id/tv3" />
+            app:barrierDirection="end"
+            app:constraint_referenced_ids="tv3,tv4" />
 
         <EditText
             android:id="@+id/et_view_margin_top"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:digits="@string/digits_num_unsigned"
-            android:hint="请输入控件顶部边距"
+            android:gravity="center"
+            android:hint="请输入顶部边距"
             android:imeOptions="actionNext"
             android:inputType="numberDecimal"
             app:layout_constraintBaseline_toBaselineOf="@id/tv3"
-            app:layout_constraintLeft_toRightOf="@id/barrier"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier" />
 
         <EditText
             android:id="@+id/et_view_margin_bottom"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:digits="@string/digits_num_unsigned"
-            android:hint="请输入控件底部边距"
+            android:gravity="center"
+            android:hint="请输入底部边距"
             android:imeOptions="actionDone"
             android:inputType="numberDecimal"
             app:layout_constraintBaseline_toBaselineOf="@id/tv4"
-            app:layout_constraintLeft_toRightOf="@id/barrier"
-            app:layout_constraintRight_toRightOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_result"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="计算结果: "
-            app:layout_constraintTop_toBottomOf="@id/tv4" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier" />
 
         <Button
             android:id="@+id/btn_calculate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:text="开始计算"
-            app:layout_constraintTop_toBottomOf="@id/tv_result" />
+            app:layout_constraintTop_toBottomOf="@id/tv4" />
+
+        <TextView
+            android:id="@+id/tv_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="计算结果: "
+            app:layout_constraintTop_toBottomOf="@id/btn_calculate" />
 
         <LinearLayout
             android:id="@+id/ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/btn_calculate">
+            app:layout_constraintTop_toBottomOf="@id/tv_result">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="手机界面示例:" />
+                android:text="手机界面示例:"
+                android:textColor="@color/window_bg_red" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -252,7 +252,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:text="4.控件边距=marginTopH"
+            android:text="4.控件顶部边距=marginTopH"
             android:textColor="@color/red"
             app:layout_constraintBottom_toTopOf="@id/iv_view"
             app:layout_constraintLeft_toLeftOf="@id/rv1"
@@ -271,7 +271,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5.控件底部高度=marginBottomH"
+            android:text="5.控件底部边距=marginBottomH"
             android:textColor="@color/red"
             app:layout_constraintBottom_toBottomOf="@id/rv1"
             app:layout_constraintLeft_toLeftOf="@id/rv1"

@@ -1,15 +1,12 @@
-package com.actor.androiddevelophelper.service;
+package com.actor.androiddevelophelper.utils;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.app.Service;
-import android.content.Intent;
-import android.os.IBinder;
-import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.annotation.RequiresPermission;
 
 import com.actor.androiddevelophelper.Global;
 import com.actor.androiddevelophelper.info.CheckUpdateInfo;
@@ -27,39 +24,32 @@ import okhttp3.Call;
 /**
  * Description: 检查更新
  * 1.修改请求地址
- * 2.在清单文件中注册!!!
+ * 2.使用: new CheckUpdateUtils().check(this);
  *
  * Author     : 李大发
  * Date       : 2019/10/19 on 14:39
  *
  * @version 1.0
  */
-public class CheckUpdateService extends Service {
+public class CheckUpdateUtils {
 
     private AlertDialog alertDialog;
     private ProgressDialog progressDialog;
 
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        //check update检查更新
-        MyOkHttpUtils.get(Global.CHECK_UPDATE, null, new BaseCallback<List<CheckUpdateInfo>>(this) {
+    //check update检查更新
+    @RequiresPermission(value = Manifest.permission.REQUEST_INSTALL_PACKAGES)
+    public void check(Object tag) {
+        MyOkHttpUtils.get(Global.CHECK_UPDATE, null, new BaseCallback<CheckUpdateInfo>(tag) {
             @Override
-            public void onOk(@NonNull List<CheckUpdateInfo> info, int id) {
-                if (info.isEmpty()) return;
-                CheckUpdateInfo info1 = info.get(0);
-                if (info1 == null) return;
-                CheckUpdateInfo.ApkDataBean apkData = info1.apkData;
-                if (apkData != null) {
-                    int versionCode = AppUtils.getAppVersionCode();
-                    if (versionCode < apkData.versionCode) {
-                        showDialog(apkData.versionName);
+            public void onOk(@NonNull CheckUpdateInfo info, int id) {
+                List<CheckUpdateInfo.ElementsBean> elements = info.elements;
+                if (elements != null && !elements.isEmpty()) {
+                    CheckUpdateInfo.ElementsBean elementsBean = elements.get(0);
+                    if (elementsBean != null) {
+                        int versionCode = AppUtils.getAppVersionCode();
+                        if (versionCode < elementsBean.versionCode) {
+                            showDialog(elementsBean.versionName);
+                        }
                     }
                 }
             }
@@ -69,30 +59,27 @@ public class CheckUpdateService extends Service {
     private void showDialog(String newVersionName) {
         if (newVersionName == null) newVersionName = "";
         Activity topActivity = ActivityUtils.getTopActivity();
-        if (topActivity == null) return;
+        if (topActivity == null || topActivity.isDestroyed()) return;
         if (alertDialog == null) {
             alertDialog = new AlertDialog.Builder(topActivity)
                     .setTitle("Update: 有新版本")
                     .setMessage("有新版本: ".concat(newVersionName).concat(", 快更新吧!"))
-                    .setPositiveButton("Ok", (dialog, which) -> {
-                        downloadApk();
-                    })
+                    .setPositiveButton("Ok", (dialog, which) -> downloadApk(topActivity))
                     .setNegativeButton("Cancel", null)
                     .create();
         }
         alertDialog.show();
     }
 
-    private void downloadApk() {
+    private void downloadApk(Activity topActivity) {
         if (progressDialog == null) {
-            progressDialog = new ProgressDialog(this);
+            progressDialog = new ProgressDialog(topActivity);
             progressDialog.setCancelable(false);
             progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-            progressDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
         }
         progressDialog.show();
-        MyOkHttpUtils.getFile(Global.DOWNLOAD_URL, null, null, new GetFileCallback(this, null, null) {
+        MyOkHttpUtils.getFile(Global.DOWNLOAD_URL, null, null, new GetFileCallback(topActivity, null, null) {
 
             @Override
             public void inProgress(float progress, long total, int id) {
@@ -105,21 +92,14 @@ public class CheckUpdateService extends Service {
             public void onOk(@NonNull File info, int id) {
                 progressDialog.dismiss();
                 AppUtils.installApp(info);
-                stopSelf();
             }
 
             @Override
             public void onError(int id, Call call, Exception e) {
-                super.onError(id, call, e);
+//                super.onError(id, call, e);
                 progressDialog.dismiss();
-                toast("下载出错, 请到Github下载!");
+                toast("下载失败, 请到Github下载.");
             }
         });
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        MyOkHttpUtils.cancelTag(this);
     }
 }

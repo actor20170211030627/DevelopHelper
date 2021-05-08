@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import com.actor.androiddevelophelper.Global;
 import com.actor.androiddevelophelper.R;
 import com.actor.androiddevelophelper.info.GithubIssueDetailInfo;
+import com.actor.androiddevelophelper.utils.ClipboardUtils;
 import com.actor.myandroidframework.utils.okhttputils.BaseCallback;
 import com.actor.myandroidframework.utils.okhttputils.MyOkHttpUtils;
 import com.bumptech.glide.Glide;
@@ -67,7 +68,7 @@ public class GithubIssueDetailActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_copy://复制到剪贴板
-                copy2Clipboard(getStringFormat("# 打开电脑目录: %s, 然后将下方内容添加进去\n%s", Global.HOST_ADDRESS, tvBody.getText()));
+                ClipboardUtils.copy2Clipboard(getStringFormat("# 打开电脑目录: %s, 然后将下方内容添加进去\n%s", Global.HOST_ADDRESS, tvBody.getText()));
                 toast("copy复制成功!");
                 break;
             default:

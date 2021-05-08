@@ -1,4 +1,4 @@
-package com.actor.androiddevelophelper.utils;
+package com.actor.androiddevelophelper.bean;
 
 import android.graphics.drawable.Drawable;
 

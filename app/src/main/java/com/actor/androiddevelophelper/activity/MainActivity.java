@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.actor.androiddevelophelper.R;
-import com.actor.androiddevelophelper.service.CheckUpdateService;
+import com.actor.androiddevelophelper.utils.CheckUpdateUtils;
 import com.actor.androiddevelophelper.service.ViewPackageAndClassNameService;
 import com.actor.androiddevelophelper.utils.AccessibilityUtils;
 import com.blankj.utilcode.util.ActivityUtils;
@@ -43,7 +43,7 @@ public class MainActivity extends BaseActivity {
 
         tvVersion.setText(getStringFormat("VersionName: %s(VersionCode: %d)",
                 AppUtils.getAppVersionName(), AppUtils.getAppVersionCode()));
-        startService(new Intent(this, CheckUpdateService.class));
+        new CheckUpdateUtils().check(this);
     }
 
     @OnClick({R.id.btn_open_development, R.id.btn_open_develop, R.id.btn_open_develop1,
@@ -75,7 +75,7 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_view_system_icon://查看系统资源图标
                 startActivity(new Intent(this, ViewSystemIconActivity.class));
                 break;
-            case R.id.btn_app_info://查看App信息(包括签名)
+            case R.id.btn_app_info://查看App信息(包括Md5&Sha1&Sha256签名)
                 startActivity(new Intent(this, AppInfoActivity.class));
                 break;
             case R.id.btn_view_page_info://查看当前页面包名&类名(需打开辅助功能)
@@ -127,11 +127,5 @@ public class MainActivity extends BaseActivity {
 
     private boolean isAccessibilitySettingsOn() {
         return AccessibilityUtils.isAccessibilitySettingsOn(ViewPackageAndClassNameService.class);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        stopService(new Intent(this, CheckUpdateService.class));
     }
 }
