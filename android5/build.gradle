@@ -2,7 +2,6 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "28.0.3"
 
     defaultConfig {
         minSdkVersion 21
@@ -19,6 +18,6 @@ dependencies {
     api 'androidx.palette:palette:1.0.0'
     api 'androidx.constraintlayout:constraintlayout:2.0.4'
 
-    //https://github.com/actor20170211030627/MyAndroidFrameWork
-    api 'com.github.actor20170211030627.MyAndroidFrameWork:myandroidframework:2.0.1'
+    //https://gitee.com/actor20170211030627/MyAndroidFrameWork
+    api 'com.gitee.actor20170211030627.MyAndroidFrameWork:myandroidframework:2.0.3'
 }
