@@ -55,7 +55,7 @@ public class GithubIssueDetailActivity extends BaseActivity {
     private void getDetail() {
         MyOkHttpUtils.get(url, null, new BaseCallback<GithubIssueDetailInfo>(this) {
             @Override
-            public void onOk(@NonNull GithubIssueDetailInfo info, int id) {
+            public void onOk(@NonNull GithubIssueDetailInfo info, int requestId, boolean isRefresh) {
                 dismissLoadingDialog();
                 Glide.with(activity).load(info.user.avatar_url).into(ivAvatar);
                 tvUser.setText(info.user.login);

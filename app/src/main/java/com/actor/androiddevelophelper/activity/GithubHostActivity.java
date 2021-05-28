@@ -53,12 +53,12 @@ public class GithubHostActivity extends BaseActivity {
         recyclerView.setAdapter(mAdapter = new GithubIssuesAdapter());
         MyOkHttpUtils.get(getStringFormat(Global.GITHUB_ISSUES, "ButterAndButterfly", "GithubHost"),
                 null, new BaseCallback<List<GithubIssuesInfo>>(this) {
-            @Override
-            public void onOk(@NonNull List<GithubIssuesInfo> info, int id) {
-                dismissLoadingDialog();
-                mAdapter.setNewData(info);
-            }
-        });
+                    @Override
+                    public void onOk(@NonNull List<GithubIssuesInfo> info, int requestId, boolean isRefresh) {
+                        dismissLoadingDialog();
+                        mAdapter.setNewData(info);
+                    }
+                });
     }
 
     private void ping(String realIp/*, */) {

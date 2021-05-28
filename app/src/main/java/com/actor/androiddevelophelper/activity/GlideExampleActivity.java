@@ -152,7 +152,7 @@ public class GlideExampleActivity extends BaseActivity {
                 case 3://File
                     MyOkHttpUtils.getFile(Global.BAIDU_LOGO, null, null, new GetFileCallback(this, null, null) {
                         @Override
-                        public void onOk(@NonNull File info, int id) {
+                        public void onOk(@NonNull File info, int requestId, boolean isRefresh) {
                             dismissLoadingDialog();
                             Glide.with(activity).load(info).into(iv);
                         }
@@ -164,7 +164,7 @@ public class GlideExampleActivity extends BaseActivity {
                 case 5://byte[]字节数组
                     MyOkHttpUtils.getFile(Global.BAIDU_LOGO, null, null, new GetFileCallback(this, null, "baidu_jgylogo3(1).gif") {
                         @Override
-                        public void onOk(@NonNull File info, int id) {
+                        public void onOk(@NonNull File info, int requestId, boolean isRefresh) {
                             dismissLoadingDialog();
                             byte[] bytes = FileIOUtils.readFile2BytesByStream(info);
                             Glide.with(activity).load(bytes).into(iv);
