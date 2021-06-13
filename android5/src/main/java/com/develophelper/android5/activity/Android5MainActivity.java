@@ -179,30 +179,22 @@ public class Android5MainActivity extends BaseActivity {
 
     //fragment不能装进List&Map中!
     public BaseFragment createFragment(int position) {
-        BaseFragment fragment = null;
         switch (position) {
             case 0:  //样式主题
-                fragment = new StyleFragment();
-                break;
+                return new StyleFragment();
             case 1:  //阴影
-                fragment = new ShadowFragment();
-                break;
+                return new ShadowFragment();
             case 2:
-                fragment = new DrawableFragment();
-                break;
+                return new DrawableFragment();
             case 3:
-                fragment = new AnimationFragment();
-                break;
+                return new AnimationFragment();
             case 4:
-                fragment = new WidgetFragment();
-                break;
+                return new WidgetFragment();
             case 5:
-                fragment = new SupportFragment();
-                break;
+                return new SupportFragment();
             default:
-                break;
+                return null;
         }
-        return fragment;
     }
 
     @Override
