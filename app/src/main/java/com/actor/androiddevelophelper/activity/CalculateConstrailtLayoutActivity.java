@@ -15,7 +15,7 @@ import butterknife.OnClick;
 
 /**
  * Description: 计算约束布局
- * Author     : 李大发
+ * Author     : ldf
  * Date       : 2019-8-28 on 9:48
  */
 public class CalculateConstrailtLayoutActivity extends BaseActivity {

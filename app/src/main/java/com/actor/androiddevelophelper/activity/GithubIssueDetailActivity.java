@@ -22,7 +22,7 @@ import butterknife.OnClick;
 /**
  * description: issue 详情
  *
- * @author : 李大发
+ * @author : ldf
  * date       : 2020/12/7 on 15:55
  */
 public class GithubIssueDetailActivity extends BaseActivity {

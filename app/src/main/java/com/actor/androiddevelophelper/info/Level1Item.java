@@ -25,6 +25,6 @@ public class Level1Item extends AbstractExpandableItem<Person> implements MultiI
 
     @Override
     public int getLevel() {
-        return 1;
+        return getItemType();
     }
 }

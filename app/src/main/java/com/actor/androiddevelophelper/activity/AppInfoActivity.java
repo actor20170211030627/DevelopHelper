@@ -23,7 +23,7 @@ import butterknife.OnClick;
 
 /**
  * Description: 查看app信息(包括Md5&Sha1&Sha256签名)
- * Author     : 李大发
+ * Author     : ldf
  * Date       : 2019/8/28 on 22:10
  */
 public class AppInfoActivity extends BaseActivity {

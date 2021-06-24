@@ -63,7 +63,7 @@ import butterknife.ButterKnife;
 
 /**
  * Description: 主页 -> Glide使用
- * Author     : 李大发
+ * Author     : ldf
  * Date       : 2020/2/4 on 13:06
  *
  * https://github.com/bumptech/glide

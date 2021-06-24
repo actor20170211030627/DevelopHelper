@@ -3,7 +3,7 @@ package com.actor.androiddevelophelper.bean;
 /**
  * description: 描述
  *
- * @author : 李大发
+ * @author : ldf
  * date       : 2021/4/14 on 23
  * @version 1.0
  */

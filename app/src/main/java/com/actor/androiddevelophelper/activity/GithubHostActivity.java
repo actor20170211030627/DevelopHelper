@@ -24,7 +24,7 @@ import butterknife.ButterKnife;
 /**
  * description: 获取 Github Host(用于配置电脑host,解决Github图片等无法访问等问题.)
  *
- * @author : 李大发
+ * @author : ldf
  * date       : 2020/12/5 on 14:39
  */
 public class GithubHostActivity extends BaseActivity {

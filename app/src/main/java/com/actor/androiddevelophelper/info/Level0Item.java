@@ -24,6 +24,6 @@ public class Level0Item extends AbstractExpandableItem<Level1Item> implements Mu
 
     @Override
     public int getLevel() {
-        return 0;
+        return getItemType();
     }
 }

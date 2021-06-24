@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 
 /**
  * Description: 查看系统资源图标
- * Author     : 李大发
+ * Author     : ldf
  * Date       : 2019-8-28 on 10:35
  */
 public class ViewSystemIconActivity extends BaseActivity {

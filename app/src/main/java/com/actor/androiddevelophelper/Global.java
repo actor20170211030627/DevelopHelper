@@ -2,7 +2,7 @@ package com.actor.androiddevelophelper;
 
 /**
  * Description: 全局常量
- * Author     : 李大发
+ * Author     : ldf
  * Date       : 2019-8-5 on 10:49
  *
  * @version 1.0

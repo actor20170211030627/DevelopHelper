@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * description: 查看app信息(包括Md5&Sha1&Sha256签名)
  *
- * @author : 李大发
+ * @author : ldf
  * date       : 2021/4/14 on 22
  * @version 1.0
  */

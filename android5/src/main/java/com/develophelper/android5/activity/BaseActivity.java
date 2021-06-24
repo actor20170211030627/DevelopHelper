@@ -19,7 +19,7 @@ import com.actor.myandroidframework.activity.ActorBaseActivity;
 
 /**
  * Description: 类的描述
- * Author     : 李大发
+ * Author     : ldf
  * Date       : 2019-9-17 on 15:13
  *
  * @version 1.0

@@ -146,7 +146,7 @@ public class Android5MainActivity extends BaseActivity {
 
 //      Intent intent = new Intent();
 //      intent.setAction("com.google.sample.fade");//Intent.ACTION_DIAL拨号
-//		Intent intent = new Intent("com.google.sample.fade");
+//      Intent intent = new Intent("com.google.sample.fade");
 //      intent.setData(Uri.parse("callPhone://buzhidao"));
 //      intent.setType("text/xxx");//和上面方法冲突
 //      intent.setDataAndType();//data和type共存...

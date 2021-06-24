@@ -4,7 +4,7 @@ import com.actor.myandroidframework.activity.ActorBaseActivity;
 
 /**
  * Description: 类的描述
- * Author     : 李大发
+ * Author     : ldf
  * Date       : 2019-8-28 on 09:48
  *
  * @version 1.0
