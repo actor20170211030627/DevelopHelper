@@ -13,22 +13,21 @@
         android:layout_height="wrap_content"
         android:background="@color/red_trans_CC99"
         android:text="正常流程查询地址: \n
-                https://www.ipaddress.com/ \n
-                然后修改host: C:\Windows\System32\drivers\etc\hosts"
+    https://www.ipaddress.com/ \n
+    然后修改host: C:\\Windows\\System32\\drivers\\etc\\hosts"
         android:textColor="@color/white" />
 
     <Button
         android:id="@+id/btn_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="相关Github: \n
-                https://github.com/ButterAndButterfly/GithubHost\n
-                ↓, 进入详情, 复制最新的host, 每月1/16号发布issue" />
+        android:text="api来自相关Github: \n
+https://github.com/521xueweihan/GitHub520 \n
+点击本按钮复制下方信息" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <TextView
+        android:id="@+id/tv_result"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_github_issues" />
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
 </LinearLayout>

@@ -36,7 +36,7 @@ public class MyApplication extends ActorApplication {
     @NonNull
     @Override
     protected String getBaseUrl(boolean isDebugMode) {
-        return Global.GITHUB_API;
+        return null;
     }
 
     @Override
