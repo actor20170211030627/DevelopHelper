@@ -43,7 +43,7 @@
         android:id="@+id/btn_calculate_constraintlayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="计算约束布局偏移量" />
+        android:text="计算约束布局偏移率bias" />
 
     <Button
         android:id="@+id/btn_view_system_icon"
@@ -119,8 +119,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autoLink="all"
-        android:text="View on Github:\n
-https://github.com/actor20170211030627/DevelopHelper" />
+        android:text="View on Gitee:\n
+https://gitee.com/actor20170211030627/DevelopHelper" />
 
     <TextView
         android:id="@+id/tv_version"

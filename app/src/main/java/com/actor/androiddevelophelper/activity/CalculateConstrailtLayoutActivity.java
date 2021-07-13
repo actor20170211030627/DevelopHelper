@@ -14,7 +14,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Description: 计算约束布局
+ * Description: 计算约束布局偏移率bias
  * Author     : ldf
  * Date       : 2019-8-28 on 9:48
  */
@@ -33,7 +33,7 @@ public class CalculateConstrailtLayoutActivity extends BaseActivity {
         setContentView(R.layout.activity_calculate_constrailt_layout);
         ButterKnife.bind(this);
 
-        setTitle("计算约束布局偏移量");
+//        setTitle("计算约束布局偏移率bias");
         etViewMarginTop.setText(SPUtils.getString(Global.MARGIN_VIEW_TOP));
         etViewMarginBottom.setText(SPUtils.getString(Global.MARGIN_VIEW_BOTTOM));
     }
@@ -54,7 +54,7 @@ public class CalculateConstrailtLayoutActivity extends BaseActivity {
             //计算
             double marginTop = Double.parseDouble(marginTopS);
             double marginBottom = Double.parseDouble(marginBottomS);
-            double bias = marginTop / (marginTop + marginBottom);//偏移量
+            double bias = marginTop / (marginTop + marginBottom);//偏移率
             String clip = getStringFormat("%s/(%s+%s)=%f", marginTopS, marginTopS, marginBottomS, bias);
             tvResult.setText("计算结果: ".concat(clip));
             ClipboardUtils.copy2Clipboard(clip);

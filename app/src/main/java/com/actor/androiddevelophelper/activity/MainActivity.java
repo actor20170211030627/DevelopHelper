@@ -69,7 +69,7 @@ public class MainActivity extends BaseActivity {
                     toast("打开失败...");
                 }
                 break;
-            case R.id.btn_calculate_constraintlayout://计算约束布局偏移量
+            case R.id.btn_calculate_constraintlayout://计算约束布局偏移率
                 startActivity(new Intent(this, CalculateConstrailtLayoutActivity.class));
                 break;
             case R.id.btn_view_system_icon://查看系统资源图标

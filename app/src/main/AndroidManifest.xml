@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <!-- 查看包名信息等, 开启后台服务 -->
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:name=".MyApplication"
@@ -28,7 +28,9 @@
         <activity android:name=".activity.GithubHostActivity" />
         <activity android:name=".activity.AppInfoActivity" />
         <activity android:name=".activity.ViewSystemIconActivity" />
-        <activity android:name=".activity.CalculateConstrailtLayoutActivity" />
+        <activity
+            android:name=".activity.CalculateConstrailtLayoutActivity"
+            android:label="计算约束布局偏移率bias" />
         <activity android:name=".activity.GlideExampleActivity" />
         <activity android:name=".activity.ExpandableItemActivity" />
 
