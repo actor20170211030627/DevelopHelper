@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
+        android:layout_height="@dimen/action_bar_size"
         android:background="@color/white"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -44,11 +44,21 @@
         android:textColor="@color/white"
         android:textSize="16sp" />
 
-    <CheckBox
-        android:id="@+id/check_box"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="显示System App" />
+        android:layout_height="wrap_content">
+
+        <com.actor.myandroidframework.widget.BaseSpinner
+            android:id="@+id/bs_app_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:background="@drawable/shape_drop_down_normal"
+            android:dropDownVerticalOffset="47dp"
+            android:padding="10dp"
+            android:popupBackground="@color/white"
+            app:bsEntriesString="显示已安装应用,显示系统应用,显示全部应用" />
+    </FrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_apps"

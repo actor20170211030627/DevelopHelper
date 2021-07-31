@@ -14,7 +14,7 @@
         android:background="@color/red_trans_CC99"
         android:text="正常流程查询地址: \n
     https://www.ipaddress.com/ \n
-    然后修改host: C:\\Windows\\System32\\drivers\\etc\\hosts"
+然后修改host: C:\\Windows\\System32\\drivers\\etc\\hosts"
         android:textColor="@color/white" />
 
     <Button

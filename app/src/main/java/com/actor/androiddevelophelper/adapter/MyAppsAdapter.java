@@ -56,7 +56,7 @@ public class MyAppsAdapter extends BaseQuickAdapter<AppInfo, BaseViewHolder> {
                         item.appName, item.packageName, item.apkMd5Sign, item.versionName,
                         item.versionCode, item.size, item.apkSourceDir, item.uid,
                         item.isSystemApp, item.isSdcard, item.apkSha1Sign, item.apkSha256Sign);
-                LogUtils.error(clip, true);
+                LogUtils.error(clip);
                 ClipboardUtils.copy2Clipboard(clip);
                 ToastUtils.showShort("已复制到剪贴板");
             }
