@@ -49,7 +49,7 @@ public class MainActivity extends BaseActivity {
     @OnClick({R.id.btn_open_development, R.id.btn_open_develop, R.id.btn_open_develop1,
             R.id.btn_calculate_constraintlayout, R.id.btn_view_system_icon, R.id.btn_app_info,
             R.id.btn_view_page_info, R.id.btn_stop_service, R.id.btn_glide, R.id.btn_expandable_item,
-            R.id.btn_android5, R.id.btn_github_host})
+            R.id.btn_canvas, R.id.btn_encrypt, R.id.btn_android5, R.id.btn_github_host})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_open_development://打开开发者选项
@@ -99,6 +99,12 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.btn_expandable_item://分组的伸缩栏(ExpandableItemAdapter)
                 startActivity(new Intent(this, ExpandableItemActivity.class));
+                break;
+            case R.id.btn_canvas://Canvas绘制
+                startActivity(new Intent(this, CanvasDrawActivity.class));
+                break;
+            case R.id.btn_encrypt://Encrypt加密解密
+                startActivity(new Intent(this, EncryptActivity.class));
                 break;
             case R.id.btn_android5://android 5.0新特性
                 startActivity(new Intent(this, Android5MainActivity.class));

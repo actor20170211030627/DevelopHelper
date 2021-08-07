@@ -33,6 +33,8 @@
             android:label="计算约束布局偏移率bias" />
         <activity android:name=".activity.GlideExampleActivity" />
         <activity android:name=".activity.ExpandableItemActivity" />
+        <activity android:name=".activity.CanvasDrawActivity" />
+        <activity android:name=".activity.EncryptActivity" />
 
         <service
             android:name=".service.ViewPackageAndClassNameService"

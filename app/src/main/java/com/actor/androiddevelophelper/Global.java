@@ -1,5 +1,8 @@
 package com.actor.androiddevelophelper;
 
+import com.blankj.utilcode.util.ScreenUtils;
+import com.blankj.utilcode.util.SizeUtils;
+
 /**
  * Description: 全局常量
  * Author     : ldf
@@ -37,4 +40,7 @@ public class Global {
     public static final String MARGIN_VIEW_TOP     = "MARGIN_VIEW_TOP";
     public static final String MARGIN_VIEW_BOTTOM  = "MARGIN_VIEW_BOTTOM";
     public static final String HOST_ADDRESS        = "C:\\Windows\\System32\\drivers\\etc\\hosts";
+
+    public static final int DP1 = SizeUtils.dp2px(1);
+    public static final int APP_SCREEN_HEIGHT = ScreenUtils.getAppScreenHeight();
 }

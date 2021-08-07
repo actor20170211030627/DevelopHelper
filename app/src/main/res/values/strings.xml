@@ -3,4 +3,59 @@
 
     <string name="accessibility_service_label">开发帮助(查看包名&amp;类名)</string>
     <string name="accessibility_service_description">只有您开启了辅助功能后, 才能检测到你打开的是哪个应用.</string>
+
+
+    <string-array name="DrawType">
+        <item>0.颜色ARGB,RGB,Color,Paint</item>
+        <item>1.线Line,Lines</item>
+        <item>2.文字Text,PosText</item>
+        <item>3.点Point,Points</item>
+        <item>4.矩形Rect,RoundRect,DoubleRoundRect</item>
+        <item>5.圆Circle</item>
+        <item>6.椭圆Oval</item>
+        <item>7.圆弧Arc</item>
+        <item>8.位图Bitmap</item>
+        <item>9.路径Path,TextOnPath</item>
+    </string-array>
+
+
+    <!--加密说明-->
+    <string name="encode_instruction">
+        说明: \n
+        \t 1.单向加密 \n
+        \t\t MD2 加密,32位 \n
+        \t\t MD5 加密,32位 \n
+        \t\t MD5 加密文件 \n
+        \t\t SHA1 加密,40位 \n
+        \t\t SHA224 加密 \n
+        \t\t SHA256 加密 \n
+        \t\t SHA384 加密 \n
+        \t\t SHA512 加密 \n
+        \t\t HmacMD5 加密 \n
+        \t\t HmacSHA1 加密,40位 \n
+        \t\t HmacSHA224 加密 \n
+        \t\t HmacSHA256 加密,64位 \n
+        \t\t HmacSHA384 加密,96位 \n
+        \t\t HmacSHA512 加密,128位 \n
+
+
+        \n\n
+        2.双向加密:对称&amp;非对称加密 \n
+
+        \t 2.1.对称加密:加密和解密使用同一秘钥 \n
+        \t\t DES 加密 80位\n
+        \t\t DES 解密 \n
+        \t\t 3DES 加密, DES的加强版 \n
+        \t\t 3DES 解密 \n
+        \t\t AES 加密 \n
+        \t\t AES 解密 \n
+
+        \t 2.2.非对称加密:公钥/私钥加密,私钥/公钥解密 \n
+        \t\t 通过公钥互换,实现双向验证:https协议(浏览器公钥),U盾(自己的私钥),支付宝数字证书(自己的私钥) \n
+
+        \t\t 1.APK打包数字签名 \n
+        \t\t 2.申请第三方公钥互换SDK（如微信支付）时填入的签名SAH1值:https://www.jianshu.com/p/286d2b372334 \n
+        \t\t\t RSA 加密 \n
+        \t\t\t RSA 解密 \n
+    </string>
 </resources>

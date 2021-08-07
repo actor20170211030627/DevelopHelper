@@ -11,6 +11,7 @@ import com.actor.androiddevelophelper.bean.AppInfo;
 import com.actor.androiddevelophelper.utils.AppInfoProvider;
 import com.actor.myandroidframework.widget.BaseSpinner;
 import com.actor.myandroidframework.widget.ItemTextInputLayout;
+import com.blankj.utilcode.util.KeyboardUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,9 +83,11 @@ public class AppInfoActivity extends BaseActivity {
                 nowAllApps.addAll(systemApps);
                 break;
             default:
-                break;
+                return;
         }
-
+        //隐藏键盘
+        KeyboardUtils.hideSoftInput(this);
+        //显示搜索结果
         String text = getText(itilContent);
         searchApps.clear();
         if (TextUtils.isEmpty(text)) {
