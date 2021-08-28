@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.AnimatorActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.actor.myandroidframework.widget.ItemTextInputLayout
+            android:id="@+id/itil1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:itilArrowRightVisiable="invisible"
+            app:itilInputEnable="false"
+            app:itilItemName="3.1.ValueAnimator extends Animator(产生一堆中间值)"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/item_app"
+            layout="@layout/item_app"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:layout_constraintTop_toBottomOf="@id/itil1" />
+
+
+        <com.actor.myandroidframework.widget.ItemTextInputLayout
+            android:id="@+id/itil2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:itilArrowRightVisiable="invisible"
+            app:itilInputEnable="false"
+            app:itilItemName="3.2.1.ObjectAnimator extends Animator"
+            app:layout_constraintTop_toBottomOf="@id/item_app" />
+
+        <!--高度要设置成wrap_content, 如果设置成固定值的话, 下方那些View也有动画会导致这个TextView没有动画-->
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/encode_instruction"
+            app:layout_constraintTop_toBottomOf="@id/itil2"
+            tools:layout_height="120dp" />
+
+
+        <com.actor.myandroidframework.widget.ItemTextInputLayout
+            android:id="@+id/itil3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:itilArrowRightVisiable="invisible"
+            app:itilInputEnable="false"
+            app:itilItemName="3.2.2.ObjectAnimator: "
+            app:itilText="旋转动画"
+            app:layout_constraintTop_toBottomOf="@id/tv_content" />
+
+        <ImageView
+            android:id="@+id/iv_rotation_y1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/logo"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itil3"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <Button
+            android:id="@+id/btn_rotation_y2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:elevation="8dp"
+            android:text="和←左侧一样的自定义动画"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_rotation_y1"
+            app:layout_constraintTop_toTopOf="@id/iv_rotation_y1"
+            app:layout_constraintWidth_percent="0.5" />
+
+
+        <com.actor.myandroidframework.widget.ItemTextInputLayout
+            android:id="@+id/itil4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:itilArrowRightVisiable="invisible"
+            app:itilInputEnable="false"
+            app:itilItemName="3.2.2.ObjectAnimator: "
+            app:itilText="alpha, translationX, scaleY"
+            app:layout_constraintTop_toBottomOf="@id/tv_content" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

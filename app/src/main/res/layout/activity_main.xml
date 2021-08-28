@@ -24,18 +24,21 @@
                 android:id="@+id/btn_open_development"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onViewClicked"
                 android:text="开发者选项" />
 
             <Button
                 android:id="@+id/btn_open_develop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onViewClicked"
                 android:text="开发" />
 
             <Button
                 android:id="@+id/btn_open_develop1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onViewClicked"
                 android:text="开发(部分小米)" />
         </LinearLayout>
 
@@ -43,18 +46,21 @@
             android:id="@+id/btn_calculate_constraintlayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="onViewClicked"
             android:text="计算约束布局偏移率bias" />
 
         <Button
             android:id="@+id/btn_view_system_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="onViewClicked"
             android:text="查看系统资源图标" />
 
         <Button
             android:id="@+id/btn_app_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="onViewClicked"
             android:text="查看App信息(包括Md5&amp;Sha1&amp;Sha256签名)" />
 
         <LinearLayout
@@ -67,12 +73,14 @@
                 android:id="@+id/btn_view_page_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onViewClicked"
                 android:text="查看当前页面包名&amp;类名(需辅助功能)" />
 
             <Button
                 android:id="@+id/btn_stop_service"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onViewClicked"
                 android:text="停止查看" />
         </LinearLayout>
 
@@ -80,37 +88,50 @@
             android:id="@+id/btn_glide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="onViewClicked"
             android:text="Glide使用" />
-
-        <Button
-            android:id="@+id/btn_expandable_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="分组的伸缩栏(ExpandableItemAdapter)" />
 
         <Button
             android:id="@+id/btn_canvas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="onViewClicked"
             android:text="Canvas绘制" />
 
         <Button
             android:id="@+id/btn_encrypt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="onViewClicked"
             android:text="Encrypt加密解密" />
 
         <Button
-            android:id="@+id/btn_github_host"
-            android:layout_width="match_parent"
+            android:id="@+id/btn_animation"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="获取 Github Host(用于配置电脑host,解决Github图片等无法访问等问题.)" />
+            android:onClick="onViewClicked"
+            android:text="Animation动画" />
 
         <Button
             android:id="@+id/btn_android5"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="onViewClicked"
             android:text="android 5.0新特性" />
+
+        <Button
+            android:id="@+id/btn_expandable_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onViewClicked"
+            android:text="分组的伸缩栏(ExpandableItemAdapter)" />
+
+        <Button
+            android:id="@+id/btn_github_host"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onViewClicked"
+            android:text="获取 Github Host(用于配置电脑host,解决Github图片等无法访问等问题.)" />
 
         <Button
             android:layout_width="match_parent"

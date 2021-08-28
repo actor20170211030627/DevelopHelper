@@ -9,5 +9,5 @@
     <!--下面不要也是一样的啊?-->
     <!--<target-->
         <!--android:name="rotation"-->
-        <!--android:animation="@anim/vector_rotation"/>-->
+        <!--android:animation="@animation_drawable_girl/vector_rotation"/>-->
 </animated-vector>

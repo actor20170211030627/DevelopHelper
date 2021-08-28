@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.AnimationsActivity">
+
+    <Button
+        android:id="@+id/btn_animation_drawable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onViewClicked"
+        android:text="1.帧动画(AnimationDrawable implements Animatable)" />
+
+    <Button
+        android:id="@+id/btn_animation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onViewClicked"
+        android:text="2.补间动画(平移,旋转,缩放,渐变)(Animation)" />
+
+    <Button
+        android:id="@+id/btn_object_animator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onViewClicked"
+        android:text="3.属性动画(平移,旋转,缩放,渐变...等)(Animator)" />
+</LinearLayout>

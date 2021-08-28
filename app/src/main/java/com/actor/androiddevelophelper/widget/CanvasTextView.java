@@ -156,6 +156,9 @@ public class CanvasTextView extends View {
         canvas.translate(0, textHeight * 5);
         String str = "10.canvas.drawPosText()";
         canvas.drawPosText(str, getPos(str), mPaint);
+
+        //测量文字宽度
+        float width = mPaint.measureText(str);
     }
 
     /**

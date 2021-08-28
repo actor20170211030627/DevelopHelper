@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.AnimationDrawableActivity">
+
+    <com.actor.myandroidframework.widget.ItemTextInputLayout
+        android:id="@+id/itil1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:itilArrowRightVisiable="gone"
+        app:itilInputEnable="false"
+        app:itilItemName="1.帧动画: "
+        app:itilText="AnimationDrawable implements Animatable"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--day06_提高_3帧动画-->
+    <!-- 250/133=1.879699248120301 -->
+    <ImageView
+        android:id="@+id/iv_animation_drawable_girl"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/animation_drawable_girl"
+        app:layout_constraintDimensionRatio="1.879699248120301"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/itil1"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <!-- 300/110=2.727272727272727 -->
+    <View
+        android:id="@+id/view_animation_drawable_audio_wave"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/animation_drawable_audio_wave"
+        app:layout_constraintDimensionRatio="2.727272727272727"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_animation_drawable_girl"
+        app:layout_constraintWidth_percent="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

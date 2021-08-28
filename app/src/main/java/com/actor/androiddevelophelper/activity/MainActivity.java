@@ -1,56 +1,37 @@
 package com.actor.androiddevelophelper.activity;
 
-import android.annotation.SuppressLint;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
-import android.widget.TextView;
 
 import com.actor.androiddevelophelper.R;
-import com.actor.androiddevelophelper.utils.CheckUpdateUtils;
+import com.actor.androiddevelophelper.databinding.ActivityMainBinding;
 import com.actor.androiddevelophelper.service.ViewPackageAndClassNameService;
 import com.actor.androiddevelophelper.utils.AccessibilityUtils;
+import com.actor.androiddevelophelper.utils.CheckUpdateUtils;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.NetworkUtils;
 import com.blankj.utilcode.util.ServiceUtils;
 import com.develophelper.android5.activity.Android5MainActivity;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
-public class MainActivity extends BaseActivity {
-
-    @BindView(R.id.tv_ip_v4)
-    TextView tvIpV4;
-    @BindView(R.id.tv_ip_v6)
-    TextView tvIpV6;
-    @BindView(R.id.tv_version)
-    TextView tvVersion;
-
-    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
 
-        tvIpV4.setText("IP(v4): " + NetworkUtils.getIPAddress(true));
-        tvIpV6.setText("IP(v6): " + NetworkUtils.getIPAddress(false));
+        viewBinding.tvIpV4.setText(getStringFormat("IP(v4): %s", NetworkUtils.getIPAddress(true)));
+        viewBinding.tvIpV6.setText(getStringFormat("IP(v6): %s", NetworkUtils.getIPAddress(false)));
 
-        tvVersion.setText(getStringFormat("VersionName: %s(VersionCode: %d)",
+        viewBinding.tvVersion.setText(getStringFormat("VersionName: %s(VersionCode: %d)",
                 AppUtils.getAppVersionName(), AppUtils.getAppVersionCode()));
         new CheckUpdateUtils().check(this);
     }
 
-    @OnClick({R.id.btn_open_development, R.id.btn_open_develop, R.id.btn_open_develop1,
-            R.id.btn_calculate_constraintlayout, R.id.btn_view_system_icon, R.id.btn_app_info,
-            R.id.btn_view_page_info, R.id.btn_stop_service, R.id.btn_glide, R.id.btn_expandable_item,
-            R.id.btn_canvas, R.id.btn_encrypt, R.id.btn_android5, R.id.btn_github_host})
-    public void onClick(View view) {
+    public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_open_development://打开开发者选项
                 startDevelopMent();
@@ -97,17 +78,20 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_glide://Glide使用
                 startActivity(new Intent(this, GlideExampleActivity.class));
                 break;
-            case R.id.btn_expandable_item://分组的伸缩栏(ExpandableItemAdapter)
-                startActivity(new Intent(this, ExpandableItemActivity.class));
-                break;
             case R.id.btn_canvas://Canvas绘制
                 startActivity(new Intent(this, CanvasDrawActivity.class));
                 break;
             case R.id.btn_encrypt://Encrypt加密解密
                 startActivity(new Intent(this, EncryptActivity.class));
                 break;
+            case R.id.btn_animation://Animation动画
+                startActivity(new Intent(this, AnimationsActivity.class));
+                break;
             case R.id.btn_android5://android 5.0新特性
                 startActivity(new Intent(this, Android5MainActivity.class));
+                break;
+            case R.id.btn_expandable_item://分组的伸缩栏(ExpandableItemAdapter)
+                startActivity(new Intent(this, ExpandableItemActivity.class));
                 break;
             case R.id.btn_github_host://获取 Github Host(用于配置电脑host,解决Github图片等无法访问等问题.)
                 startActivity(new Intent(this, GithubHostActivity.class));
