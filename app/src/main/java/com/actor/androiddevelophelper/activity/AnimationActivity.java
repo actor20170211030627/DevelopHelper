@@ -27,7 +27,7 @@ public class AnimationActivity extends BaseActivity<ActivityAnimationBinding> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("补间动画");
+        setTitle("2.补间动画(平移,旋转,缩放,渐变)");
         /**
          * 2.补间动画
          * 3.旋转动画

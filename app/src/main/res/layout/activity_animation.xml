@@ -17,8 +17,7 @@
             android:layout_marginTop="10dp"
             app:itilArrowRightVisiable="invisible"
             app:itilInputEnable="false"
-            app:itilItemName="2.补间动画(平移,旋转,缩放,渐变): "
-            app:itilText="Animation"
+            app:itilItemName="object? extends Animation"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView

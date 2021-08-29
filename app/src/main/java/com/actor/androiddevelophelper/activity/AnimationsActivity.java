@@ -38,6 +38,9 @@ public class AnimationsActivity extends BaseActivity<ActivityAnimationsBinding> 
             case R.id.btn_object_animator:
                 startActivity(new Intent(this, AnimatorActivity.class));
                 break;
+            case R.id.btn_object_animator_path:
+                startActivity(new Intent(this, AnimatorPathActivity.class));
+                break;
             default:
                 break;
         }

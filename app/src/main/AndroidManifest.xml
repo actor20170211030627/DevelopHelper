@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.AnimatorActivity"></activity>
+        <activity android:name=".activity.AnimatorPathActivity"></activity>
+        <activity android:name=".activity.AnimatorActivity" />
         <activity android:name=".activity.AnimationDrawableActivity" />
         <activity android:name=".activity.AnimationsActivity" />
         <activity android:name=".activity.AnimationActivity" />

@@ -13,8 +13,7 @@
         android:layout_marginTop="10dp"
         app:itilArrowRightVisiable="gone"
         app:itilInputEnable="false"
-        app:itilItemName="1.帧动画: "
-        app:itilText="AnimationDrawable implements Animatable"
+        app:itilItemName="AnimationDrawable implements Animatable"
         app:layout_constraintTop_toTopOf="parent" />
 
     <!--day06_提高_3帧动画-->

@@ -19,7 +19,7 @@ public class AnimationDrawableActivity extends BaseActivity<ActivityAnimationDra
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("帧动画");
+        setTitle("1.帧动画");
 
         /**
          * 1.帧动画
