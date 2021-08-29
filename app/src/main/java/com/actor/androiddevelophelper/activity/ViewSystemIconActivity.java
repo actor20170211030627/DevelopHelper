@@ -5,36 +5,31 @@ import android.os.Bundle;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.actor.androiddevelophelper.R;
 import com.actor.androiddevelophelper.adapter.SystemIconAdapter;
 import com.actor.androiddevelophelper.bean.SystemIcon;
+import com.actor.androiddevelophelper.databinding.ActivityViewSystemIconBinding;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Description: 查看系统资源图标
  * Author     : ldf
  * Date       : 2019-8-28 on 10:35
  */
-public class ViewSystemIconActivity extends BaseActivity {
+public class ViewSystemIconActivity extends BaseActivity<ActivityViewSystemIconBinding> {
 
-    @BindView(R.id.recycler_view)
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
 
-    private List<SystemIcon> items = new ArrayList<>();
+    private final List<SystemIcon> items = new ArrayList<>();
     public static final int  ID    = 0x01080000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_system_icon);
-        ButterKnife.bind(this);
-
         setTitle("查看系统资源图标");
+
+        recyclerView = viewBinding.recyclerView;
         Resources resources = getResources();
         for (int i = 0; i < 201; i++) {//152
             int id = ViewSystemIconActivity.ID + i;

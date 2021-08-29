@@ -38,6 +38,7 @@
             android:id="@+id/btn_encode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onViewClicked"
             android:text="加密" />
 
         <com.actor.myandroidframework.widget.ItemTextInputLayout
@@ -53,6 +54,7 @@
             android:id="@+id/btn_decode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onViewClicked"
             android:text="解密" />
 
         <TextView

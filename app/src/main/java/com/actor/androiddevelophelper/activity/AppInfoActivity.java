@@ -2,12 +2,13 @@ package com.actor.androiddevelophelper.activity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.actor.androiddevelophelper.R;
 import com.actor.androiddevelophelper.adapter.MyAppsAdapter;
 import com.actor.androiddevelophelper.bean.AppInfo;
+import com.actor.androiddevelophelper.databinding.ActivityAppInfoBinding;
 import com.actor.androiddevelophelper.utils.AppInfoProvider;
 import com.actor.myandroidframework.widget.BaseSpinner;
 import com.actor.myandroidframework.widget.ItemTextInputLayout;
@@ -16,23 +17,16 @@ import com.blankj.utilcode.util.KeyboardUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 /**
  * Description: 查看app信息(包括Md5&Sha1&Sha256签名)
  * Author     : ldf
  * Date       : 2019/8/28 on 22:10
  */
-public class AppInfoActivity extends BaseActivity {
+public class AppInfoActivity extends BaseActivity<ActivityAppInfoBinding> {
 
-    @BindView(R.id.itil_content)
-    ItemTextInputLayout itilContent;
-    @BindView(R.id.bs_app_type)
-    BaseSpinner<String> bsAppType;
-    @BindView(R.id.rv_apps)
-    RecyclerView        rvApps;
+    private ItemTextInputLayout itilContent;
+    private BaseSpinner<String> bsAppType;
+    private RecyclerView        rvApps;
 
     private final List<AppInfo> userApps   = new ArrayList<>();//用户app
     private final List<AppInfo> systemApps = new ArrayList<>();//系统app
@@ -43,10 +37,11 @@ public class AppInfoActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_app_info);
-        ButterKnife.bind(this);
-
         setTitle("查看app信息(包括Md5&Sha1&Sha256签名)");
+
+        itilContent = viewBinding.itilContent;
+        bsAppType = viewBinding.bsAppType;
+        rvApps = viewBinding.rvApps;
         List<AppInfo> appInfos = AppInfoProvider.getAppInfos();
         if (appInfos != null && !appInfos.isEmpty()) {
             for (AppInfo appInfo : appInfos) {
@@ -104,8 +99,7 @@ public class AppInfoActivity extends BaseActivity {
         myAdapter.notifyDataSetChanged();
     }
 
-    @OnClick(R.id.btn_search)
-    public void onViewClicked() {
+    public void onViewClicked(View view) {
         search();
     }
 }

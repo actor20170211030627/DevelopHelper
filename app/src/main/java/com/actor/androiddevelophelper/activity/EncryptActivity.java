@@ -6,6 +6,7 @@ import android.util.Pair;
 import android.view.View;
 
 import com.actor.androiddevelophelper.R;
+import com.actor.androiddevelophelper.databinding.ActivityEncryptBinding;
 import com.actor.myandroidframework.widget.ItemSpinnerLayout;
 import com.actor.myandroidframework.widget.ItemTextInputLayout;
 import com.blankj.utilcode.util.ConvertUtils;
@@ -18,10 +19,6 @@ import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 /**
  * description: 加密解密
  * https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/EncryptUtilsTest.java
@@ -30,16 +27,12 @@ import butterknife.OnClick;
  * date       : 2020/9/12 o 14:43
  * @version 1.0
  */
-public class EncryptActivity extends BaseActivity {
+public class EncryptActivity extends BaseActivity<ActivityEncryptBinding> {
 
-    @BindView(R.id.isl_encode_type)//加密类型
-            ItemSpinnerLayout   islEncodeType;
-    @BindView(R.id.itil_encode)//要加密的字符串
-            ItemTextInputLayout itilEncode;
-    @BindView(R.id.itil_encode_result)//加密结果
-            ItemTextInputLayout itilEncodeResult;
-    @BindView(R.id.itil_decode_result)//解密结果
-            ItemTextInputLayout itilDecodeResult;
+    private ItemSpinnerLayout<String>   islEncodeType;//加密类型
+    private ItemTextInputLayout itilEncode;//要加密的字符串
+    private ItemTextInputLayout itilEncodeResult;//加密结果
+    private ItemTextInputLayout itilDecodeResult;//解密结果
 
     //密码加盐值
     private static final String PWD_SALT = "MUIE*/82-DAlc3b1`";
@@ -51,14 +44,15 @@ public class EncryptActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_encrypt);
-        ButterKnife.bind(this);
-
         setTitle("加密解密");
+
+        islEncodeType = viewBinding.islEncodeType;
+        itilEncode = viewBinding.itilEncode;
+        itilEncodeResult = viewBinding.itilEncodeResult;
+        itilDecodeResult = viewBinding.itilDecodeResult;
         itilEncode.setText("这是密码123456");
     }
 
-    @OnClick({R.id.btn_encode, R.id.btn_decode})
     public void onViewClicked(View view) {
         int position = islEncodeType.getSelectedItemPosition();
         switch (view.getId()) {
@@ -97,6 +91,8 @@ public class EncryptActivity extends BaseActivity {
                     default:
                         break;
                 }
+                break;
+            default:
                 break;
         }
     }

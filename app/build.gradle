@@ -40,14 +40,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(path: ':android5')
-
-    //https://github.com/JakeWharton/butterknife
-    implementation 'com.jakewharton:butterknife:10.2.3'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
-
     //https://github.com/google/flexbox-layout
     implementation 'com.google.android:flexbox:1.0.0'
+
+
+    implementation project(path: ':android5')
 }

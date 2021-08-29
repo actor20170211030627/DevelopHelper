@@ -5,8 +5,8 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.actor.androiddevelophelper.R;
 import com.actor.androiddevelophelper.adapter.ExpandableItemAdapter;
+import com.actor.androiddevelophelper.databinding.ActivityExpandableItemBinding;
 import com.actor.androiddevelophelper.info.Level0Item;
 import com.actor.androiddevelophelper.info.Level1Item;
 import com.actor.androiddevelophelper.info.Person;
@@ -15,13 +15,9 @@ import com.chad.library.adapter.base.entity.MultiItemEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+public class ExpandableItemActivity extends BaseActivity<ActivityExpandableItemBinding> {
 
-public class ExpandableItemActivity extends BaseActivity {
-
-    @BindView(R.id.recycler_view_item_menus)
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
 
     private ExpandableItemAdapter expandableAdapter;
     private List<MultiItemEntity> items2 = new ArrayList<>();
@@ -29,11 +25,9 @@ public class ExpandableItemActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_expandable_item);
-        ButterKnife.bind(this);
-
         setTitle("分组的伸缩栏(ExpandableItemAdapter)");
 
+        recyclerView = viewBinding.recyclerViewItemMenus;
         for (int i = 0; i < 10; i++) {
             Level0Item level0Item = new Level0Item("第1层" + i, "sub");
             for (int j = 0; j < 5; j++) {

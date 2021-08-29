@@ -10,13 +10,10 @@ import androidx.annotation.NonNull;
 
 import com.actor.androiddevelophelper.Global;
 import com.actor.androiddevelophelper.R;
+import com.actor.androiddevelophelper.databinding.ActivityGithubHostBinding;
 import com.actor.androiddevelophelper.utils.ClipboardUtils;
 import com.actor.myandroidframework.utils.okhttputils.BaseCallback;
 import com.actor.myandroidframework.utils.okhttputils.MyOkHttpUtils;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * description: 获取 Github Host(用于配置电脑host,解决Github图片等无法访问等问题.)
@@ -24,24 +21,20 @@ import butterknife.OnClick;
  * @author : ldf
  * date       : 2020/12/5 on 14:39
  */
-public class GithubHostActivity extends BaseActivity {
+public class GithubHostActivity extends BaseActivity<ActivityGithubHostBinding> {
 
-    @BindView(R.id.tv_1)
-    TextView     tv1;
-    @BindView(R.id.btn_1)
-    Button       btn1;
-    @BindView(R.id.tv_result)
-    TextView     tvResult;
+    private TextView     tv1;
+    private Button       btn1;
+    private TextView     tvResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_github_host);
-        ButterKnife.bind(this);
         setTitle("获取Github Host");
 
-//        ping("223.5.5.5");
-
+        tv1 = viewBinding.tv1;
+        btn1 = viewBinding.btn1;
+        tvResult = viewBinding.tvResult;
         logError(tv1.getText());
         logError(btn1.getText());
         //设置tv内容可滑动
@@ -55,7 +48,6 @@ public class GithubHostActivity extends BaseActivity {
         });
     }
 
-    @OnClick(R.id.btn_1)
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_1://复制到剪贴板

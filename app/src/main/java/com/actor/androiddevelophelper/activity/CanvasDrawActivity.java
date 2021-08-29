@@ -3,7 +3,7 @@ package com.actor.androiddevelophelper.activity;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 
-import com.actor.androiddevelophelper.R;
+import com.actor.androiddevelophelper.databinding.ActivityCanvasDrawBinding;
 import com.actor.androiddevelophelper.widget.CanvasArcView;
 import com.actor.androiddevelophelper.widget.CanvasArgbColorView;
 import com.actor.androiddevelophelper.widget.CanvasBitmapView;
@@ -15,9 +15,6 @@ import com.actor.androiddevelophelper.widget.CanvasPointView;
 import com.actor.androiddevelophelper.widget.CanvasRectView;
 import com.actor.androiddevelophelper.widget.CanvasTextView;
 import com.actor.myandroidframework.widget.BaseSpinner;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Path绘制测试
@@ -54,19 +51,18 @@ import butterknife.ButterKnife;
  * //api29+, 绘制给定的 RenderNode。这仅在硬件渲染中受支持.
  * canvas.drawRenderNode(new RenderNode("name"));
  */
-public class CanvasDrawActivity extends BaseActivity {
+public class CanvasDrawActivity extends BaseActivity<ActivityCanvasDrawBinding> {
 
-    @BindView(R.id.bs_paint_style)
-    BaseSpinner<String> bsPaintStyle;
-    @BindView(R.id.fl_container)
-    FrameLayout         flContainer;
+    private BaseSpinner<String> bsPaintStyle;
+    private FrameLayout         flContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_canvas_draw);
-        ButterKnife.bind(this);
         setTitle("Canvas绘制测试");
+        bsPaintStyle = viewBinding.bsPaintStyle;
+        flContainer = viewBinding.flContainer;
+
         bsPaintStyle.setOnItemSelectedListener((parent, view, position, id) -> {
             switch (position) {
                 case 0://颜色drawARGB,RGB,Color,Paint

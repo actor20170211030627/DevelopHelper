@@ -15,11 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.actor.androiddevelophelper.Global;
 import com.actor.androiddevelophelper.R;
+import com.actor.androiddevelophelper.databinding.ActivityGlideExampleBinding;
 import com.actor.myandroidframework.utils.okhttputils.GetFileCallback;
 import com.actor.myandroidframework.utils.okhttputils.MyOkHttpUtils;
 import com.actor.myandroidframework.utils.picture_selector.PictureSelectorUtils;
 import com.actor.myandroidframework.widget.BaseItemDecoration;
-import com.blankj.utilcode.util.ConvertUtils;
 import com.blankj.utilcode.util.FileIOUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
@@ -58,9 +58,6 @@ import com.luck.picture.lib.listener.OnResultCallbackListener;
 import java.io.File;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 /**
  * Description: 主页 -> Glide使用
  * Author     : ldf
@@ -70,12 +67,10 @@ import butterknife.ButterKnife;
  * 官方中文文档: https://muyangmin.github.io/glide-docs-cn/
  * 中文文档:     http://mrfu.me/2016/02/27/Glide_Getting_Started/
  */
-public class GlideExampleActivity extends BaseActivity {
+public class GlideExampleActivity extends BaseActivity<ActivityGlideExampleBinding> {
 
-    @BindView(R.id.recycler_view)
-    RecyclerView recyclerView;
-    @BindView(R.id.iv_test)
-    ImageView    ivTest;
+    private RecyclerView recyclerView;
+    private ImageView    ivTest;
 
     private static final String[]       TYPES = {"url", "assets", "Resources", "File", "Uri", "byte[]",
             "raw", "raw", "ContentProvider(点击选择本都图片)"};
@@ -86,10 +81,11 @@ public class GlideExampleActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_glide_example);
-        ButterKnife.bind(this);
         setTitle("主页 -> Glide测试");
-        dp3 = ConvertUtils.dp2px(3);
+
+        recyclerView = viewBinding.recyclerView;
+        ivTest = viewBinding.ivTest;
+        dp3 = Global.DP1 * 3;
 
         recyclerView.addItemDecoration(new BaseItemDecoration(10, 10));
         MyAdapter myAdapter = new MyAdapter();

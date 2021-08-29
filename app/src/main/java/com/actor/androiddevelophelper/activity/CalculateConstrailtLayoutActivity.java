@@ -1,46 +1,40 @@
 package com.actor.androiddevelophelper.activity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.actor.androiddevelophelper.Global;
-import com.actor.androiddevelophelper.R;
+import com.actor.androiddevelophelper.databinding.ActivityCalculateConstrailtLayoutBinding;
 import com.actor.androiddevelophelper.utils.ClipboardUtils;
 import com.actor.myandroidframework.utils.SPUtils;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Description: 计算约束布局偏移率bias
  * Author     : ldf
  * Date       : 2019-8-28 on 9:48
  */
-public class CalculateConstrailtLayoutActivity extends BaseActivity {
+public class CalculateConstrailtLayoutActivity extends BaseActivity<ActivityCalculateConstrailtLayoutBinding> {
 
-    @BindView(R.id.et_view_margin_top)
-    EditText etViewMarginTop;
-    @BindView(R.id.et_view_margin_bottom)
-    EditText etViewMarginBottom;
-    @BindView(R.id.tv_result)
-    TextView tvResult;//计算结果
+    private EditText etViewMarginTop;
+    private EditText etViewMarginBottom;
+    private TextView tvResult;//计算结果
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calculate_constrailt_layout);
-        ButterKnife.bind(this);
-
 //        setTitle("计算约束布局偏移率bias");
+
+        etViewMarginTop = viewBinding.etViewMarginTop;
+        etViewMarginBottom = viewBinding.etViewMarginBottom;
+        tvResult = viewBinding.tvResult;
         etViewMarginTop.setText(SPUtils.getString(Global.MARGIN_VIEW_TOP));
         etViewMarginBottom.setText(SPUtils.getString(Global.MARGIN_VIEW_BOTTOM));
     }
 
     //开始计算
-    @OnClick(R.id.btn_calculate)
-    public void onViewClicked() {
+    public void onViewClicked(View view) {
         calculate();
     }
 

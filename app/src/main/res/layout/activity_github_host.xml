@@ -21,6 +21,7 @@
         android:id="@+id/btn_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onViewClicked"
         android:text="api来自相关Github: \n
 https://github.com/521xueweihan/GitHub520 \n
 点击本按钮复制下方信息" />
