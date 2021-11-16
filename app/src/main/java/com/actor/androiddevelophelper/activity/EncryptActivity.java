@@ -36,10 +36,13 @@ public class EncryptActivity extends BaseActivity<ActivityEncryptBinding> {
 
     //密码加盐值
     private static final String PWD_SALT = "MUIE*/82-DAlc3b1`";
-
-    //DES
-    private static final String keyDES       = "6801020304050607";
-    private static final byte[] bytesKeyDES  = ConvertUtils.hexString2Bytes(keyDES);
+    //对称加密的Key, 是16进制String
+//    private static final String KEY_SYMMETRICAL_ENCRYPTION = "18a15d151f1512b21e1c1c9ef";
+    //如果上方是16进制字符串, 可用这个方法
+//    private static final byte[] BYTES_SYMMETRICAL_ENCRYPTION = ConvertUtils.hexString2Bytes(KEY_SYMMETRICAL_ENCRYPTION);
+    //对称加密的Key, 非16进制String
+    private static final String KEY_SYMMETRICAL_ENCRYPTION = "M2929p1_3*122;kmz12!(lfp";
+    private static final byte[] BYTES_SYMMETRICAL_ENCRYPTION = ConvertUtils.string2Bytes(KEY_SYMMETRICAL_ENCRYPTION);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,8 +104,7 @@ public class EncryptActivity extends BaseActivity<ActivityEncryptBinding> {
     private void encodeDES() {
         if (isNoEmpty(itilEncode)) {
             String input = PWD_SALT + getText(itilEncode);//盐 + 输入字符串
-            String hexString = ConvertUtils.bytes2HexString(input.getBytes());//16进制
-            byte[] bytes = ConvertUtils.hexString2Bytes(hexString);
+            byte[] bytes = ConvertUtils.string2Bytes(input);
             /**
              * 参1: 16进制字符串bytes
              * 参2: 16进制key
@@ -110,7 +112,7 @@ public class EncryptActivity extends BaseActivity<ActivityEncryptBinding> {
              * 参4: 该缓冲液与IV.的内容, 复制缓冲区以防止后续修改。
              * 结果:16进制String
              */
-            String result = EncryptUtils.encryptDES2HexString(bytes, bytesKeyDES, "DES/ECB/PKCS5Padding", null);
+            String result = EncryptUtils.encryptDES2HexString(bytes, BYTES_SYMMETRICAL_ENCRYPTION, "DES/ECB/PKCS5Padding", null);
             itilEncodeResult.setText(result);
         }
     }
@@ -122,32 +124,27 @@ public class EncryptActivity extends BaseActivity<ActivityEncryptBinding> {
              * 参2: 16进制key
              * 结果:bytes
              */
-            byte[] bytes = EncryptUtils.decryptHexStringDES(getText(itilEncodeResult), bytesKeyDES, "DES/ECB/PKCS5Padding", null);
-            String hexString = ConvertUtils.bytes2HexString(bytes);//16进制String
-            byte[] bytes1 = ConvertUtils.hexString2Bytes(hexString);
-            String result = ConvertUtils.bytes2String(bytes1);
+            byte[] bytes = EncryptUtils.decryptHexStringDES(getText(itilEncodeResult), BYTES_SYMMETRICAL_ENCRYPTION, "DES/ECB/PKCS5Padding", null);
+            String result = ConvertUtils.bytes2String(bytes);
             itilDecodeResult.setText(result);
         }
     }
 
 
 
-    private static final String key3DES       = "111111111111111111111111111111111111111111111111";
-    private static final byte[] bytesKeyDES3  = ConvertUtils.hexString2Bytes(key3DES);
     //3DES(双向对称加密)
     private void encode3DES() {
         if (isNoEmpty(itilEncode)) {
             String input = PWD_SALT + getText(itilEncode);//盐 + 输入字符串
-            String hexString = ConvertUtils.bytes2HexString(input.getBytes());//16进制
-            byte[] bytes = ConvertUtils.hexString2Bytes(hexString);
+            byte[] bytes = ConvertUtils.string2Bytes(input);
             /**
-             * 参1: 16进制字符串bytes
-             * 参2: 16进制key, key size must be 128 or 192 bits
+             * 参1: 字符串bytes
+             * 参2: key, key size must be 128 or 192 bits
              * 参3: 转换的名称
              * 参4: 该缓冲液与IV.的内容, 复制缓冲区以防止后续修改。
              * 结果:16进制String
              */
-            String result = EncryptUtils.encrypt3DES2HexString(bytes, bytesKeyDES3, "DESede/ECB/PKCS5Padding", null);
+            String result = EncryptUtils.encrypt3DES2HexString(bytes, BYTES_SYMMETRICAL_ENCRYPTION, "DESede/ECB/PKCS5Padding", null);
             itilEncodeResult.setText(result);
         }
     }
@@ -156,27 +153,22 @@ public class EncryptActivity extends BaseActivity<ActivityEncryptBinding> {
         if (isNoEmpty(itilEncodeResult)) {
             /**
              * 参1: 16进制String
-             * 参2: 16进制key
+             * 参2: key
              * 结果:bytes
              */
-            byte[] bytes = EncryptUtils.decryptHexString3DES(getText(itilEncodeResult), bytesKeyDES3, "DESede/ECB/PKCS5Padding", null);
-            String hexString = ConvertUtils.bytes2HexString(bytes);//16进制String
-            byte[] bytes1 = ConvertUtils.hexString2Bytes(hexString);
-            String result = ConvertUtils.bytes2String(bytes1);
+            byte[] bytes = EncryptUtils.decryptHexString3DES(getText(itilEncodeResult), BYTES_SYMMETRICAL_ENCRYPTION, "DESede/ECB/PKCS5Padding", null);
+            String result = ConvertUtils.bytes2String(bytes);
             itilDecodeResult.setText(result);
         }
     }
 
 
 
-    private static final String keyAES       = "11111111111111111111111111111111";
-    private static final byte[] bytesKeyAES  = ConvertUtils.hexString2Bytes(keyAES);
     //AES(双向对称加密)
     private void encodeAES() {
         if (isNoEmpty(itilEncode)) {
             String input = PWD_SALT + getText(itilEncode);//盐 + 输入字符串
-            String hexString = ConvertUtils.bytes2HexString(input.getBytes());//16进制
-            byte[] bytes = ConvertUtils.hexString2Bytes(hexString);
+            byte[] bytes = ConvertUtils.string2Bytes(input);
             /**
              * 参1: 16进制字符串bytes
              * 参2: 16进制key
@@ -184,7 +176,7 @@ public class EncryptActivity extends BaseActivity<ActivityEncryptBinding> {
              * 参4: 该缓冲液与IV.的内容, 复制缓冲区以防止后续修改。
              * 结果:16进制String
              */
-            String result = EncryptUtils.encryptAES2HexString(bytes, bytesKeyAES, "AES/ECB/PKCS5Padding", null);
+            String result = EncryptUtils.encryptAES2HexString(bytes, BYTES_SYMMETRICAL_ENCRYPTION, "AES/ECB/PKCS5Padding", null);
             itilEncodeResult.setText(result);
         }
     }
@@ -196,10 +188,8 @@ public class EncryptActivity extends BaseActivity<ActivityEncryptBinding> {
              * 参2: 16进制key
              * 结果:bytes
              */
-            byte[] bytes = EncryptUtils.decryptHexStringAES(getText(itilEncodeResult), bytesKeyAES, "AES/ECB/PKCS5Padding", null);
-            String hexString = ConvertUtils.bytes2HexString(bytes);//16进制String
-            byte[] bytes1 = ConvertUtils.hexString2Bytes(hexString);
-            String result = ConvertUtils.bytes2String(bytes1);
+            byte[] bytes = EncryptUtils.decryptHexStringAES(getText(itilEncodeResult), BYTES_SYMMETRICAL_ENCRYPTION, "AES/ECB/PKCS5Padding", null);
+            String result = ConvertUtils.bytes2String(bytes);
             itilDecodeResult.setText(result);
         }
     }
@@ -210,8 +200,7 @@ public class EncryptActivity extends BaseActivity<ActivityEncryptBinding> {
     private void encodeRSA() {
         if (isNoEmpty(itilEncode)) {
             String input = PWD_SALT + getText(itilEncode);//盐 + 输入字符串
-            String hexString = ConvertUtils.bytes2HexString(input.getBytes());//16进制
-            byte[] bytes = ConvertUtils.hexString2Bytes(hexString);
+            byte[] bytes = ConvertUtils.string2Bytes(input);
 
             int keySize = 1024;
             Pair<String, String> publicPrivateKey = genKeyPair(keySize);//公钥/私钥
@@ -245,9 +234,7 @@ public class EncryptActivity extends BaseActivity<ActivityEncryptBinding> {
              * 结果:bytes
              */
             byte[] bytes = EncryptUtils.decryptHexStringRSA(getText(itilEncodeResult), privateKeyByte, keySize, "RSA/None/PKCS1Padding");
-            String hexString = ConvertUtils.bytes2HexString(bytes);//16进制String
-            byte[] bytes1 = ConvertUtils.hexString2Bytes(hexString);
-            String result = ConvertUtils.bytes2String(bytes1);
+            String result = ConvertUtils.bytes2String(bytes);
             itilDecodeResult.setText(result);
         }
     }
@@ -255,7 +242,6 @@ public class EncryptActivity extends BaseActivity<ActivityEncryptBinding> {
 
 
     private Pair<String, String> genKeyPair(int size) {
-
         if (size == 1024) {
             return Pair.create(
                     "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCYHGvdORdwsK5i+s9rKaMPL1O5eDK2XwNHRUWaxmGB/cxLxeinJrrqdAN+mME7XtGN9bklnOR3MUBQLVnWIn/IU0pnIJY9DpPTVc7x+1zFb8UUq1N0BBo/NpUG5olxuQULuAAHZOg28pnP/Pcb5XVEvpNKL0HaWjN8pu/Dzf8gZwIDAQAB",

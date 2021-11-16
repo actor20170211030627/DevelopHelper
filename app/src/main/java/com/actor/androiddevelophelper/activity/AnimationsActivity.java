@@ -18,6 +18,9 @@ import com.actor.androiddevelophelper.databinding.ActivityAnimationsBinding;
  * TODO: 2021/8/28 https://blog.csdn.net/hust_twj/article/details/78587989
  *      View动画中 android:pivotX 和 android:pivotY 属性的含义
  *      android:transformPivotX="5dp"???
+ *
+ * android 属性动画原理(view的弱用用)
+ * https://www.baidu.com/s?tn=51076811_dg&wd=android+%E5%B1%9E%E6%80%A7%E5%8A%A8%E7%94%BB%E5%8E%9F%E7%90%86
  */
 public class AnimationsActivity extends BaseActivity<ActivityAnimationsBinding> {
 

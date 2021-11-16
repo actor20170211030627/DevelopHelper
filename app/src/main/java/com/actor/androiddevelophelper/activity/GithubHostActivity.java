@@ -42,7 +42,6 @@ public class GithubHostActivity extends BaseActivity<ActivityGithubHostBinding> 
         MyOkHttpUtils.get(Global.HOSTS_FILE, null, new BaseCallback<String>(this) {
             @Override
             public void onOk(@NonNull String info, int requestId, boolean isRefresh) {
-                dismissLoadingDialog();
                 tvResult.setText(info);
             }
         });

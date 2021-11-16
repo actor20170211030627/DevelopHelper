@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 break;
             case R.id.btn_open_develop1://部分小米手机采用这种方式跳转
                 boolean b = ActivityUtils
-                        .startActivity(new Intent("com.android.settings.APPLICATION_DEVELOPMENT_SETTINGS"));
+                        .startActivity(new Intent("com." + Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS));
                 if (!b) {
                     toast("打开失败...");
                 }
@@ -106,10 +106,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
      */
     private void startDevelopMent() {
         ComponentName componentName = new ComponentName("com.android.settings", "com.android.settings.DevelopmentSettings");
-        Intent intent = new Intent();
-        intent.setComponent(componentName);
-        intent.setAction("android.intent.action.View");
-        boolean success = ActivityUtils.startActivity(intent);
+        boolean success = ActivityUtils.startActivity(new Intent("android.intent.action.View")
+                .setComponent(componentName));
         if (!success) {
             toast("打开失败...");
         }

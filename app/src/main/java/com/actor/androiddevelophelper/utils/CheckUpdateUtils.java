@@ -1,19 +1,18 @@
 package com.actor.androiddevelophelper.utils;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresPermission;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.actor.androiddevelophelper.Global;
 import com.actor.androiddevelophelper.info.CheckUpdateInfo;
 import com.actor.myandroidframework.utils.okhttputils.BaseCallback;
 import com.actor.myandroidframework.utils.okhttputils.GetFileCallback;
 import com.actor.myandroidframework.utils.okhttputils.MyOkHttpUtils;
-import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.AppUtils;
 
 import java.io.File;
@@ -38,8 +37,8 @@ public class CheckUpdateUtils {
 
     //check update检查更新
     @RequiresPermission(value = Manifest.permission.REQUEST_INSTALL_PACKAGES)
-    public void check(Object tag) {
-        MyOkHttpUtils.get(Global.CHECK_UPDATE, null, new BaseCallback<CheckUpdateInfo>(tag) {
+    public void check(AppCompatActivity activity) {
+        MyOkHttpUtils.get(Global.CHECK_UPDATE, null, new BaseCallback<CheckUpdateInfo>(activity) {
             @Override
             public void onOk(@NonNull CheckUpdateInfo info, int requestId, boolean isRefresh) {
                 List<CheckUpdateInfo.ElementsBean> elements = info.elements;
@@ -48,7 +47,7 @@ public class CheckUpdateUtils {
                     if (elementsBean != null) {
                         int versionCode = AppUtils.getAppVersionCode();
                         if (versionCode < elementsBean.versionCode) {
-                            showDialog(elementsBean.versionName);
+                            showDialog((AppCompatActivity) tag, elementsBean.versionName);
                         }
                     }
                 }
@@ -56,22 +55,20 @@ public class CheckUpdateUtils {
         });
     }
 
-    private void showDialog(String newVersionName) {
+    private void showDialog(AppCompatActivity activity, String newVersionName) {
         if (newVersionName == null) newVersionName = "";
-        Activity topActivity = ActivityUtils.getTopActivity();
-        if (topActivity == null || topActivity.isDestroyed()) return;
         if (alertDialog == null) {
-            alertDialog = new AlertDialog.Builder(topActivity)
+            alertDialog = new AlertDialog.Builder(activity)
                     .setTitle("Update: 有新版本")
                     .setMessage("有新版本: ".concat(newVersionName).concat(", 快更新吧!"))
-                    .setPositiveButton("Ok", (dialog, which) -> downloadApk(topActivity))
+                    .setPositiveButton("Ok", (dialog, which) -> downloadApk(activity))
                     .setNegativeButton("Cancel", null)
                     .create();
         }
         alertDialog.show();
     }
 
-    private void downloadApk(Activity topActivity) {
+    private void downloadApk(AppCompatActivity topActivity) {
         if (progressDialog == null) {
             progressDialog = new ProgressDialog(topActivity);
             progressDialog.setCancelable(false);
@@ -79,7 +76,7 @@ public class CheckUpdateUtils {
             progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         }
         progressDialog.show();
-        MyOkHttpUtils.getFile(Global.DOWNLOAD_URL, null, null, new GetFileCallback(topActivity, null, null) {
+        MyOkHttpUtils.getFile(Global.DOWNLOAD_URL, null, null, new GetFileCallback(topActivity, null) {
 
             @Override
             public void inProgress(float progress, long total, int id) {
