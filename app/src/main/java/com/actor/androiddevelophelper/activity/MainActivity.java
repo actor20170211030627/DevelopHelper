@@ -11,6 +11,7 @@ import com.actor.androiddevelophelper.databinding.ActivityMainBinding;
 import com.actor.androiddevelophelper.service.ViewPackageAndClassNameService;
 import com.actor.androiddevelophelper.utils.AccessibilityUtils;
 import com.actor.androiddevelophelper.utils.CheckUpdateUtils;
+import com.actor.cpptest.activity.CCallJavaActivity;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.NetworkUtils;
@@ -92,6 +93,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 break;
             case R.id.btn_expandable_item://分组的伸缩栏(ExpandableItemAdapter)
                 startActivity(new Intent(this, ExpandableItemActivity.class));
+                break;
+            case R.id.btn_c_call_java://C&Java互调测试
+                startActivity(new Intent(this, CCallJavaActivity.class));
                 break;
             case R.id.btn_github_host://获取 Github Host(用于配置电脑host,解决Github图片等无法访问等问题.)
                 startActivity(new Intent(this, GithubHostActivity.class));

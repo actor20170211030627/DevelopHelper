@@ -171,7 +171,7 @@ public class EncryptActivity extends BaseActivity<ActivityEncryptBinding> {
             byte[] bytes = ConvertUtils.string2Bytes(input);
             /**
              * 参1: 16进制字符串bytes
-             * 参2: 16进制key
+             * 参2: 16进制key, 长度24, 32可以
              * 参3: 转换的名称，例如DES/CBC/PKCS5Padding  /NoPadding(不自动填充, 有可能报错)
              * 参4: 该缓冲液与IV.的内容, 复制缓冲区以防止后续修改。
              * 结果:16进制String

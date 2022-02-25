@@ -4,7 +4,6 @@
     package="com.actor.androiddevelophelper">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <!-- 查看包名信息等, 开启后台服务 -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />

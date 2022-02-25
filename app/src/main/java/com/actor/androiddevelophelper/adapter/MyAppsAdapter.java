@@ -19,7 +19,7 @@ import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 
 import java.util.List;
 
@@ -69,7 +69,7 @@ public class MyAppsAdapter extends BaseQuickAdapter<AppInfo, BaseViewHolder> {
                 if (TextUtils.equals(selfPackageName, packageName)) {
                     ToastUtils.showShort("自己不能打开自己哟(＾Ｕ＾)ノ~ＹＯ");
                 } else if (Global.FORCED_2_SLEEP_NAME.equals(packageName)) {
-                    mContext.startActivity(new Intent(Global.FORCED_2_SLEEP_NAME + ".startup",
+                    getContext().startActivity(new Intent(Global.FORCED_2_SLEEP_NAME + ".startup",
                             Uri.parse("forced2sleep://来自'开发帮助'的消息: 起来嗨~")));
                 } else {
                     try {
@@ -90,7 +90,7 @@ public class MyAppsAdapter extends BaseQuickAdapter<AppInfo, BaseViewHolder> {
                 .setText(R.id.tv_packagename, item.packageName)
                 .setText(R.id.tv_versionname, item.versionName)
                 .setText(R.id.tv_versioncode, item.versionCode + "")
-                .setText(R.id.tv_size, Formatter.formatFileSize(mContext, item.size))
+                .setText(R.id.tv_size, Formatter.formatFileSize(getContext(), item.size))
                 .setText(R.id.tv_sign_md5, "Md5: " + item.apkMd5Sign)
                 .setText(R.id.tv_sign_sha1, "Sha1: " + item.apkSha1Sign)
                 .setText(R.id.tv_sign_sha256, "Sha256: " + item.apkSha256Sign)

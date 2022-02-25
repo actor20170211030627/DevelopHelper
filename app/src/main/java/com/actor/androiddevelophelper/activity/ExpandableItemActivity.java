@@ -10,7 +10,7 @@ import com.actor.androiddevelophelper.databinding.ActivityExpandableItemBinding;
 import com.actor.androiddevelophelper.info.Level0Item;
 import com.actor.androiddevelophelper.info.Level1Item;
 import com.actor.androiddevelophelper.info.Person;
-import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.chad.library.adapter.base.entity.node.BaseNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ public class ExpandableItemActivity extends BaseActivity<ActivityExpandableItemB
     private RecyclerView recyclerView;
 
     private ExpandableItemAdapter expandableAdapter;
-    private List<MultiItemEntity> items2 = new ArrayList<>();
+    private List<BaseNode>        items2 = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

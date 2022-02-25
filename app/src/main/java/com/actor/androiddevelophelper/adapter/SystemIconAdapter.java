@@ -10,7 +10,7 @@ import com.actor.androiddevelophelper.bean.SystemIcon;
 import com.actor.myandroidframework.utils.TextUtils2;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 
 import java.util.List;
 

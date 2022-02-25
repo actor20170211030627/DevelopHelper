@@ -19,5 +19,7 @@ dependencies {
     api 'androidx.constraintlayout:constraintlayout:2.0.4'
 
     //https://gitee.com/actor20170211030627/MyAndroidFrameWork
-    api 'com.gitee.actor20170211030627.MyAndroidFrameWork:myandroidframework:2.0.7'
+    api ('com.gitee.actor20170211030627.MyAndroidFrameWork:library:2.0.8') {
+        exclude group: 'me.jessyan', module: 'autosize'
+    }
 }

@@ -17,7 +17,7 @@ import com.blankj.utilcode.util.FileIOUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.listener.OnResultCallbackListener;
 
@@ -102,10 +102,10 @@ public class GlideExampleAdapter extends BaseQuickAdapter<String, BaseViewHolder
                 });
                 break;
             case 6://raw
-                Glide.with(iv).load(TextUtils2.getStringFormat("android.resource://%s/raw/%s", mContext.getPackageName(), "logo")).into(iv);
+                Glide.with(iv).load(TextUtils2.getStringFormat("android.resource://%s/raw/%s", getContext().getPackageName(), "logo")).into(iv);
                 break;
             case 7://raw
-                Glide.with(iv).load(TextUtils2.getStringFormat("android.resource://%s/raw/%d", mContext.getPackageName(), R.raw.logo)).into(iv);
+                Glide.with(iv).load(TextUtils2.getStringFormat("android.resource://%s/raw/%d", getContext().getPackageName(), R.raw.logo)).into(iv);
                 break;
             case 8://ContentProvider
                 //DownloadManagerUtils 查询下载: content://downloads/my_downloads/xxx

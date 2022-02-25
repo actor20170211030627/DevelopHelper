@@ -94,9 +94,9 @@ public class AppInfoProvider {
                 }
             }
              */
-            appInfo.apkMd5Sign = AppUtils.getAppSignatureMD5(packageName);
-            appInfo.apkSha1Sign = AppUtils.getAppSignatureSHA1(packageName);
-            appInfo.apkSha256Sign = AppUtils.getAppSignatureSHA256(packageName);
+            appInfo.apkMd5Sign = AppUtils.getAppSignaturesMD5(packageName).get(0);
+            appInfo.apkSha1Sign = AppUtils.getAppSignaturesSHA1(packageName).get(0);
+            appInfo.apkSha256Sign = AppUtils.getAppSignaturesSHA256(packageName).get(0);
         } catch (Exception e) {
             e.printStackTrace();
         }

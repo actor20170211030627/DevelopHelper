@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.actor.androiddevelophelper.utils.AppInfoProvider;
+import com.actor.cpptest.ConstUtils;
 import com.actor.myandroidframework.application.ActorApplication;
 
 import java.util.concurrent.TimeUnit;
@@ -23,6 +24,7 @@ public class MyApplication extends ActorApplication {
     public void onCreate() {
         super.onCreate();
         AppInfoProvider.init(this);
+        ConstUtils.jniInit(this, isAppDebug());
     }
 
     @Nullable
