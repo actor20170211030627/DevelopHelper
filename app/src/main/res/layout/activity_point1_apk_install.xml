@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.Point1ApkInstallActivity">
+
+    <com.actor.myandroidframework.widget.ItemTextInputLayout
+        android:id="@+id/itil_file_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:itilArrowRightVisiable="gone"
+        app:itilInputEnable="false"
+        app:itilItemName="安装文件名: "
+        tools:itilText="xxx.apk.1" />
+
+    <Button
+        android:id="@+id/btn_select_file"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="手动选择文件安装" />
+
+    <Button
+        android:id="@+id/btn_install"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="开始安装" />
+</androidx.appcompat.widget.LinearLayoutCompat>

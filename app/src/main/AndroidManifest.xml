@@ -4,8 +4,8 @@
     package="com.actor.androiddevelophelper">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- 查看包名信息等, 开启后台服务 -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <!-- 查看包名信息等, 开启后台服务 -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
@@ -17,12 +17,48 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
+        <activity
+            android:name=".activity.Point1ApkInstallActivity"
+            android:exported="true"
+            android:label="点我直接安装!!!">
+
+            <!--DevelopHelper示例-->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="file"/>
+                <data android:scheme="content"/>
+                <!-- 匹配xxx.apk.1 -->
+                <data android:mimeType="application/apk.1" />
+                <!-- <data android:mimeType="application/apk.1.1" />-->
+                <!-- 匹配xxx.apk.1(1).2.2.1.1, 即以.1结尾 -->
+                <data android:mimeType="application/1" />
+                <!-- 下面一行皮配不上 -->
+                <!-- <data android:mimeType="application/1(*)" /> -->
+                <!-- ??? -->
+                <!-- <data android:mimeType="*/1" /> -->
+                <!-- <data android:mimeType="*/apk.1"/> -->
+                <!-- <data android:mimeType="*/apk.1.1"/> -->
+
+                <!--
+                <data
+                    android:host="*"                        在这儿可加可不加
+                    android:mimeType="*/*"                  加上的话, 匹配任何文件.
+                    android:pathPattern=".*\\.apk\\.1.*"    地址匹配不起, 原因未知
+                    />
+                 -->
+            </intent-filter>
+        </activity>
+
         <activity android:name=".activity.AnimatorPathActivity" />
         <activity android:name=".activity.AnimatorActivity" />
         <activity android:name=".activity.AnimationDrawableActivity" />
         <activity android:name=".activity.AnimationsActivity" />
         <activity android:name=".activity.AnimationActivity" />
-        <activity android:name=".activity.MainActivity">
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,6 +78,7 @@
 
         <service
             android:name=".service.ViewPackageAndClassNameService"
+            android:exported="false"
             android:label="@string/accessibility_service_label"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
             android:priority="2147483647">
