@@ -12,22 +12,21 @@
         android:orientation="vertical">
 
         <com.actor.myandroidframework.widget.ItemSpinnerLayout
-            android:id="@+id/isl_encode_type"
+            android:id="@+id/isl_encode_type1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:islEntriesString="DES(双向对称),3DES(DES的加强版),AES,RSA(双向非对称)"
-            app:islItemName="加密类型: " />
+            android:layout_marginTop="5dp"
+            app:islEntries="@array/one_way_encryption_types"
+            app:islItemName="单向加密: " />
 
         <com.actor.myandroidframework.widget.ItemTextInputLayout
-            android:id="@+id/itil_encode"
+            android:id="@+id/itil_encode1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             app:itilItemName="加密字符串: " />
 
         <com.actor.myandroidframework.widget.ItemTextInputLayout
-            android:id="@+id/itil_encode_result"
+            android:id="@+id/itil_encode_result1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:itilArrowRightVisiable="gone"
@@ -35,17 +34,46 @@
             app:itilItemName="加密结果: " />
 
         <Button
-            android:id="@+id/btn_encode"
+            android:id="@+id/btn_encode1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onViewClicked"
-            android:text="加密" />
+            android:text="单向加密" />
+
+        <com.actor.myandroidframework.widget.ItemSpinnerLayout
+            android:id="@+id/isl_encode_type2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            app:islEntries="@array/two_way_encryption_types"
+            app:islItemName="双向加密: " />
+
+        <com.actor.myandroidframework.widget.ItemTextInputLayout
+            android:id="@+id/itil_encode2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:itilItemName="加密字符串: " />
+
+        <com.actor.myandroidframework.widget.ItemTextInputLayout
+            android:id="@+id/itil_encode_result2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:itilArrowRightVisiable="gone"
+            app:itilInputEnable="false"
+            app:itilItemName="加密结果: " />
+
+        <Button
+            android:id="@+id/btn_encode2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onViewClicked"
+            android:text="双向加密" />
 
         <com.actor.myandroidframework.widget.ItemTextInputLayout
             android:id="@+id/itil_decode_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             app:itilArrowRightVisiable="gone"
             app:itilInputEnable="false"
             app:itilItemName="解密结果: " />
@@ -57,13 +85,10 @@
             android:onClick="onViewClicked"
             android:text="解密" />
 
-        <TextView
+        <com.actor.myandroidframework.widget.webview.BaseWebView
+            android:id="@+id/web_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autoLink="web"
-            android:padding="10dp"
-            android:text="@string/encode_instruction"
-            android:textColor="@color/red_trans_CC99"
-            android:textSize="16sp" />
+            android:layout_marginTop="30dp" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

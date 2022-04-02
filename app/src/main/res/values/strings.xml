@@ -18,44 +18,51 @@
         <item>9.路径Path,TextOnPath</item>
     </string-array>
 
+    <!--单向加密类型-->
+    <string-array name="one_way_encryption_types">
+        <item>MD2</item>
+        <item>MD5(可加密文件)</item>
+        <item>SHA1</item>
+        <item>SHA224</item>
+        <item>SHA256</item>
+        <item>SHA384</item>
+        <item>SHA512</item>
+        <item>HmacMD5(需要key,下同)</item>
+        <item>HmacSHA1</item>
+        <item>HmacSHA224</item>
+        <item>HmacSHA256</item>
+        <item>HmacSHA384</item>
+        <item>HmacSHA512</item>
+    </string-array>
 
-    <!--加密说明-->
-    <string name="encode_instruction">
-        说明: \n
-        \t 1.单向加密 \n
-        \t\t MD2 加密,32位 \n
-        \t\t MD5 加密,32位 \n
-        \t\t MD5 加密文件 \n
-        \t\t SHA1 加密,40位 \n
-        \t\t SHA224 加密 \n
-        \t\t SHA256 加密 \n
-        \t\t SHA384 加密 \n
-        \t\t SHA512 加密 \n
-        \t\t HmacMD5 加密 \n
-        \t\t HmacSHA1 加密,40位 \n
-        \t\t HmacSHA224 加密 \n
-        \t\t HmacSHA256 加密,64位 \n
-        \t\t HmacSHA384 加密,96位 \n
-        \t\t HmacSHA512 加密,128位 \n
+    <!--双向加密类型-->
+    <string-array name="two_way_encryption_types">
+        <item>DES(对称加密)</item>
+        <item>3DES(三重DES)</item>
+        <item>AES</item>
+        <item>RC4</item>
+        <item>IDEA</item>
+        <item>RSA(非对称加密)</item>
+        <item>ECC(非对称加密,椭圆曲线加密算法)</item>
+    </string-array>
 
 
-        \n\n
-        2.双向加密:对称&amp;非对称加密 \n
-
-        \t 2.1.对称加密:加密和解密使用同一秘钥 \n
-        \t\t DES 加密 80位\n
-        \t\t DES 解密 \n
-        \t\t 3DES 加密, DES的加强版 \n
-        \t\t 3DES 解密 \n
-        \t\t AES 加密 \n
-        \t\t AES 解密 \n
-
-        \t 2.2.非对称加密:公钥/私钥加密,私钥/公钥解密 \n
-        \t\t 通过公钥互换,实现双向验证:https协议(浏览器公钥),U盾(自己的私钥),支付宝数字证书(自己的私钥) \n
-
-        \t\t 1.APK打包数字签名 \n
-        \t\t 2.申请第三方公钥互换SDK（如微信支付）时填入的签名SAH1值:https://www.jianshu.com/p/286d2b372334 \n
-        \t\t\t RSA 加密 \n
-        \t\t\t RSA 解密 \n
+    <string name="text_for_animation">
+        ObjectAnimator 0 \n
+        ObjectAnimator 1 \n
+        ObjectAnimator 2 \n
+        ObjectAnimator 3 \n
+        ObjectAnimator 4 \n
+        ObjectAnimator 5 \n
+        ObjectAnimator 6 \n
+        ObjectAnimator 7 \n
+        ObjectAnimator 8 \n
+        ObjectAnimator 9 \n
+        ObjectAnimator 10 \n
+        ObjectAnimator 11 \n
+        ObjectAnimator 12 \n
+        ObjectAnimator 13 \n
+        ObjectAnimator 14 \n
+        ObjectAnimator 15 \n
     </string>
 </resources>

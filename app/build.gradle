@@ -7,7 +7,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.actor.androiddevelophelper"
+        applicationId "com.actor.develop_helper"
         minSdkVersion 21
         targetSdkVersion 29
         //noinspection HighAppVersionCode

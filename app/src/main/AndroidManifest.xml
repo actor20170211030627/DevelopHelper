@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.actor.androiddevelophelper">
+    package="com.actor.develop_helper">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
@@ -29,10 +29,17 @@
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <data android:scheme="file"/>
                 <data android:scheme="content"/>
-                <!-- 匹配xxx.apk.1 -->
+                <!--
+                    1.文件
+                      xxx.apk.1                         ①
+                      xxx.apk.1.1                       ②
+                      xxx.apk.1(1).2.2.1.1, 即以.1结尾   ③
+                -->
+                <!-- 匹配: ① -->
                 <data android:mimeType="application/apk.1" />
-                <!-- <data android:mimeType="application/apk.1.1" />-->
-                <!-- 匹配xxx.apk.1(1).2.2.1.1, 即以.1结尾 -->
+                <!-- 匹配: 有时候匹配群聊的②,wx像智障一样气死个人 -->
+                <data android:mimeType="application/apk.1.1" />
+                <!-- 匹配: 单/群聊的②,③ -->
                 <data android:mimeType="application/1" />
                 <!-- 下面一行皮配不上 -->
                 <!-- <data android:mimeType="application/1(*)" /> -->

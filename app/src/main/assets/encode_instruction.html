@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>加密说明</title>
+</head>
+
+<body>
+    <h3>加密类型:</h3>
+    <ul>
+        <li>
+            <b>1. 单向加密</b> <br />
+               &emsp; <font color="red">MD2</font> 加密,32位 <br />
+               &emsp; <font color="red">MD5</font> 加密,32位 <br />
+               &emsp; MD5 加密文件 <br />
+               &emsp; <font color="red">SHA1</font> 加密,40位 <br />
+               &emsp; <font color="red">SHA224</font> 加密 <br />
+               &emsp; <font color="red">SHA256</font> 加密 <br />
+               &emsp; <font color="red">SHA384</font> 加密 <br />
+               &emsp; <font color="red">SHA512</font> 加密 <br />
+               &emsp; <font color="red">HmacMD5</font> 加密 <br />
+               &emsp; <font color="red">HmacSHA1</font> 加密,40位 <br />
+               &emsp; <font color="red">HmacSHA224</font> 加密 <br />
+               &emsp; <font color="red">HmacSHA256</font> 加密,64位 <br />
+               &emsp; <font color="red">HmacSHA384</font> 加密,96位 <br />
+               &emsp; <font color="red">HmacSHA512</font> 加密,128位 <br />
+        </li>
+        <li>
+            <b>2. 双向加密: 对称&amp;非对称加密</b> <br />
+            <ul>
+                <li>
+                    2.1 对称加密:<br />
+                    &emsp; <font color="red">DES</font> 加密(80位)、解密<br />
+                    &emsp; <font color="red">3DES</font>(三重DES) 加密、解密<br />
+                    &emsp; <font color="red">AES</font> 加密、解密<br />
+                    &emsp; <font color="red">RC4</font> 加密、解密<br />
+                    &emsp; <font color="red">IDEA</font> 加密、解密<br />
+                </li>
+                <li>
+                    2.2 非对称加密:<br />
+                    &emsp; <font color="red">RSA</font> 加密、解密<br />
+                    &emsp; <font color="red">ECC</font> 加密、解密(椭圆曲线加密算法,比RSA更强)<br />
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <br />
+    <h3>名词说明:</h3>
+    <ul>
+        <li>1.对称加密: 加密和解密使用同一秘钥</li>
+        <li>
+            2.非对称加密:<br />
+            &emsp; 公钥/私钥加密, 私钥/公钥解密.<br />
+            &emsp; 最好是公钥加密, 因为公钥很多个, 私钥只有1个. 否则如果私钥加密的话, 任何公钥都能解密, 就没有加密意义了.<br />
+            &emsp; 通过公钥互换,实现双向验证: https协议(浏览器公钥),U盾(自己的私钥),支付宝数字证书(自己的私钥). <br />
+        </li>
+        <li>
+            3.数字签名<br />
+            &emsp; 对文件进行签名, 证明文件是自己签发的. 自己私钥签名, 别人公钥验证.
+        </li>
+        <li>
+            其它:<br />
+            &emsp; 1. APK打包数字签名<br />
+            &emsp; 2. 申请第三方公钥互换SDK（如微信支付）时填入的签名SAH1值:<a href="https://www.jianshu.com/p/286d2b372334" target="_blank">APK签名机制原理详解 - 简书</a><br />
+        </li>
+    </ul>
+</body>
+</html>
