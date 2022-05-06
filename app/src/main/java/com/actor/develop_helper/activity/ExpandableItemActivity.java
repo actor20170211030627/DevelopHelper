@@ -19,8 +19,8 @@ public class ExpandableItemActivity extends BaseActivity<ActivityExpandableItemB
 
     private RecyclerView recyclerView;
 
-    private ExpandableItemAdapter expandableAdapter;
-    private List<BaseNode>        items2 = new ArrayList<>();
+    private       ExpandableItemAdapter expandableAdapter;
+    private final List<BaseNode>        items2 = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -8,6 +8,9 @@
     <!-- 查看包名信息等, 开启后台服务 -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="false"
@@ -18,17 +21,22 @@
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
         <activity
+            android:name=".activity.FileRenameActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.Point1ApkInstallActivity"
             android:exported="true"
             android:label="点我直接安装!!!">
 
-            <!--DevelopHelper示例-->
+            <!-- DevelopHelper示例 -->
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="file"/>
-                <data android:scheme="content"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="file" />
+                <data android:scheme="content" />
                 <!--
                     1.文件
                       xxx.apk.1                         ①
@@ -48,16 +56,16 @@
                 <!-- <data android:mimeType="*/apk.1"/> -->
                 <!-- <data android:mimeType="*/apk.1.1"/> -->
 
+
                 <!--
                 <data
                     android:host="*"                        在这儿可加可不加
                     android:mimeType="*/*"                  加上的话, 匹配任何文件.
                     android:pathPattern=".*\\.apk\\.1.*"    地址匹配不起, 原因未知
                     />
-                 -->
+                -->
             </intent-filter>
         </activity>
-
         <activity android:name=".activity.AnimatorPathActivity" />
         <activity android:name=".activity.AnimatorActivity" />
         <activity android:name=".activity.AnimationDrawableActivity" />
