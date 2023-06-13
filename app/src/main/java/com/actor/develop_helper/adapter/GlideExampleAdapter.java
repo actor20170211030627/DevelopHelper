@@ -12,17 +12,17 @@ import com.actor.myandroidframework.utils.LogUtils;
 import com.actor.myandroidframework.utils.TextUtils2;
 import com.actor.myandroidframework.utils.okhttputils.GetFileCallback;
 import com.actor.myandroidframework.utils.okhttputils.MyOkHttpUtils;
-import com.actor.myandroidframework.utils.picture_selector.PictureSelectorUtils;
+import com.actor.picture_selector.utils.PictureSelectorUtils;
 import com.blankj.utilcode.util.FileIOUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.luck.picture.lib.entity.LocalMedia;
-import com.luck.picture.lib.listener.OnResultCallbackListener;
+import com.luck.picture.lib.interfaces.OnResultCallbackListener;
 
 import java.io.File;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * description: 描述
@@ -47,22 +47,27 @@ public class GlideExampleAdapter extends BaseQuickAdapter<String, BaseViewHolder
         }
         setOnItemClickListener((adapter, view, position) -> {
             if (position == TYPES.length - 1) {
-                PictureSelectorUtils.selectImage(activity, true, new OnResultCallbackListener<LocalMedia>() {
-                    @Override
-                    public void onResult(List<LocalMedia> result) {
-                        //content://media/external/file/122414
-                        contentProvider = result.get(0).getPath();
-                        String path = TextUtils2.getStringFormat("选择图片, path = %s", contentProvider);
-                        LogUtils.error(path);
-                        ToastUtils.showShort(path);
-                        //刷新最后一个itme
-                        notifyItemChanged(position);
-                    }
-                    @Override
-                    public void onCancel() {
+                PictureSelectorUtils.create(activity, null)
+                        .selectImage(false)
+                        .setSingleSelect(true)
+                        .setShowCamera(false)
+                        .forResult(new OnResultCallbackListener<LocalMedia>() {
+                            @Override
+                            public void onResult(ArrayList<LocalMedia> result) {
+                                //content://media/external/file/122414
+                                contentProvider = result.get(0).getPath();
+                                String path = TextUtils2.getStringFormat("选择图片, path = %s", contentProvider);
+                                LogUtils.error(path);
+                                ToastUtils.showShort(path);
+                                //刷新最后一个itme
+                                notifyItemChanged(position);
+                            }
+
+                            @Override
+                            public void onCancel() {
                         ToastUtils.showShort("取消选择");
                     }
-                });
+                        });
             }
         });
     }

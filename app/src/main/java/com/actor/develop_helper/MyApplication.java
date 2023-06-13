@@ -3,8 +3,8 @@ package com.actor.develop_helper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.actor.develop_helper.utils.AppInfoProvider;
 import com.actor.cpptest.ConstUtils;
+import com.actor.develop_helper.utils.AppInfoProvider;
 import com.actor.myandroidframework.application.ActorApplication;
 
 import java.util.concurrent.TimeUnit;

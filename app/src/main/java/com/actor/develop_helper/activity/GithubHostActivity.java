@@ -12,6 +12,7 @@ import com.actor.develop_helper.Global;
 import com.actor.develop_helper.R;
 import com.actor.develop_helper.databinding.ActivityGithubHostBinding;
 import com.actor.develop_helper.utils.ClipboardUtils;
+import com.actor.myandroidframework.utils.LogUtils;
 import com.actor.myandroidframework.utils.okhttputils.BaseCallback;
 import com.actor.myandroidframework.utils.okhttputils.MyOkHttpUtils;
 
@@ -35,8 +36,8 @@ public class GithubHostActivity extends BaseActivity<ActivityGithubHostBinding> 
         tv1 = viewBinding.tv1;
         btn1 = viewBinding.btn1;
         tvResult = viewBinding.tvResult;
-        logError(tv1.getText());
-        logError(btn1.getText());
+        LogUtils.error(tv1.getText());
+        LogUtils.error(btn1.getText());
         //设置tv内容可滑动
         tvResult.setMovementMethod(ScrollingMovementMethod.getInstance());
         MyOkHttpUtils.get(Global.HOSTS_FILE, null, new BaseCallback<String>(this) {
@@ -54,7 +55,7 @@ public class GithubHostActivity extends BaseActivity<ActivityGithubHostBinding> 
                         "# 2.将下方内容添加进去\n%s\n" +
                         "# 3.快捷键win+R, 输入cmd, 输入命令刷新dns: ipconfig /flushdns",
                         Global.HOST_ADDRESS, tvResult.getText()));
-                toast("copy复制成功!");
+                showToast("copy复制成功!");
                 break;
             default:
                 break;

@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import com.actor.develop_helper.Global;
 import com.actor.develop_helper.R;
 import com.actor.develop_helper.databinding.ActivityPoint1ApkInstallBinding;
+import com.actor.myandroidframework.utils.LogUtils;
 import com.actor.myandroidframework.widget.ItemTextInputLayout;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.GsonUtils;
@@ -65,40 +66,40 @@ public class Point1ApkInstallActivity extends BaseActivity<ActivityPoint1ApkInst
         //         flg=0x10000001
         //         pkg=com.actor.develop_helper
         //         cmp=com.actor.develop_helper/.activity.Point1ApkInstallActivity (has extras) }
-        logError("intent = " + intent);
+        LogUtils.error("intent = " + intent);
         if (intent != null) {
             String action = intent.getAction();
             String type = intent.getType();
             Set<String> categories = intent.getCategories();
             String scheme = intent.getScheme();
             //android.intent.action.VIEW
-            logError("action = " + action);
+            LogUtils.error("action = " + action);
             /**
              * application/apk.1    文件名是: xxx.apk.1
              * application/1        文件名是: xxx.apk.1.1
              * application/1(1)     文件名是: xxx.apk.1.1(1)
              */
-            logError("type = " + type);
+            LogUtils.error("type = " + type);
             //null
-            logError("categories=" + GsonUtils.toJson(categories));
+            LogUtils.error("categories=" + GsonUtils.toJson(categories));
             //content
-            logError("scheme = " + scheme);
+            LogUtils.error("scheme = " + scheme);
 
             uri = intent.getData();
             String dataString = intent.getDataString();
             //content://com.tencent.mm.external.fileprovider/external/Android/data/com.tencent.mm/MicroMsg/Download/%E6%96%B0%E5%BB%BA%E6%96%87%E6%9C%AC%E6%96%87%E6%A1%A3.apk.1
-            logError("dataString = " + dataString);
+            LogUtils.error("dataString = " + dataString);
 
             if (uri != null) {
                 String host = uri.getHost();
                 int port = uri.getPort();
                 String scheme1 = uri.getScheme();
                 //com.tencent.mm.external.fileprovider
-                logError("host = " + host);
+                LogUtils.error("host = " + host);
                 //-1
-                logError("port = " + port);
+                LogUtils.error("port = " + port);
                 //content
-                logError("scheme1 = " + scheme1);
+                LogUtils.error("scheme1 = " + scheme1);
 
                 String path = uri.getPath();
                 List<String> pathSegments = uri.getPathSegments();
@@ -107,11 +108,11 @@ public class Point1ApkInstallActivity extends BaseActivity<ActivityPoint1ApkInst
                 }
                 String encodedPath = uri.getEncodedPath();
                 ///external/Android/data/com.tencent.mm/MicroMsg/Download/新建文本文档.apk.1
-                logError("path = " + path);
+                LogUtils.error("path = " + path);
                 //["external","Android","data","com.tencent.mm","MicroMsg","Download","新建文本文档.apk.1"]
-                logError("pathSegments = " + GsonUtils.toJson(pathSegments));
+                LogUtils.error("pathSegments = " + GsonUtils.toJson(pathSegments));
                 ///external/Android/data/com.tencent.mm/MicroMsg/Download/%E6%96%B0%E5%BB%BA%E6%96%87%E6%9C%AC%E6%96%87%E6%A1%A3.apk.1
-                logError("encodedPath = " + encodedPath);
+                LogUtils.error("encodedPath = " + encodedPath);
             }
         }
     }
@@ -141,7 +142,7 @@ public class Point1ApkInstallActivity extends BaseActivity<ActivityPoint1ApkInst
             AppUtils.installApp(uri);
 //            onBackPressed();
         } else {
-            toast("未收到安装包信息!");
+            showToast("未收到安装包信息!");
         }
     }
 
@@ -151,10 +152,5 @@ public class Point1ApkInstallActivity extends BaseActivity<ActivityPoint1ApkInst
         if (requestCode == Global.DP1 && resultCode == RESULT_OK && data != null) {
             parseIntent(data);
         }
-    }
-
-    @Override
-    protected void logError(Object msg) {
-        super.logError(msg);
     }
 }

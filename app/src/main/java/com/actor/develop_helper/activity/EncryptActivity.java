@@ -90,7 +90,7 @@ public class EncryptActivity extends BaseActivity<ActivityEncryptBinding> {
                             String result = EncryptUtils.encryptMD2ToString(getText(itilEncode1));
                             itilEncodeResult1.setText(result);
                             if (isEmpty(result)) {
-                                toast("本机未找到MD2加密方式!");
+                                showToast("本机未找到MD2加密方式!");
                             }
                         }
                         break;
@@ -193,7 +193,7 @@ public class EncryptActivity extends BaseActivity<ActivityEncryptBinding> {
                         encodeRSA();
                         break;
                     case 6://ECC(非对称加密,椭圆曲线加密算法)
-                        toast("暂未实现!");
+                        showToast("暂未实现!");
                         break;
                     default:
                         break;
@@ -222,7 +222,7 @@ public class EncryptActivity extends BaseActivity<ActivityEncryptBinding> {
                         decodeRSA();
                         break;
                     case 6://ECC(非对称加密,椭圆曲线加密算法)
-                        toast("暂未实现!");
+                        showToast("暂未实现!");
                         break;
                     default:
                         break;
@@ -376,7 +376,7 @@ public class EncryptActivity extends BaseActivity<ActivityEncryptBinding> {
                 cipher = Cipher.getInstance("IDEA/ECB/ISO10126Padding");
             } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
                 e.printStackTrace();
-                toast(e.getMessage());
+                showToast(e.getMessage());
             }
             if (keyGenerator != null && cipher != null) {
 //                int i = Security.addProvider(new BouncyCastleProvider());
@@ -389,7 +389,7 @@ public class EncryptActivity extends BaseActivity<ActivityEncryptBinding> {
                     cipher.init(Cipher.ENCRYPT_MODE, key);
                 } catch (InvalidKeyException e) {
                     e.printStackTrace();
-                    toast(e.getMessage());
+                    showToast(e.getMessage());
                 }
                 try {
                     //加密
@@ -398,7 +398,7 @@ public class EncryptActivity extends BaseActivity<ActivityEncryptBinding> {
                     itilEncodeResult2.setText(result);
                 } catch (BadPaddingException | IllegalBlockSizeException e) {
                     e.printStackTrace();
-                    toast(e.getMessage());
+                    showToast(e.getMessage());
                 }
             }
 
@@ -413,7 +413,7 @@ public class EncryptActivity extends BaseActivity<ActivityEncryptBinding> {
                 cipher.init(Cipher.DECRYPT_MODE, key);
             } catch (InvalidKeyException e) {
                 e.printStackTrace();
-                toast(e.getMessage());
+                showToast(e.getMessage());
             }
             try {
                 byte[] bytesResult = cipher.doFinal(bytes);
@@ -421,7 +421,7 @@ public class EncryptActivity extends BaseActivity<ActivityEncryptBinding> {
                 itilDecodeResult.setText(result);
             } catch (BadPaddingException | IllegalBlockSizeException e) {
                 e.printStackTrace();
-                toast(e.getMessage());
+                showToast(e.getMessage());
             }
 
         }

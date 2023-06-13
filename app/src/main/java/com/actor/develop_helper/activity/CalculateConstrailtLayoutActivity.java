@@ -52,7 +52,7 @@ public class CalculateConstrailtLayoutActivity extends BaseActivity<ActivityCalc
             String clip = getStringFormat("%s/(%s+%s)=%f", marginTopS, marginTopS, marginBottomS, bias);
             tvResult.setText("计算结果: ".concat(clip));
             ClipboardUtils.copy2Clipboard(clip);
-            toast("已复制到剪贴板");
+            showToast("已复制到剪贴板");
         }
     }
 }

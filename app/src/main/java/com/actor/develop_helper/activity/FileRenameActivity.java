@@ -10,17 +10,19 @@ import androidx.annotation.Nullable;
 
 import com.actor.develop_helper.R;
 import com.actor.develop_helper.databinding.ActivityFileRenameBinding;
-import com.actor.myandroidframework.utils.picture_selector.PictureSelectorUtils;
+import com.actor.myandroidframework.utils.LogUtils;
 import com.actor.myandroidframework.widget.ItemTextInputLayout;
+import com.actor.picture_selector.utils.PictureSelectorUtils;
 import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.UriUtils;
 import com.hjq.permissions.OnPermissionCallback;
 import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
 import com.luck.picture.lib.entity.LocalMedia;
-import com.luck.picture.lib.listener.OnResultCallbackListener;
+import com.luck.picture.lib.interfaces.OnResultCallbackListener;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,15 +35,15 @@ public class FileRenameActivity extends BaseActivity<ActivityFileRenameBinding> 
 
     private ItemTextInputLayout itilFileName, itilFileRename;
 
-    private final OnResultCallbackListener<LocalMedia> listener    = new OnResultCallbackListener<LocalMedia>() {
+    private final OnResultCallbackListener<LocalMedia> listener = new OnResultCallbackListener<LocalMedia>() {
         @Override
-        public void onResult(List<LocalMedia> result) {
+        public void onResult(ArrayList<LocalMedia> result) {
             LocalMedia localMedia = result.get(0);
             if (localMedia != null) {
                 String fileName = localMedia.getFileName();
                 if (!TextUtils.isEmpty(fileName)) {
                     String realPath = localMedia.getRealPath();
-                    logError(realPath);
+                    LogUtils.error(realPath);
                     file = new File(realPath);
                     setFileName(fileName);
                 }
@@ -52,8 +54,9 @@ public class FileRenameActivity extends BaseActivity<ActivityFileRenameBinding> 
         }
     };
     private final int                                  REQUEST_CODE = 100;
-    private       Intent                               intent, scanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-    private File file;
+    private final Intent scanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+    private       Intent intent;
+    private       File   file;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,18 +75,30 @@ public class FileRenameActivity extends BaseActivity<ActivityFileRenameBinding> 
         switch (view.getId()) {
             case R.id.btn_select_pic:
                 //选择图片
-                PictureSelectorUtils.selectImage(this, false, listener);
+                PictureSelectorUtils.create(this, null)
+                        .selectImage(false)
+                        .setSingleSelect(true)
+                        .setShowCamera(false)
+                        .forResult(listener);
                 break;
             case R.id.btn_select_video:
                 //选择视频
-                PictureSelectorUtils.selectVideo(this, false, listener);
+                PictureSelectorUtils.create(this, null)
+                        .selectVideo()
+                        .setSingleSelect(true)
+                        .setShowCamera(false)
+                        .forResult(listener);
                 break;
             case R.id.btn_select_audio:
                 //选择音频
-                PictureSelectorUtils.selectAudio(this, 1, null, listener);
+                PictureSelectorUtils.create(this, null)
+                        .selectAudio()
+                        .setSingleSelect(true)
+                        .setShowCamera(false)
+                        .forResult(listener);
                 break;
             case R.id.btn_select_others:
-                //选择其它音频
+                //选择其它文件
 //                IntentUtils.getCallIntent();
                 XXPermissions.with(this).permission(Permission.Group.STORAGE).request(new OnPermissionCallback() {
                     @Override
@@ -92,7 +107,7 @@ public class FileRenameActivity extends BaseActivity<ActivityFileRenameBinding> 
                     }
                     @Override
                     public void onDenied(List<String> permissions, boolean never) {
-                        toast("您拒绝了权限!");
+                        showToast("您拒绝了权限!");
                     }
                 });
                 break;
@@ -102,27 +117,35 @@ public class FileRenameActivity extends BaseActivity<ActivityFileRenameBinding> 
                     String fileName = getText(itilFileName);
                     String rename = getText(itilFileRename);
                     if (rename.equals(fileName)) {
-                        toast("您还未给文件改名!");
+                        showToast("您还未给文件改名!");
                         return;
                     }
-                    boolean success = FileUtils.rename(file, rename);
-                    if (success) {
-                        toast("改名成功!");
-                        itilFileName.setText(rename);
-                        //还是原来的名字...
-                        logFormat("改名后文件名称: %s", file.getName());
-//                        FileUtils.notifySystemToScan(file);//如果文件不存在就返回false, 调了没用
-                        //通知系统扫描删除的文件
-                        scanIntent.setData(Uri.parse("file://" + file.getAbsolutePath()));
-                        sendBroadcast(scanIntent);
-                        //通知系统扫描增加的文件
-                        FileUtils.notifySystemToScan(new File(file.getParent(), rename));
-                        //扫描父文件夹, 经测试没啥用
-//                        FileUtils.notifySystemToScan(file.getParent());
-
-                    } else {
-                        toast("改名失败!");
-                    }
+                    XXPermissions.with(this).permission(Permission.WRITE_EXTERNAL_STORAGE).request(new OnPermissionCallback() {
+                        @Override
+                        public void onGranted(List<String> permissions, boolean all) {
+                            boolean success = FileUtils.rename(file, rename);
+                            if (success) {
+                                showToast("改名成功!");
+                                itilFileName.setText(rename);
+                                //还是原来的名字...
+                                LogUtils.errorFormat("改名后文件名称: %s", file.getName());
+//                                FileUtils.notifySystemToScan(file);//如果文件不存在就返回false, 调了没用
+                                //通知系统扫描删除的文件
+                                scanIntent.setData(Uri.parse("file://" + file.getAbsolutePath()));
+                                sendBroadcast(scanIntent);
+                                //通知系统扫描增加的文件
+                                FileUtils.notifySystemToScan(file = new File(file.getParent(), rename));
+                                //扫描父文件夹, 经测试没啥用
+//                                FileUtils.notifySystemToScan(file.getParent());
+                            } else {
+                                showToast("改名失败!");
+                            }
+                        }
+                        @Override
+                        public void onDenied(List<String> permissions, boolean never) {
+                            showToast("您拒绝了权限!");
+                        }
+                    });
                 }
                 break;
             default:
@@ -135,17 +158,17 @@ public class FileRenameActivity extends BaseActivity<ActivityFileRenameBinding> 
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
             if (data == null) {
-                toast("data为空!");
+                showToast("data为空!");
                 return;
             }
             Uri uri = data.getData();
             if (uri == null) {
-                toast("Uri为空!");
+                showToast("Uri为空!");
                 return;
             }
             file = UriUtils.uri2File(uri);
             if (file != null) {
-                logError(file.getAbsolutePath());
+                LogUtils.error(file.getAbsolutePath());
                 setFileName(file.getName());
             }
         }

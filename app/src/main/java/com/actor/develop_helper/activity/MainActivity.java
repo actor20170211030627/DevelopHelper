@@ -43,7 +43,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 boolean success = ActivityUtils
                         .startActivity(new Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS));
                 if (!success) {
-                    toast("打开失败...");
+                    showToast("打开失败...");
                 }
                 break;
             case R.id.btn_open_develop1:
@@ -51,7 +51,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 boolean b = ActivityUtils
                         .startActivity(new Intent("com." + Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS));
                 if (!b) {
-                    toast("打开失败...");
+                    showToast("打开失败...");
                 }
                 break;
             case R.id.btn_calculate_constraintlayout:
@@ -70,9 +70,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 //查看当前页面包名&类名(需打开辅助功能)
                 if (!isAccessibilitySettingsOn()) {
                     AccessibilityUtils.openAccessibility(activity);
-                    toast("请开启辅助功能");
+                    showToast("请开启辅助功能");
                 } else {
-                    toast("辅助功能已开启");
+                    showToast("辅助功能已开启");
                 }
                 boolean appLockServiceIsRunning = ServiceUtils.isServiceRunning(ViewPackageAndClassNameService.class);
                 if (!appLockServiceIsRunning) {
@@ -82,7 +82,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
             case R.id.btn_stop_service:
                 //停止服务
                 boolean b1 = stopService(new Intent(activity, ViewPackageAndClassNameService.class));
-                toast("辅助功能停止失败, 请自己杀后台...");
+                showToast("辅助功能停止失败, 请自己杀后台...");
                 break;
             case R.id.btn_glide:
                 //Glide使用
@@ -133,7 +133,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         boolean success = ActivityUtils.startActivity(new Intent("android.intent.action.View")
                 .setComponent(componentName));
         if (!success) {
-            toast("打开失败...");
+            showToast("打开失败...");
         }
     }
 

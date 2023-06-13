@@ -45,7 +45,7 @@ android {
 //            # ARMv8     arm64-v8a   64位，从2014年
 //            # MIPS64    mips64      64位，从2014年
 //            # x86_64    x86_64      64位，从2014年
-            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86'
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
 
             //已经在 CMakeLists.txt 中添加
 //            ldLibs "log"
@@ -79,10 +79,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    //https://gitee.com/actor20170211030627/MyAndroidFrameWork
-    api ('com.gitee.actor20170211030627.MyAndroidFrameWork:library:2.0.8') {
-        exclude group: 'me.jessyan', module: 'autosize'
-    }
+    //https://github.com/actor20170211030627/MyAndroidFrameWork
+    implementation 'com.github.actor20170211030627.MyAndroidFrameWork:library:2.1.1.2'
 }

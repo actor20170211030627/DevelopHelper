@@ -16,10 +16,8 @@ android {
 dependencies {
     api fileTree(dir: "libs", include: ["*.jar"])
     api 'androidx.palette:palette:1.0.0'
-    api 'androidx.constraintlayout:constraintlayout:2.0.4'
+    api 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    //https://gitee.com/actor20170211030627/MyAndroidFrameWork
-    api ('com.gitee.actor20170211030627.MyAndroidFrameWork:library:2.0.8') {
-        exclude group: 'me.jessyan', module: 'autosize'
-    }
+    //https://github.com/actor20170211030627/MyAndroidFrameWork
+    api 'com.github.actor20170211030627.MyAndroidFrameWork:library:2.1.1.2'
 }
