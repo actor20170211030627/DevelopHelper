@@ -9,6 +9,7 @@ import com.actor.develop_helper.Global;
 import com.actor.develop_helper.databinding.ActivityCalculateConstrailtLayoutBinding;
 import com.actor.develop_helper.utils.ClipboardUtils;
 import com.actor.myandroidframework.utils.SPUtils;
+import com.actor.myandroidframework.utils.toaster.ToasterUtils;
 
 /**
  * Description: 计算约束布局偏移率bias
@@ -52,7 +53,7 @@ public class CalculateConstrailtLayoutActivity extends BaseActivity<ActivityCalc
             String clip = getStringFormat("%s/(%s+%s)=%f", marginTopS, marginTopS, marginBottomS, bias);
             tvResult.setText("计算结果: ".concat(clip));
             ClipboardUtils.copy2Clipboard(clip);
-            showToast("已复制到剪贴板");
+            ToasterUtils.success("已复制到剪贴板");
         }
     }
 }

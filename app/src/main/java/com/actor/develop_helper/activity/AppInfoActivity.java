@@ -10,7 +10,7 @@ import com.actor.develop_helper.databinding.ActivityAppInfoBinding;
 import com.actor.develop_helper.utils.AppInfoProvider;
 import com.actor.myandroidframework.utils.LogUtils;
 import com.actor.myandroidframework.widget.BaseSpinner;
-import com.actor.myandroidframework.widget.ItemTextInputLayout;
+import com.actor.other_utils.widget.ItemTextInputLayout;
 import com.blankj.utilcode.util.KeyboardUtils;
 
 import java.util.ArrayList;

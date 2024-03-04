@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.actor.myandroidframework.widget.ItemTextInputLayout
+        <com.actor.other_utils.widget.ItemTextInputLayout
             android:id="@+id/itil2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_translate_vertical" />
 
 
-        <com.actor.myandroidframework.widget.ItemTextInputLayout
+        <com.actor.other_utils.widget.ItemTextInputLayout
             android:id="@+id/itil3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
             app:layout_constraintTop_toTopOf="@id/iv_rotate1" />
 
 
-        <com.actor.myandroidframework.widget.ItemTextInputLayout
+        <com.actor.other_utils.widget.ItemTextInputLayout
             android:id="@+id/itil4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
             app:layout_constraintTop_toTopOf="@id/iv_scale1" />
 
 
-        <com.actor.myandroidframework.widget.ItemTextInputLayout
+        <com.actor.other_utils.widget.ItemTextInputLayout
             android:id="@+id/itil5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -148,7 +148,7 @@
             app:layout_constraintTop_toTopOf="@id/iv_alpha1" />
 
 
-        <com.actor.myandroidframework.widget.ItemTextInputLayout
+        <com.actor.other_utils.widget.ItemTextInputLayout
             android:id="@+id/itil6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

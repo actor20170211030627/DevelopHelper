@@ -12,6 +12,7 @@ import com.actor.develop_helper.service.ViewPackageAndClassNameService;
 import com.actor.develop_helper.utils.AccessibilityUtils;
 import com.actor.develop_helper.utils.CheckUpdateUtils;
 import com.actor.cpptest.activity.CCallJavaActivity;
+import com.actor.myandroidframework.utils.toaster.ToasterUtils;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.NetworkUtils;
@@ -43,7 +44,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 boolean success = ActivityUtils
                         .startActivity(new Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS));
                 if (!success) {
-                    showToast("打开失败...");
+                    ToasterUtils.error("打开失败...");
                 }
                 break;
             case R.id.btn_open_develop1:
@@ -51,7 +52,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 boolean b = ActivityUtils
                         .startActivity(new Intent("com." + Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS));
                 if (!b) {
-                    showToast("打开失败...");
+                    ToasterUtils.error("打开失败...");
                 }
                 break;
             case R.id.btn_calculate_constraintlayout:
@@ -69,20 +70,20 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
             case R.id.btn_view_page_info:
                 //查看当前页面包名&类名(需打开辅助功能)
                 if (!isAccessibilitySettingsOn()) {
-                    AccessibilityUtils.openAccessibility(activity);
-                    showToast("请开启辅助功能");
+                    AccessibilityUtils.openAccessibility(mActivity);
+                    ToasterUtils.warning("请开启辅助功能");
                 } else {
-                    showToast("辅助功能已开启");
+                    ToasterUtils.success("辅助功能已开启");
                 }
                 boolean appLockServiceIsRunning = ServiceUtils.isServiceRunning(ViewPackageAndClassNameService.class);
                 if (!appLockServiceIsRunning) {
-                    startForegroundService(new Intent(activity, ViewPackageAndClassNameService.class));
+                    startForegroundService(new Intent(mActivity, ViewPackageAndClassNameService.class));
                 }
                 break;
             case R.id.btn_stop_service:
                 //停止服务
-                boolean b1 = stopService(new Intent(activity, ViewPackageAndClassNameService.class));
-                showToast("辅助功能停止失败, 请自己杀后台...");
+                boolean b1 = stopService(new Intent(mActivity, ViewPackageAndClassNameService.class));
+                ToasterUtils.warning("辅助功能停止失败, 请自己杀后台...");
                 break;
             case R.id.btn_glide:
                 //Glide使用
@@ -133,7 +134,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         boolean success = ActivityUtils.startActivity(new Intent("android.intent.action.View")
                 .setComponent(componentName));
         if (!success) {
-            showToast("打开失败...");
+            ToasterUtils.error("打开失败...");
         }
     }
 

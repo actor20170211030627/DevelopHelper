@@ -15,6 +15,7 @@ import com.actor.cpptest.JavaCallC;
 import com.actor.cpptest.R;
 import com.actor.cpptest.databinding.ActivityCCallJavaBinding;
 import com.actor.cpptest.widget.VerticalProgressBar;
+import com.actor.myandroidframework.utils.toaster.ToasterUtils;
 
 import java.util.Arrays;
 
@@ -135,7 +136,7 @@ public class CCallJavaActivity extends BaseActivity<ActivityCCallJavaBinding> {
         progressBar.setMax(100);
         String ip = ConstUtils.getString(ConstUtils.IP);
         String port = ConstUtils.getString(ConstUtils.PORT);
-        showToast(getStringFormat("ip&port = %s:%s", ip, port));
+        ToasterUtils.success(getStringFormat("ip&port = %s:%s", ip, port));
 
 //        bitmapLogo = BitmapFactory.decodeResource(getResources(), R.drawable.logo);
 //        width = bitmapLogo.getWidth();
@@ -170,14 +171,14 @@ public class CCallJavaActivity extends BaseActivity<ActivityCCallJavaBinding> {
             CCallJava.getInstance().callByC();
             // FIXME: 2021/6/8 c调用java方法崩溃!!!
 //                CCallJava.getInstance().callByC(getClass(), "calledByC", "(Ljava/lang/String;)V");
-            showToast("c回调java普通方法成功");
+                ToasterUtils.success("c回调java普通方法成功");
         } else
             if (id == R.id.btn_5) {
             //C回调Java, 静态方法
             CCallJava.staticMethodCalledVoid();
             // FIXME: 2021/6/8 下方方法崩溃
 //                CCallJava.staticMethodCalledVoid(getClass(), "calledByC", "(Ljava/lang/String;)V");
-            showToast("c回调java静态方法成功");
+                ToasterUtils.success("c回调java静态方法成功");
         } else
             if (id == R.id.btn_start_monitor) {
                 //开始监测锅炉压力
@@ -210,7 +211,7 @@ public class CCallJavaActivity extends BaseActivity<ActivityCCallJavaBinding> {
 //                bitmapLogo.getPixels(pixels, 0, width, 0, 0, width, height);
 //                jni.StyleLomoHDR(pixels, width, height);
 //                Glide.with(this).load(pixels).into(iv);
-            showToast("我的荣耀v30不适配这个图片处理.so文件...");
+                ToasterUtils.warning("我的荣耀v30不适配这个图片处理.so文件...");
         } else
             if (id == R.id.btn_plasma) {
                 //plasma等离子体示例
@@ -218,14 +219,14 @@ public class CCallJavaActivity extends BaseActivity<ActivityCCallJavaBinding> {
         } else
             if (id == R.id.btn_water_ripple) {
                 //plasma做水波纹
-            showToast("未找到对应的.c文件, 所以驴子水波纹实现不了!");
+                ToasterUtils.warning("未找到对应的.c文件, 所以驴子水波纹实现不了!");
         }
     }
 
     //供C语言调用
     public void calledByC(String msg) {
         System.out.println("calledByC: msg=" + msg);
-        showToast("calledByC: msg=" + msg);
+        ToasterUtils.success("calledByC: msg=" + msg);
     }
 
     /**

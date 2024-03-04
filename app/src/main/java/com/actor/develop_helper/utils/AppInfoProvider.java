@@ -84,8 +84,11 @@ public class AppInfoProvider {
         new Thread(new Runnable() {
             @Override
             public void run() {
+//                List<AppUtils.AppInfo> appsInfo = AppUtils.getAppsInfo();
                 //获取已安装的所有app
                 List<PackageInfo> installedPackages = packageMamager.getInstalledPackages(0);
+//                LogUtils.errorFormat("appsInfo: %d, installedPackages: %d", appsInfo.size(), installedPackages.size());
+
                 for (PackageInfo packageInfo : installedPackages) {
                     ApplicationInfo applicationInfo = packageInfo.applicationInfo;//当前app的应用信息
                     int flags = applicationInfo.flags;//当前应用的标记, 用于表示当前app是否具有某种特性

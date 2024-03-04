@@ -15,6 +15,7 @@ import com.actor.develop_helper.utils.ClipboardUtils;
 import com.actor.myandroidframework.utils.LogUtils;
 import com.actor.myandroidframework.utils.okhttputils.BaseCallback;
 import com.actor.myandroidframework.utils.okhttputils.MyOkHttpUtils;
+import com.actor.myandroidframework.utils.toaster.ToasterUtils;
 
 /**
  * description: 获取 Github Host(用于配置电脑host,解决Github图片等无法访问等问题.)
@@ -55,7 +56,7 @@ public class GithubHostActivity extends BaseActivity<ActivityGithubHostBinding> 
                         "# 2.将下方内容添加进去\n%s\n" +
                         "# 3.快捷键win+R, 输入cmd, 输入命令刷新dns: ipconfig /flushdns",
                         Global.HOST_ADDRESS, tvResult.getText()));
-                showToast("copy复制成功!");
+                ToasterUtils.success("copy复制成功!");
                 break;
             default:
                 break;

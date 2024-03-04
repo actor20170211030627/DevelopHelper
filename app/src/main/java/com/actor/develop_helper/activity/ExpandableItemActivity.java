@@ -40,7 +40,7 @@ public class ExpandableItemActivity extends BaseActivity<ActivityExpandableItemB
             items2.add(level0Item);
         }
         expandableAdapter = new ExpandableItemAdapter(items2);
-        final GridLayoutManager manager = new GridLayoutManager(activity, 3);
+        final GridLayoutManager manager = new GridLayoutManager(mActivity, 3);
         //设置步长
         manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override

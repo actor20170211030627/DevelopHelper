@@ -47,7 +47,7 @@ public class GlideExampleAdapter extends BaseQuickAdapter<String, BaseViewHolder
         }
         setOnItemClickListener((adapter, view, position) -> {
             if (position == TYPES.length - 1) {
-                PictureSelectorUtils.create(activity, null)
+                PictureSelectorUtils.create(this.activity, null)
                         .selectImage(false)
                         .setSingleSelect(true)
                         .setShowCamera(false)
