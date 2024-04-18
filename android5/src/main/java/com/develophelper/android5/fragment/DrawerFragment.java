@@ -65,7 +65,7 @@ public class DrawerFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         //设置侧边栏菜单内容
-        ArrayAdapter adapter = new ArrayAdapter<String>(activity, android.R.layout.simple_list_item_activated_1);
+        ArrayAdapter adapter = new ArrayAdapter<String>(mActivity, android.R.layout.simple_list_item_activated_1);
 
         //从strings文件中获取菜单内容
         Object[] array = getActivity()

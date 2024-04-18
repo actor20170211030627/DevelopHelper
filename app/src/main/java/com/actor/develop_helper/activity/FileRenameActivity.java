@@ -11,7 +11,8 @@ import androidx.annotation.Nullable;
 import com.actor.develop_helper.R;
 import com.actor.develop_helper.databinding.ActivityFileRenameBinding;
 import com.actor.myandroidframework.utils.LogUtils;
-import com.actor.myandroidframework.widget.ItemTextInputLayout;
+import com.actor.myandroidframework.utils.toaster.ToasterUtils;
+import com.actor.other_utils.widget.ItemTextInputLayout;
 import com.actor.picture_selector.utils.PictureSelectorUtils;
 import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.UriUtils;
@@ -107,7 +108,7 @@ public class FileRenameActivity extends BaseActivity<ActivityFileRenameBinding> 
                     }
                     @Override
                     public void onDenied(List<String> permissions, boolean never) {
-                        showToast("您拒绝了权限!");
+                        ToasterUtils.warning("您拒绝了权限!");
                     }
                 });
                 break;
@@ -117,7 +118,7 @@ public class FileRenameActivity extends BaseActivity<ActivityFileRenameBinding> 
                     String fileName = getText(itilFileName);
                     String rename = getText(itilFileRename);
                     if (rename.equals(fileName)) {
-                        showToast("您还未给文件改名!");
+                        ToasterUtils.warning("您还未给文件改名!");
                         return;
                     }
                     XXPermissions.with(this).permission(Permission.WRITE_EXTERNAL_STORAGE).request(new OnPermissionCallback() {
@@ -125,7 +126,7 @@ public class FileRenameActivity extends BaseActivity<ActivityFileRenameBinding> 
                         public void onGranted(List<String> permissions, boolean all) {
                             boolean success = FileUtils.rename(file, rename);
                             if (success) {
-                                showToast("改名成功!");
+                                ToasterUtils.success("改名成功!");
                                 itilFileName.setText(rename);
                                 //还是原来的名字...
                                 LogUtils.errorFormat("改名后文件名称: %s", file.getName());
@@ -138,12 +139,12 @@ public class FileRenameActivity extends BaseActivity<ActivityFileRenameBinding> 
                                 //扫描父文件夹, 经测试没啥用
 //                                FileUtils.notifySystemToScan(file.getParent());
                             } else {
-                                showToast("改名失败!");
+                                ToasterUtils.error("改名失败!");
                             }
                         }
                         @Override
                         public void onDenied(List<String> permissions, boolean never) {
-                            showToast("您拒绝了权限!");
+                            ToasterUtils.warning("您拒绝了权限!");
                         }
                     });
                 }
@@ -158,12 +159,12 @@ public class FileRenameActivity extends BaseActivity<ActivityFileRenameBinding> 
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
             if (data == null) {
-                showToast("data为空!");
+                ToasterUtils.warning("data为空!");
                 return;
             }
             Uri uri = data.getData();
             if (uri == null) {
-                showToast("Uri为空!");
+                ToasterUtils.warning("Uri为空!");
                 return;
             }
             file = UriUtils.uri2File(uri);

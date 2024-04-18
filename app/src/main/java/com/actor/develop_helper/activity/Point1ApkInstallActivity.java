@@ -11,7 +11,8 @@ import com.actor.develop_helper.Global;
 import com.actor.develop_helper.R;
 import com.actor.develop_helper.databinding.ActivityPoint1ApkInstallBinding;
 import com.actor.myandroidframework.utils.LogUtils;
-import com.actor.myandroidframework.widget.ItemTextInputLayout;
+import com.actor.myandroidframework.utils.toaster.ToasterUtils;
+import com.actor.other_utils.widget.ItemTextInputLayout;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.GsonUtils;
 
@@ -142,7 +143,7 @@ public class Point1ApkInstallActivity extends BaseActivity<ActivityPoint1ApkInst
             AppUtils.installApp(uri);
 //            onBackPressed();
         } else {
-            showToast("未收到安装包信息!");
+            ToasterUtils.warning("未收到安装包信息!");
         }
     }
 

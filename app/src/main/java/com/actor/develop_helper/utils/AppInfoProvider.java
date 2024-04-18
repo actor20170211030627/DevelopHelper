@@ -1,12 +1,20 @@
 package com.actor.develop_helper.utils;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
+import androidx.annotation.NonNull;
+
 import com.actor.develop_helper.bean.AppInfo;
+import com.actor.myandroidframework.utils.LogUtils;
 import com.blankj.utilcode.util.AppUtils;
+import com.blankj.utilcode.util.ToastUtils;
+import com.hjq.permissions.OnPermissionCallback;
+import com.hjq.permissions.Permission;
+import com.hjq.permissions.XXPermissions;
 
 import java.io.File;
 import java.security.MessageDigest;
@@ -43,13 +51,44 @@ public class AppInfoProvider {
     private static final List<AppInfo> appInfos = new ArrayList<>();
 
     public static void init(Application context) {
+        if (XXPermissions.isGranted(context, Permission.GET_INSTALLED_APPS)) {
+            getInstalledPackages(context);
+        } else {
+            XXPermissions.with(context).permission(Permission.GET_INSTALLED_APPS).request(new OnPermissionCallback() {
+                @Override
+                public void onGranted(@NonNull List<String> permissions, boolean allGranted) {
+                    if (allGranted) {
+                        getInstalledPackages(context);
+                    } else {
+                        ToastUtils.showShort("请同意读取应用列表权限!");
+                        XXPermissions.startPermissionActivity(context, Permission.GET_INSTALLED_APPS);
+                    }
+                }
+
+                @Override
+                public void onDenied(@NonNull List<String> permissions, boolean doNotAskAgain) {
+                    ToastUtils.showShort("请同意读取应用列表权限!");
+                    XXPermissions.startPermissionActivity(context, Permission.GET_INSTALLED_APPS);
+                }
+            });
+        }
+    }
+
+    /**
+     * FIXME: 2023/9/11
+     * Vivo V1829T (Android 10, API 29), 仅能读取到2~3个用户安装的应用, 为啥??
+     */
+    private static void getInstalledPackages(Context context) {
         appInfos.clear();
         final PackageManager packageMamager = context.getPackageManager();
         new Thread(new Runnable() {
             @Override
             public void run() {
+//                List<AppUtils.AppInfo> appsInfo = AppUtils.getAppsInfo();
                 //获取已安装的所有app
                 List<PackageInfo> installedPackages = packageMamager.getInstalledPackages(0);
+//                LogUtils.errorFormat("appsInfo: %d, installedPackages: %d", appsInfo.size(), installedPackages.size());
+
                 for (PackageInfo packageInfo : installedPackages) {
                     ApplicationInfo applicationInfo = packageInfo.applicationInfo;//当前app的应用信息
                     int flags = applicationInfo.flags;//当前应用的标记, 用于表示当前app是否具有某种特性
@@ -94,10 +133,14 @@ public class AppInfoProvider {
                 }
             }
              */
-            appInfo.apkMd5Sign = AppUtils.getAppSignaturesMD5(packageName).get(0);
-            appInfo.apkSha1Sign = AppUtils.getAppSignaturesSHA1(packageName).get(0);
-            appInfo.apkSha256Sign = AppUtils.getAppSignaturesSHA256(packageName).get(0);
+            List<String> appSignaturesMD5 = AppUtils.getAppSignaturesMD5(packageName);
+            List<String> appSignaturesSHA1 = AppUtils.getAppSignaturesSHA1(packageName);
+            List<String> appSignaturesSHA256 = AppUtils.getAppSignaturesSHA256(packageName);
+            if (appSignaturesMD5.size() > 0) appInfo.apkMd5Sign = appSignaturesMD5.get(0);
+            if (appSignaturesSHA1.size() > 0) appInfo.apkSha1Sign = appSignaturesSHA1.get(0);
+            if (appSignaturesSHA256.size() > 0) appInfo.apkSha256Sign = appSignaturesSHA256.get(0);
         } catch (Exception e) {
+            LogUtils.error(packageName);
             e.printStackTrace();
         }
     }

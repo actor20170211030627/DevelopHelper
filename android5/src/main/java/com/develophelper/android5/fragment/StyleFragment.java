@@ -68,7 +68,7 @@ public class StyleFragment extends BaseFragment implements
 				.getStringArray(R.array.style_names);
 		//创建数组适配器
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-				activity/*getActivity().getActionBar().getThemedContext()*/,
+				mActivity/*getActivity().getActionBar().getThemedContext()*/,
 				android.R.layout.simple_list_item_activated_1,
 				array);
 
@@ -212,7 +212,7 @@ public class StyleFragment extends BaseFragment implements
         Intent intent = getActivity().getIntent();
         getActivity().overridePendingTransition(0, 0);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        FragmentUtils.removeAll(activity.getSupportFragmentManager());
+        FragmentUtils.removeAll(mActivity.getSupportFragmentManager());
         //关闭fragment依附的MainActivity
         getActivity().finish();
 

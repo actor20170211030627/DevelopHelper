@@ -4,14 +4,13 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.actor.develop_helper.adapter.MyAppsAdapter;
 import com.actor.develop_helper.bean.AppInfo;
 import com.actor.develop_helper.databinding.ActivityAppInfoBinding;
 import com.actor.develop_helper.utils.AppInfoProvider;
+import com.actor.myandroidframework.utils.LogUtils;
 import com.actor.myandroidframework.widget.BaseSpinner;
-import com.actor.myandroidframework.widget.ItemTextInputLayout;
+import com.actor.other_utils.widget.ItemTextInputLayout;
 import com.blankj.utilcode.util.KeyboardUtils;
 
 import java.util.ArrayList;
@@ -26,8 +25,6 @@ public class AppInfoActivity extends BaseActivity<ActivityAppInfoBinding> {
 
     private ItemTextInputLayout itilContent;
     private BaseSpinner<String> bsAppType;
-    private RecyclerView        rvApps;
-
     private final List<AppInfo> userApps   = new ArrayList<>();//用户app
     private final List<AppInfo> systemApps = new ArrayList<>();//系统app
     private final List<AppInfo> nowAllApps = new ArrayList<>();//搜索前,目前应该显示的全部app
@@ -41,9 +38,9 @@ public class AppInfoActivity extends BaseActivity<ActivityAppInfoBinding> {
 
         itilContent = viewBinding.itilContent;
         bsAppType = viewBinding.bsAppType;
-        rvApps = viewBinding.rvApps;
         List<AppInfo> appInfos = AppInfoProvider.getAppInfos();
         if (appInfos != null && !appInfos.isEmpty()) {
+            LogUtils.error("已安装: " + appInfos.size());
             for (AppInfo appInfo : appInfos) {
                 if (appInfo.isSystemApp) {
                     systemApps.add(appInfo);
@@ -52,7 +49,10 @@ public class AppInfoActivity extends BaseActivity<ActivityAppInfoBinding> {
             nowAllApps.addAll(userApps);
             //搜索结果, 默认是已安装app
             searchApps.addAll(userApps);
-            rvApps.setAdapter(myAdapter = new MyAppsAdapter(searchApps));
+
+            LogUtils.error("systemApps: " + systemApps.size());
+            LogUtils.error("userApps: " + userApps.size());
+            viewBinding.rvApps.setAdapter(myAdapter = new MyAppsAdapter(searchApps));
         }
         //
         bsAppType.setOnItemSelectedListener((parent, view, position, id) -> search());

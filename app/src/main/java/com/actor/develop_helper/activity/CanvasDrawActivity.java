@@ -67,43 +67,43 @@ public class CanvasDrawActivity extends BaseActivity<ActivityCanvasDrawBinding> 
             switch (position) {
                 case 0://颜色drawARGB,RGB,Color,Paint
                     flContainer.removeAllViews();
-                    flContainer.addView(new CanvasArgbColorView(activity));
+                    flContainer.addView(new CanvasArgbColorView(mActivity));
                     break;
                 case 1://线drawLine,drawLines
                     flContainer.removeAllViews();
-                    flContainer.addView(new CanvasLineView(activity));
+                    flContainer.addView(new CanvasLineView(mActivity));
                     break;
                 case 2://文字drawText,drawPosText
                     flContainer.removeAllViews();
-                    flContainer.addView(new CanvasTextView(activity));
+                    flContainer.addView(new CanvasTextView(mActivity));
                     break;
                 case 3://点drawPoint,drawPoints
                     flContainer.removeAllViews();
-                    flContainer.addView(new CanvasPointView(activity));
+                    flContainer.addView(new CanvasPointView(mActivity));
                     break;
                 case 4://矩形drawRect
                     flContainer.removeAllViews();
-                    flContainer.addView(new CanvasRectView(activity));
+                    flContainer.addView(new CanvasRectView(mActivity));
                     break;
                 case 5://圆drawCircle
                     flContainer.removeAllViews();
-                    flContainer.addView(new CanvasCircleView(activity));
+                    flContainer.addView(new CanvasCircleView(mActivity));
                     break;
                 case 6://椭圆drawOval
                     flContainer.removeAllViews();
-                    flContainer.addView(new CanvasOvalView(activity));
+                    flContainer.addView(new CanvasOvalView(mActivity));
                     break;
                 case 7://圆弧drawArc
                     flContainer.removeAllViews();
-                    flContainer.addView(new CanvasArcView(activity));
+                    flContainer.addView(new CanvasArcView(mActivity));
                     break;
                 case 8://位图drawBitmap
                     flContainer.removeAllViews();
-                    flContainer.addView(new CanvasBitmapView(activity));
+                    flContainer.addView(new CanvasBitmapView(mActivity));
                     break;
                 case 9://路径drawPath,drawTextOnPath
                     flContainer.removeAllViews();
-                    flContainer.addView(new CanvasPathView(activity));
+                    flContainer.addView(new CanvasPathView(mActivity));
                     break;
                 default:
                     break;

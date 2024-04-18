@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activity.AnimationDrawableActivity">
 
-    <com.actor.myandroidframework.widget.ItemTextInputLayout
+    <com.actor.other_utils.widget.ItemTextInputLayout
         android:id="@+id/itil1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".activity.Point1ApkInstallActivity">
 
-    <com.actor.myandroidframework.widget.ItemTextInputLayout
+    <com.actor.other_utils.widget.ItemTextInputLayout
         android:id="@+id/itil_file_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

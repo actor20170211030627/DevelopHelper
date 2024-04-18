@@ -1,6 +1,5 @@
 package com.actor.develop_helper;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.actor.cpptest.ConstUtils;
@@ -33,12 +32,6 @@ public class MyApplication extends ActorApplication {
         return builder.connectTimeout(30_000L, TimeUnit.MILLISECONDS)
                 .readTimeout(30_000L, TimeUnit.MILLISECONDS)
                 .writeTimeout(30_000L, TimeUnit.MILLISECONDS);
-    }
-
-    @NonNull
-    @Override
-    protected String getBaseUrl(boolean isDebugMode) {
-        return null;
     }
 
     @Override
