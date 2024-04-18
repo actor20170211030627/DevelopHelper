@@ -27,7 +27,7 @@
         <activity
             android:name=".activity.Point1ApkInstallActivity"
             android:exported="true"
-            android:label="点我直接安装!!!">
+            android:label="点我直接安装Apk!!!">
 
             <!-- DevelopHelper示例 -->
             <intent-filter>

@@ -2,6 +2,7 @@ package com.actor.develop_helper.utils;
 
 import android.accessibilityservice.AccessibilityService;
 import android.accessibilityservice.AccessibilityServiceInfo;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -22,8 +23,9 @@ import java.util.List;
  */
 public class AccessibilityUtils {
 
-    private static Context context = ConfigUtils.APPLICATION;
-    protected static AccessibilityService service;
+    @SuppressLint("StaticFieldLeak")
+    private static final Context              context = ConfigUtils.APPLICATION;
+    protected static     AccessibilityService service;
 
     private AccessibilityUtils() {
         throw new RuntimeException(getClass().getName() + " can not be new!");
@@ -139,10 +141,14 @@ public class AccessibilityUtils {
         } catch (Settings.SettingNotFoundException e) {
             e.printStackTrace();
         }
+
+        String packageName = context.getPackageName();
+        //原来是这么写的:getClass().getCanonicalName()
+        String serviceStr = packageName + File.separator + service.getName();
+        System.out.println("service:" + serviceStr);
         if (accessibilityEnabled == 1) {
-            //原来是这么写的:getClass().getCanonicalName()
-            String serviceStr = context.getPackageName() + File.separator + service.getName();
             TextUtils.SimpleStringSplitter stringSplitter = new TextUtils.SimpleStringSplitter(':');
+
             String settingValue = Settings.Secure.getString(context.getApplicationContext()
                     .getContentResolver(), Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
             if (settingValue != null) {
