@@ -4,23 +4,23 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresPermission;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.actor.develop_helper.Global;
-import com.actor.develop_helper.info.CheckUpdateInfo;
-import com.actor.myandroidframework.utils.LogUtils;
-import com.actor.myandroidframework.utils.okhttputils.BaseCallback;
-import com.actor.myandroidframework.utils.okhttputils.GetFileCallback;
-import com.actor.myandroidframework.utils.okhttputils.MyOkHttpUtils;
+import com.actor.develop_helper.api.CheckUpdateInfo;
+import com.actor.myandroidframework.utils.FileUtils;
 import com.blankj.utilcode.util.AppUtils;
+import com.blankj.utilcode.util.PathUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.bumptech.glide.Glide;
+import com.hjq.http.EasyHttp;
+import com.hjq.http.listener.OnDownloadListener;
+import com.hjq.http.listener.OnHttpListener;
+import com.hjq.http.listener.OnUpdateListener;
 
 import java.io.File;
 import java.util.List;
-
-import okhttp3.Call;
 
 /**
  * Description: 检查更新
@@ -40,21 +40,26 @@ public class CheckUpdateUtils {
     //check update检查更新
     @RequiresPermission(value = Manifest.permission.REQUEST_INSTALL_PACKAGES)
     public void check(AppCompatActivity activity) {
-        MyOkHttpUtils.get(Global.CHECK_UPDATE, null, new BaseCallback<CheckUpdateInfo>(activity) {
-            @Override
-            public void onOk(@NonNull CheckUpdateInfo info, int requestId, boolean isRefresh) {
-                List<CheckUpdateInfo.ElementsBean> elements = info.elements;
-                if (elements != null && !elements.isEmpty()) {
-                    CheckUpdateInfo.ElementsBean elementsBean = elements.get(0);
-                    if (elementsBean != null) {
-                        int versionCode = AppUtils.getAppVersionCode();
-                        if (versionCode < elementsBean.versionCode) {
-                            showDialog((AppCompatActivity) tag, elementsBean.versionName);
+        EasyHttp.get(activity)
+                .api(CheckUpdateInfo.class)
+                .request(new OnHttpListener<CheckUpdateInfo>() {
+                    @Override
+                    public void onHttpSuccess(CheckUpdateInfo result) {
+                        List<CheckUpdateInfo.ElementsBean> elements = result.elements;
+                        if (elements != null && !elements.isEmpty()) {
+                            CheckUpdateInfo.ElementsBean elementsBean = elements.get(0);
+                            if (elementsBean != null) {
+                                int versionCode = AppUtils.getAppVersionCode();
+                                if (versionCode < elementsBean.versionCode) {
+                                    showDialog(activity, elementsBean.versionName);
+                                }
+                            }
                         }
                     }
-                }
-            }
-        });
+                    @Override
+                    public void onHttpFail(Throwable throwable) {
+                    }
+                });
     }
 
     private void showDialog(AppCompatActivity activity, String newVersionName) {
@@ -78,27 +83,25 @@ public class CheckUpdateUtils {
             progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         }
         progressDialog.show();
-        MyOkHttpUtils.getFile(Global.DOWNLOAD_URL, null, null, new GetFileCallback(topActivity, null) {
-
-            @Override
-            public void inProgress(float progress, long total, int id) {
-                super.inProgress(progress, total, id);
-                LogUtils.errorFormat("下载文件: progress=%f, total=%d, id=%d", progress, total, id);
-                progressDialog.setProgress((int) (progress * 100));
-            }
-
-            @Override
-            public void onOk(@NonNull File info, int requestId, boolean isRefresh) {
-                progressDialog.dismiss();
-                AppUtils.installApp(info);
-            }
-
-            @Override
-            public void onError(int id, Call call, Exception e) {
-//                super.onError(id, call, e);
-                progressDialog.dismiss();
-                ToastUtils.showShort("下载失败, 请到Github下载.");
-            }
-        });
+        EasyHttp.download(topActivity)
+                .file(PathUtils.getInternalAppFilesPath().concat(FileUtils.getFileNameFromUrl(Global.DOWNLOAD_URL)))
+//                .api(Global.DOWNLOAD_URL)
+                .url(Global.DOWNLOAD_URL)
+                .listener(new OnDownloadListener() {
+                    @Override
+                    public void onDownloadProgressChange(File file, int progress) {
+                        progressDialog.setProgress(progress);
+                    }
+                    @Override
+                    public void onDownloadSuccess(File file) {
+                        progressDialog.dismiss();
+                        AppUtils.installApp(file);
+                    }
+                    @Override
+                    public void onDownloadFail(File file, Throwable throwable) {
+                        progressDialog.dismiss();
+                        ToastUtils.showShort("下载失败, 请到Github下载.");
+                    }
+                }).start();
     }
 }

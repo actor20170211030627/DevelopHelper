@@ -1,4 +1,9 @@
-package com.actor.develop_helper.info;
+package com.actor.develop_helper.api;
+
+import com.actor.develop_helper.Global;
+import com.hjq.http.annotation.HttpIgnore;
+import com.hjq.http.config.IRequestApi;
+import com.hjq.http.config.IRequestHost;
 
 import java.util.List;
 
@@ -9,7 +14,17 @@ import java.util.List;
  *
  * @version 1.0
  */
-public class CheckUpdateInfo {
+public class CheckUpdateInfo implements IRequestApi, IRequestHost {
+
+    @Override
+    public String getApi() {
+        return Global.CHECK_UPDATE;
+    }
+
+    @Override
+    public String getHost() {
+        return "";
+    }
 
     /**
      * version : 1
@@ -18,7 +33,7 @@ public class CheckUpdateInfo {
      * variantName : debug
      * elements : [{"type":"SINGLE","filters":[],"properties":[],"versionCode":2021021101,"versionName":"2.0.1","enabled":true,"outputFile":"app-debug.apk"}]
      */
-
+    @HttpIgnore
     public int version;
     public ArtifactTypeBean   artifactType;
     public String             applicationId;

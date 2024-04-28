@@ -2,17 +2,18 @@
 
 buildscript {
     repositories {
-        mavenLocal()
-        maven { url 'D://repository' }
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/central' }
         maven { url 'https://maven.aliyun.com/repository/public' }
 //        maven { url 'https://developer.huawei.com/repo/' }
         maven { url 'https://repo1.maven.org/maven2/' }
-        maven { url 'https://www.jitpack.io' }
-        mavenCentral()
-        google()
 
+        maven { url 'D://repository' }
+        mavenLocal()
         jcenter()
     }
     dependencies {
@@ -25,17 +26,18 @@ buildscript {
 
 allprojects {
     repositories {
-        mavenLocal()
-        maven { url 'D://repository' }
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/central' }
         maven { url 'https://maven.aliyun.com/repository/public' }
 //        maven { url 'https://developer.huawei.com/repo/' }
         maven { url 'https://repo1.maven.org/maven2/' }
-        maven { url 'https://www.jitpack.io' }
-        mavenCentral()
-        google()
 
+        maven { url 'D://repository' }
+        mavenLocal()
         jcenter()
     }
 }

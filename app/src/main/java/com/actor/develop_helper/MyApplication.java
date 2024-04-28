@@ -1,12 +1,10 @@
 package com.actor.develop_helper;
 
-import androidx.annotation.Nullable;
-
 import com.actor.cpptest.ConstUtils;
 import com.actor.develop_helper.utils.AppInfoProvider;
 import com.actor.myandroidframework.application.ActorApplication;
-
-import java.util.concurrent.TimeUnit;
+import com.actor.myandroidframework.utils.easyhttp.EasyHttpConfigUtils;
+import com.actor.myandroidframework.utils.okhttputils.OkHttpConfigUtils;
 
 import okhttp3.OkHttpClient;
 
@@ -24,18 +22,14 @@ public class MyApplication extends ActorApplication {
         super.onCreate();
         AppInfoProvider.init(this);
         ConstUtils.jniInit(this, isAppDebug());
-    }
 
-    @Nullable
-    @Override
-    protected OkHttpClient.Builder configOkHttpClientBuilder(OkHttpClient.Builder builder) {
-        return builder.connectTimeout(30_000L, TimeUnit.MILLISECONDS)
-                .readTimeout(30_000L, TimeUnit.MILLISECONDS)
-                .writeTimeout(30_000L, TimeUnit.MILLISECONDS);
+        OkHttpClient.Builder builder = EasyHttpConfigUtils.initOkHttp(isAppDebug());
+        OkHttpClient okHttpClient = OkHttpConfigUtils.addLogInterceptor(builder, isAppDebug());
+        EasyHttpConfigUtils.init(false, "http://www.baidu.com", okHttpClient);
     }
 
     @Override
     protected void onUncaughtException(Throwable e) {
-//        System.exit(-1);
+        super.onUncaughtException(e);
     }
 }

@@ -6,16 +6,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-
 import com.actor.develop_helper.Global;
 import com.actor.develop_helper.R;
+import com.actor.develop_helper.api.GithubHostFileApi;
 import com.actor.develop_helper.databinding.ActivityGithubHostBinding;
 import com.actor.develop_helper.utils.ClipboardUtils;
 import com.actor.myandroidframework.utils.LogUtils;
-import com.actor.myandroidframework.utils.okhttputils.BaseCallback;
-import com.actor.myandroidframework.utils.okhttputils.MyOkHttpUtils;
 import com.actor.myandroidframework.utils.toaster.ToasterUtils;
+import com.hjq.http.EasyHttp;
+import com.hjq.http.listener.OnHttpListener;
 
 /**
  * description: 获取 Github Host(用于配置电脑host,解决Github图片等无法访问等问题.)
@@ -41,12 +40,17 @@ public class GithubHostActivity extends BaseActivity<ActivityGithubHostBinding> 
         LogUtils.error(btn1.getText());
         //设置tv内容可滑动
         tvResult.setMovementMethod(ScrollingMovementMethod.getInstance());
-        MyOkHttpUtils.get(Global.HOSTS_FILE, null, new BaseCallback<String>(this) {
-            @Override
-            public void onOk(@NonNull String info, int requestId, boolean isRefresh) {
-                tvResult.setText(info);
-            }
-        });
+        EasyHttp.get(this)
+                .api(GithubHostFileApi.class)
+                .request(new OnHttpListener<String>() {
+                    @Override
+                    public void onHttpSuccess(String result) {
+                        tvResult.setText(result);
+                    }
+                    @Override
+                    public void onHttpFail(Throwable throwable) {
+                    }
+                });
     }
 
     public void onViewClicked(View view) {

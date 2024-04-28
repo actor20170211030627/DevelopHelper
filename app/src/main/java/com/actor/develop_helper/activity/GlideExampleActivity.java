@@ -58,7 +58,6 @@ import java.io.File;
  */
 public class GlideExampleActivity extends BaseActivity<ActivityGlideExampleBinding> {
 
-    private RecyclerView recyclerView;
     private ImageView    ivTest;
 
     private              int            dp3;
@@ -69,12 +68,11 @@ public class GlideExampleActivity extends BaseActivity<ActivityGlideExampleBindi
         super.onCreate(savedInstanceState);
         setTitle("主页 -> Glide测试");
 
-        recyclerView = viewBinding.recyclerView;
         ivTest = viewBinding.ivTest;
         dp3 = Global.DP1 * 3;
 
-        recyclerView.addItemDecoration(new BaseItemDecoration(10, 10));
-        recyclerView.setAdapter(new GlideExampleAdapter(this));
+        viewBinding.recyclerView.addItemDecoration(new BaseItemDecoration(10, 10));
+        viewBinding.recyclerView.setAdapter(new GlideExampleAdapter(this));
 
         /**
          * 其余方法, 见:

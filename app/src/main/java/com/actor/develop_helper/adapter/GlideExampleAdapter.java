@@ -1,23 +1,27 @@
 package com.actor.develop_helper.adapter;
 
+import android.content.Context;
 import android.net.Uri;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LifecycleOwner;
 
 import com.actor.develop_helper.Global;
 import com.actor.develop_helper.R;
+import com.actor.myandroidframework.utils.FileUtils;
 import com.actor.myandroidframework.utils.LogUtils;
 import com.actor.myandroidframework.utils.TextUtils2;
-import com.actor.myandroidframework.utils.okhttputils.GetFileCallback;
-import com.actor.myandroidframework.utils.okhttputils.MyOkHttpUtils;
 import com.actor.picture_selector.utils.PictureSelectorUtils;
 import com.blankj.utilcode.util.FileIOUtils;
+import com.blankj.utilcode.util.PathUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
+import com.hjq.http.EasyHttp;
+import com.hjq.http.listener.OnDownloadListener;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.interfaces.OnResultCallbackListener;
 
@@ -87,24 +91,50 @@ public class GlideExampleAdapter extends BaseQuickAdapter<String, BaseViewHolder
                 Glide.with(iv).load(R.mipmap.ic_launcher).into(iv);
                 break;
             case 3://File
-                MyOkHttpUtils.getFile(Global.BAIDU_LOGO, null, null, new GetFileCallback(activity, null) {
-                    @Override
-                    public void onOk(@NonNull File info, int requestId, boolean isRefresh) {
-                        Glide.with(iv).load(info).into(iv);
-                    }
-                });
+                Context context = getContext();
+                if (context instanceof LifecycleOwner) {
+                    EasyHttp.download((LifecycleOwner) context)
+                            .file(PathUtils.getInternalAppFilesPath().concat(FileUtils.getFileNameFromUrl(Global.BAIDU_LOGO)))
+//                            .api(Global.BAIDU_LOGO)
+                            .url(Global.BAIDU_LOGO)
+                            .listener(new OnDownloadListener() {
+                                @Override
+                                public void onDownloadProgressChange(File file, int progress) {
+                                }
+                                @Override
+                                public void onDownloadSuccess(File file) {
+                                    Glide.with(iv).load(file).into(iv);
+                                }
+                                @Override
+                                public void onDownloadFail(File file, Throwable throwable) {
+                                }
+                            }).start();
+                }
                 break;
             case 4://Uri
                 Glide.with(iv).load(Uri.parse(Global.BAIDU_LOGO)).into(iv);
                 break;
             case 5://byte[]字节数组
-                MyOkHttpUtils.getFile(Global.BAIDU_LOGO, null, null, new GetFileCallback(activity, "baidu_jgylogo3(1).gif") {
-                    @Override
-                    public void onOk(@NonNull File info, int requestId, boolean isRefresh) {
-                        byte[] bytes = FileIOUtils.readFile2BytesByStream(info);
-                        Glide.with(iv).load(bytes).into(iv);
-                    }
-                });
+                Context context2 = getContext();
+                if (context2 instanceof LifecycleOwner) {
+                    EasyHttp.download((LifecycleOwner) context2)
+                            .file(PathUtils.getInternalAppFilesPath().concat(FileUtils.getFileNameFromUrl(Global.BAIDU_LOGO)))
+//                            .api(Global.BAIDU_LOGO)
+                            .url(Global.BAIDU_LOGO)
+                            .listener(new OnDownloadListener() {
+                                @Override
+                                public void onDownloadProgressChange(File file, int progress) {
+                                }
+                                @Override
+                                public void onDownloadSuccess(File file) {
+                                    byte[] bytes = FileIOUtils.readFile2BytesByStream(file);
+                                    Glide.with(iv).load(bytes).into(iv);
+                                }
+                                @Override
+                                public void onDownloadFail(File file, Throwable throwable) {
+                                }
+                            }).start();
+                }
                 break;
             case 6://raw
                 Glide.with(iv).load(TextUtils2.getStringFormat("android.resource://%s/raw/%s", getContext().getPackageName(), "logo")).into(iv);
