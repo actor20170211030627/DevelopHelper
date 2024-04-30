@@ -58,7 +58,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 }
                 break;
             case R.id.btn_calculate_constraintlayout://计算约束布局偏移率
-                startActivity(new Intent(this, CalculateConstrailtLayoutActivity.class));
+                startActivity(new Intent(this, CalculateConstraintLayoutActivity.class));
                 break;
             case R.id.btn_view_system_icon: //查看系统资源图标
                 startActivity(new Intent(this, ViewSystemIconActivity.class));

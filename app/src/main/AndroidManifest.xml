@@ -89,7 +89,7 @@
         <activity android:name=".activity.AppInfoActivity" />
         <activity android:name=".activity.ViewSystemIconActivity" />
         <activity
-            android:name=".activity.CalculateConstrailtLayoutActivity"
+            android:name=".activity.CalculateConstraintLayoutActivity"
             android:label="计算约束布局偏移率bias" />
         <activity android:name=".activity.GlideExampleActivity" />
         <activity android:name=".activity.ExpandableItemActivity" />

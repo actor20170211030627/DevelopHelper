@@ -5,18 +5,22 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.actor.develop_helper.Global;
 import com.actor.develop_helper.databinding.ActivityCalculateConstrailtLayoutBinding;
 import com.actor.develop_helper.utils.ClipboardUtils;
 import com.actor.myandroidframework.utils.SPUtils;
 import com.actor.myandroidframework.utils.toaster.ToasterUtils;
+import com.blankj.utilcode.util.KeyboardUtils;
 
 /**
  * Description: 计算约束布局偏移率bias
  * Author     : ldf
  * Date       : 2019-8-28 on 9:48
  */
-public class CalculateConstrailtLayoutActivity extends BaseActivity<ActivityCalculateConstrailtLayoutBinding> {
+public class CalculateConstraintLayoutActivity extends BaseActivity<ActivityCalculateConstrailtLayoutBinding> {
 
     private EditText etViewMarginTop;
     private EditText etViewMarginBottom;
@@ -35,21 +39,26 @@ public class CalculateConstrailtLayoutActivity extends BaseActivity<ActivityCalc
     }
 
     //开始计算
-    public void onViewClicked(View view) {
-        calculate();
+    public void onViewClicked(@NonNull View view) {
+        calculate(view);
     }
 
-    private void calculate() {
+    private void calculate(@NonNull View view) {
         if (isNoEmpty(etViewMarginTop, etViewMarginBottom)) {
+            KeyboardUtils.hideSoftInput(view);
             String marginTopS = getText(etViewMarginTop);//顶部边距
             String marginBottomS = getText(etViewMarginBottom);//底部边距
             //保存
             SPUtils.putString(Global.MARGIN_VIEW_TOP, marginTopS);
             SPUtils.putString(Global.MARGIN_VIEW_BOTTOM, marginBottomS);
             //计算
-            double marginTop = Double.parseDouble(marginTopS);
-            double marginBottom = Double.parseDouble(marginBottomS);
-            double bias = marginTop / (marginTop + marginBottom);//偏移率
+            float marginTop = Float.parseFloat(marginTopS);
+            float marginBottom = Float.parseFloat(marginBottomS);
+            float bias = marginTop / (marginTop + marginBottom);//偏移率
+            ConstraintLayout.LayoutParams lp = (ConstraintLayout.LayoutParams) viewBinding.ivView.getLayoutParams();
+            lp.verticalBias = bias;
+            viewBinding.ivView.setLayoutParams(lp);
+
             String clip = getStringFormat("%s/(%s+%s)=%f", marginTopS, marginTopS, marginBottomS, bias);
             tvResult.setText("计算结果: ".concat(clip));
             ClipboardUtils.copy2Clipboard(clip);
