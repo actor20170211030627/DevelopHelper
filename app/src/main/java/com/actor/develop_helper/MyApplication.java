@@ -1,7 +1,6 @@
 package com.actor.develop_helper;
 
 import com.actor.cpptest.ConstUtils;
-import com.actor.develop_helper.utils.AppInfoProvider;
 import com.actor.myandroidframework.application.ActorApplication;
 import com.actor.myandroidframework.utils.easyhttp.EasyHttpConfigUtils;
 import com.actor.myandroidframework.utils.okhttputils.OkHttpConfigUtils;
@@ -20,7 +19,6 @@ public class MyApplication extends ActorApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        AppInfoProvider.init(this);
         ConstUtils.jniInit(this, isAppDebug());
 
         OkHttpClient.Builder builder = EasyHttpConfigUtils.initOkHttp(isAppDebug());

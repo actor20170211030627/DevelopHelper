@@ -23,7 +23,7 @@
             android:layout_weight="1"
             app:itilImeOptions="actionDone"
             app:itilInputType="text"
-            app:itilItemName="应用名搜索:" />
+            app:itilItemName="应用名/包名:" />
 
         <Button
             android:id="@+id/btn_search"
@@ -34,17 +34,6 @@
             android:text="搜索" />
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1px"
-        android:background="@color/red_trans_CC99"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="提示: 点击Item复制信息, 长按Item打开应用"
-        android:textColor="@color/white"
-        android:textSize="16sp" />
-
     <com.actor.myandroidframework.widget.BaseSpinner
         android:id="@+id/bs_app_type"
         android:layout_width="wrap_content"
@@ -54,12 +43,18 @@
         android:dropDownVerticalOffset="47dp"
         android:padding="10dp"
         android:popupBackground="@color/white"
-        app:bsEntriesString="显示已安装应用,显示系统应用,显示全部应用" />
+        app:bsEntriesString="已安装应用,系统应用,全部应用" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_apps"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_app" />
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_apps"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_app" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>

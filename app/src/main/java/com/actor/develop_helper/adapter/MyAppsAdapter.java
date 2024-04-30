@@ -7,7 +7,6 @@ import android.text.format.Formatter;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.actor.develop_helper.Global;
 import com.actor.develop_helper.R;
@@ -21,8 +20,6 @@ import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 
-import java.util.List;
-
 /**
  * description: 查看app信息(包括Md5&Sha1&Sha256签名)
  *
@@ -32,10 +29,10 @@ import java.util.List;
  */
 public class MyAppsAdapter extends BaseQuickAdapter<AppInfo, BaseViewHolder> {
 
-    private String        selfPackageName;
+    private final String        selfPackageName;
 
-    public MyAppsAdapter(@Nullable List<AppInfo> data) {
-        super(R.layout.item_app, data);
+    public MyAppsAdapter() {
+        super(R.layout.item_app);
         selfPackageName = AppUtils.getAppPackageName();
         //item点击
         setOnItemClickListener((adapter, view, position) -> {
@@ -86,14 +83,14 @@ public class MyAppsAdapter extends BaseQuickAdapter<AppInfo, BaseViewHolder> {
 
     @Override
     protected void convert(@NonNull BaseViewHolder helper, AppInfo item) {
-        ImageView ivIcon = helper.setText(R.id.tv_appname, item.appName)
-                .setText(R.id.tv_packagename, item.packageName)
-                .setText(R.id.tv_versionname, item.versionName)
+        ImageView ivIcon = helper.setText(R.id.tv_app_name, item.appName)
+                .setText(R.id.tv_package_name, item.packageName)
+                .setText(R.id.tv_version_name, item.versionName)
                 .setText(R.id.tv_versioncode, item.versionCode + "")
                 .setText(R.id.tv_size, Formatter.formatFileSize(getContext(), item.size))
                 .setText(R.id.tv_sign_md5, "Md5: " + item.apkMd5Sign)
-                .setText(R.id.tv_sign_sha1, "Sha1: " + item.apkSha1Sign)
-                .setText(R.id.tv_sign_sha256, "Sha256: " + item.apkSha256Sign)
+                .setText(R.id.tv_sign_sha1, "Sha1:\n" + item.apkSha1Sign)
+                .setText(R.id.tv_sign_sha256, "Sha256:\n" + item.apkSha256Sign)
                 .getView(R.id.iv_icon);
         Glide.with(ivIcon).load(item.icon).into(ivIcon);
     }

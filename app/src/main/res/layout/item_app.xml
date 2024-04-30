@@ -1,108 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="1dp"
     android:background="@color/white"
-    android:padding="5dp">
+    android:padding="5dp"
+    tools:context=".adapter.MyAppsAdapter">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_icon"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:adjustViewBounds="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/logo"/>
+        tools:src="@drawable/logo" />
 
-    <TextView
-        android:id="@+id/tv_appname"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_app_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:textColor="@color/colorAccent"
-        app:layout_constraintBottom_toTopOf="@id/tv_packagename"
+        app:layout_constraintBottom_toTopOf="@id/tv_package_name"
         app:layout_constraintLeft_toRightOf="@id/iv_icon"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="应用名"/>
+        tools:text="应用名" />
 
-    <TextView
-        android:id="@+id/tv_packagename"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_package_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textColor="@color/colorAccent"
-        app:layout_constraintBottom_toTopOf="@id/tv_versionname"
-        app:layout_constraintLeft_toLeftOf="@id/tv_appname"
+        app:layout_constraintBottom_toTopOf="@id/tv_version_name"
+        app:layout_constraintLeft_toLeftOf="@id/tv_app_name"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_appname"
-        tools:text="包名"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_app_name"
+        tools:text="包名" />
 
-    <TextView
-        android:id="@+id/tv_versionname"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_version_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="@id/iv_icon"
-        app:layout_constraintLeft_toLeftOf="@id/tv_appname"
-        app:layout_constraintTop_toBottomOf="@id/tv_packagename"
-        tools:text="版本名称"/>
+        app:layout_constraintLeft_toLeftOf="@id/tv_app_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_package_name"
+        tools:text="版本名称" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_versioncode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorAccent"
-        app:layout_constraintLeft_toRightOf="@id/tv_versionname"
+        app:layout_constraintLeft_toRightOf="@id/tv_version_name"
         app:layout_constraintRight_toLeftOf="@id/tv_size"
-        app:layout_constraintTop_toTopOf="@id/tv_versionname"
-        tools:text="版本号"/>
+        app:layout_constraintTop_toTopOf="@id/tv_version_name"
+        tools:text="版本号" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_size"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorAccent"
         app:layout_constraintLeft_toRightOf="@id/tv_versioncode"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_versionname"
-        tools:text="大小"/>
+        app:layout_constraintTop_toTopOf="@id/tv_version_name"
+        tools:text="大小" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_sign_md5"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ellipsize="marquee"
-        android:singleLine="true"
         android:textColor="@color/colorAccent"
+        android:textSize="12sp"
         app:layout_constraintLeft_toLeftOf="@id/iv_icon"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_icon"
-        tools:text="MD5签名"/>
+        tools:text="MD5签名" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_sign_sha1"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ellipsize="marquee"
-        android:singleLine="true"
         android:textColor="@color/colorAccent"
+        android:textSize="12sp"
         app:layout_constraintLeft_toLeftOf="@id/iv_icon"
         app:layout_constraintRight_toLeftOf="@id/tv_sign_sha256"
         app:layout_constraintTop_toBottomOf="@id/tv_sign_md5"
-        tools:text="Sha1签名"/>
+        tools:text="Sha1签名" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_sign_sha256"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ellipsize="marquee"
-        android:singleLine="true"
         android:textColor="@color/colorAccent"
-        app:layout_constraintLeft_toRightOf="@id/tv_sign_sha1"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="@id/iv_icon"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_sign_sha1"
-        tools:text="Sha256签名"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_sign_sha1"
+        tools:text="Sha256签名" />
 </androidx.constraintlayout.widget.ConstraintLayout>

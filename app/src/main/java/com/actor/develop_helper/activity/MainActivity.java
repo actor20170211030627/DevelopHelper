@@ -6,17 +6,16 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
 
+import com.actor.cpptest.activity.CCallJavaActivity;
 import com.actor.develop_helper.R;
 import com.actor.develop_helper.databinding.ActivityMainBinding;
 import com.actor.develop_helper.service.ViewPackageAndClassNameService;
 import com.actor.develop_helper.utils.AccessibilityUtils;
 import com.actor.develop_helper.utils.CheckUpdateUtils;
-import com.actor.cpptest.activity.CCallJavaActivity;
 import com.actor.myandroidframework.utils.toaster.ToasterUtils;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.NetworkUtils;
-import com.blankj.utilcode.util.ServiceUtils;
 import com.develophelper.android5.activity.Android5MainActivity;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> {

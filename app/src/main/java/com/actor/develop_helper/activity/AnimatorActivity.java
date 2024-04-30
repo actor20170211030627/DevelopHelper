@@ -38,9 +38,9 @@ public class AnimatorActivity extends BaseActivity<ActivityAnimatorBinding> {
          * 1.ValueAnimator
          */
         viewBinding.itemApp.ivIcon.setImageResource(R.drawable.logo);
-        viewBinding.itemApp.tvAppname.setText("应用名");
-        viewBinding.itemApp.tvPackagename.setText("包名");
-        viewBinding.itemApp.tvVersionname.setText("版本名称");
+        viewBinding.itemApp.tvAppName.setText("应用名");
+        viewBinding.itemApp.tvPackageName.setText("包名");
+        viewBinding.itemApp.tvVersionName.setText("版本名称");
         viewBinding.itemApp.tvVersioncode.setText("版本号");
         viewBinding.itemApp.tvSize.setText("大小");
         viewBinding.itemApp.tvSignMd5.setText("MD5签名");
