@@ -1,38 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/gray_background"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context=".activity.AppInfoActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <com.actor.other_utils.widget.ItemTextInputLayout
+        android:id="@+id/itil_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:layout_weight="1"
+        app:itilImeOptions="actionDone"
+        app:itilInputType="text"
+        app:itilItemName="应用名/包名:"
+        app:layout_constraintEnd_toStartOf="@id/btn_search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <com.actor.other_utils.widget.ItemTextInputLayout
-            android:id="@+id/itil_content"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:itilImeOptions="actionDone"
-            app:itilInputType="text"
-            app:itilItemName="应用名/包名:" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_search"
+        android:layout_width="55dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="5dp"
+        android:onClick="onViewClicked"
+        android:text="搜索"
+        app:layout_constraintBottom_toBottomOf="@id/itil_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/itil_content" />
 
-        <Button
-            android:id="@+id/btn_search"
-            android:layout_width="55dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="5dp"
-            android:onClick="onViewClicked"
-            android:text="搜索" />
-    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_permission_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onViewClicked"
+        android:text="读取应用权限设置"
+        app:layout_constraintBottom_toBottomOf="@id/bs_app_type"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bs_app_type" />
 
     <com.actor.myandroidframework.widget.BaseSpinner
         android:id="@+id/bs_app_type"
@@ -43,12 +51,16 @@
         android:dropDownVerticalOffset="47dp"
         android:padding="10dp"
         android:popupBackground="@color/white"
-        app:bsEntriesString="已安装应用,系统应用,全部应用" />
+        app:bsEntriesString="已安装应用,系统应用,全部应用"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/itil_content" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bs_app_type">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_apps"
@@ -57,4 +69,4 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_app" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

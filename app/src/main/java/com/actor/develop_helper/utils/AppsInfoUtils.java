@@ -66,21 +66,23 @@ public class AppsInfoUtils {
         if (XXPermissions.isGranted(context, Permission.GET_INSTALLED_APPS)) {
             go2GetInstalledPackages(context, appType, listener);
         } else {
-            XXPermissions.with(context).permission(Permission.GET_INSTALLED_APPS).request(new OnPermissionCallback() {
+            XXPermissions.with(context)
+                    .permission(Permission.GET_INSTALLED_APPS)
+                    .request(new OnPermissionCallback() {
                 @Override
                 public void onGranted(@NonNull List<String> permissions, boolean allGranted) {
                     if (allGranted) {
                         go2GetInstalledPackages(context, appType, listener);
                     } else {
                         ToastUtils.showShort("请同意读取应用列表权限!");
-                        XXPermissions.startPermissionActivity(context, Permission.GET_INSTALLED_APPS);
+                        go2Setting(context);
                     }
                 }
 
                 @Override
                 public void onDenied(@NonNull List<String> permissions, boolean doNotAskAgain) {
                     ToastUtils.showShort("请同意读取应用列表权限!");
-                    XXPermissions.startPermissionActivity(context, Permission.GET_INSTALLED_APPS);
+                    go2Setting(context);
                 }
             });
         }
@@ -158,6 +160,13 @@ public class AppsInfoUtils {
             LogUtils.error(packageName);
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 跳转读取应用权限设置
+     */
+    public static void go2Setting(Context context) {
+        XXPermissions.startPermissionActivity(context, Permission.GET_INSTALLED_APPS);
     }
 
     public interface OnGetAppsListener {

@@ -6,6 +6,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
+import com.actor.develop_helper.R;
 import com.actor.develop_helper.adapter.MyAppsAdapter;
 import com.actor.develop_helper.bean.AppInfo;
 import com.actor.develop_helper.databinding.ActivityAppInfoBinding;
@@ -144,6 +145,15 @@ public class AppInfoActivity extends BaseActivity<ActivityAppInfoBinding> {
     }
 
     public void onViewClicked(@NonNull View view) {
-        search();
+        switch (view.getId()) {
+            case R.id.btn_search:   //搜索
+                search();
+                break;
+            case R.id.btn_permission_setting:   //读取应用权限设置
+                AppsInfoUtils.go2Setting(this);
+                break;
+            default:
+                break;
+        }
     }
 }
