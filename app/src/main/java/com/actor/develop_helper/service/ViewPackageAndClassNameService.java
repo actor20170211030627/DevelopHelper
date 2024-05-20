@@ -10,7 +10,7 @@ import android.view.accessibility.AccessibilityEvent;
 import com.actor.develop_helper.R;
 import com.actor.myandroidframework.utils.LogUtils;
 import com.actor.myandroidframework.utils.TextUtils2;
-import com.blankj.utilcode.util.ToastUtils;
+import com.actor.myandroidframework.utils.toaster.ToasterUtils;
 
 /**
  * Description: 查看"包名&类名"服务, 辅助功能
@@ -53,7 +53,8 @@ public class ViewPackageAndClassNameService extends AccessibilityService {
         String className = String.valueOf(event.getClassName());
         String info = TextUtils2.getStringFormat("包名: %s, 类名: %s", packageName, className);
         LogUtils.error(info);
-        ToastUtils.showShort(info);
+//        ToastUtils.showShort(info);
+        ToasterUtils.show(info);
     }
 
     @Override
