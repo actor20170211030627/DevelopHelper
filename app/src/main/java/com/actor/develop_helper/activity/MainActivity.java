@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 import com.actor.cpptest.activity.CCallJavaActivity;
 import com.actor.develop_helper.R;
 import com.actor.develop_helper.databinding.ActivityMainBinding;
@@ -17,6 +19,11 @@ import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.NetworkUtils;
 import com.develophelper.android5.activity.Android5MainActivity;
+import com.hjq.permissions.OnPermissionCallback;
+import com.hjq.permissions.Permission;
+import com.hjq.permissions.XXPermissions;
+
+import java.util.List;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
@@ -67,11 +74,23 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 startActivity(new Intent(this, AppInfoActivity.class));
                 break;
             case R.id.btn_view_page_info:   //查看当前页面包名&类名(需打开辅助功能)
-                if (AccessibilityUtils.isAccessibilitySettingsOn(ViewPackageAndClassNameService.class)) {
-                    ToasterUtils.success("辅助功能已开启");
+                //toast别的app页面信息的时候, 需要悬浮窗权限
+                if (XXPermissions.isGranted(this, Permission.SYSTEM_ALERT_WINDOW)) {
+                    startAccessibility();
                 } else {
-                    ToasterUtils.warning("请开启辅助功能");
-                    AccessibilityUtils.openAccessibility(mActivity);
+                    XXPermissions.with(this)
+                            .permission(Permission.SYSTEM_ALERT_WINDOW)
+                            .request(new OnPermissionCallback() {
+                                @Override
+                                public void onGranted(@NonNull List<String> permissions, boolean allGranted) {
+                                    startAccessibility();
+                                }
+                                @Override
+                                public void onDenied(@NonNull List<String> permissions, boolean doNotAskAgain) {
+                                    ToasterUtils.error("未获取到悬浮窗权限!");
+                                    XXPermissions.startPermissionActivity(mActivity, Permission.SYSTEM_ALERT_WINDOW);
+                                }
+                            });
                 }
                 break;
             case R.id.btn_stop_service: //停止服务
@@ -107,6 +126,15 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 break;
             default:
                 break;
+        }
+    }
+
+    private void startAccessibility() {
+        if (AccessibilityUtils.isAccessibilitySettingsOn(ViewPackageAndClassNameService.class)) {
+            ToasterUtils.success("辅助功能已开启");
+        } else {
+            ToasterUtils.warning("请开启辅助功能");
+            AccessibilityUtils.openAccessibility(mActivity);
         }
     }
 }
