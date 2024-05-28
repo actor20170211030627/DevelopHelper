@@ -62,18 +62,22 @@ public class MyAppsAdapter extends BaseQuickAdapter<AppInfo, BaseViewHolder> {
         setOnItemLongClickListener((adapter, view, position) -> {
             AppInfo item = getItem(position);
             if (item != null) {
-                String packageName = item.packageName;
-                if (TextUtils.equals(selfPackageName, packageName)) {
-                    ToastUtils.showShort("自己不能打开自己哟(＾Ｕ＾)ノ~ＹＯ");
-                } else if (Global.FORCED_2_SLEEP_NAME.equals(packageName)) {
-                    getContext().startActivity(new Intent(Global.FORCED_2_SLEEP_NAME + ".startup",
-                            Uri.parse("forced2sleep://来自'开发帮助'的消息: 起来嗨~")));
+                if (true) {
+                    AppUtils.launchAppDetailsSettings(item.packageName);
                 } else {
-                    try {
-                        AppUtils.launchApp(packageName);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        ToastUtils.showShort("打开失败:" + e.getMessage());//可能是设置了scheme 或者 其它原因
+                    String packageName = item.packageName;
+                    if (TextUtils.equals(selfPackageName, packageName)) {
+                        ToastUtils.showShort("自己不能打开自己哟(＾Ｕ＾)ノ~ＹＯ");
+                    } else if (Global.FORCED_2_SLEEP_NAME.equals(packageName)) {
+                        getContext().startActivity(new Intent(Global.FORCED_2_SLEEP_NAME + ".startup",
+                                Uri.parse("forced2sleep://来自'开发帮助'的消息: 起来嗨~")));
+                    } else {
+                        try {
+                            AppUtils.launchApp(packageName);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            ToastUtils.showShort("打开失败:" + e.getMessage());//可能是设置了scheme 或者 其它原因
+                        }
                     }
                 }
             }

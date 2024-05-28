@@ -95,7 +95,7 @@ public class AppInfoActivity extends BaseActivity<ActivityAppInfoBinding> {
 
 
         new XPopup.Builder(this)
-                .asConfirm("提示", "点击Item复制信息, 长按Item打开应用", null)
+                .asConfirm("提示", "点击Item复制信息, 长按Item打开应用详情", null)
                 .show();
     }
 
