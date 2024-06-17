@@ -49,10 +49,10 @@ dependencies {
     implementation 'com.google.android:flexbox:1.0.0'
 
     //https://github.com/actor20170211030627/MyAndroidFrameWork
-//    implementation 'com.github.actor20170211030627.MyAndroidFrameWork:library:2.1.6'
-    implementation 'com.github.actor20170211030627.MyAndroidFrameWork:picture_selector:2.1.6'
+//    implementation 'com.github.actor20170211030627.MyAndroidFrameWork:library:2.1.7'
+    implementation 'com.github.actor20170211030627.MyAndroidFrameWork:picture_selector:2.1.7'
     //ItemTextInputLayout
-    implementation 'com.github.actor20170211030627.MyAndroidFrameWork:other_utils:2.1.6'
+    implementation 'com.github.actor20170211030627.MyAndroidFrameWork:other_utils:2.1.7'
 
 
 
