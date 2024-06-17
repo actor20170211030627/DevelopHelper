@@ -1,5 +1,6 @@
 /build/generated/
 /build/intermediates/
+/build/outputs/apk/androidTest
 /build/outputs/apk/debug/*.apk
 /build/outputs/logs/
 /build/tmp/
